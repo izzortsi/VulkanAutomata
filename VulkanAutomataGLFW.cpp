@@ -11,6 +11,7 @@
 #include <chrono>
 #include <thread>
 #include <cstring>
+#include <cmath>
 
 const 	uint32_t 	VERT_FLS 		=  1;	//	Number of Vertex Shader Files
 const 	uint32_t 	FRAG_FLS 		=  1;	//	Number of Fragment Shader Files
@@ -317,15 +318,7 @@ struct VK_Pipe {
 	VkPipeline						vk_pipeline;
 };
 
-struct UniBuf {
-	uint32_t v0;  uint32_t v1;  uint32_t v2;  uint32_t v3;	uint32_t v4;  uint32_t v5;  uint32_t v6;  uint32_t v7;
-	uint32_t v8;  uint32_t v9;  uint32_t v10; uint32_t v11;	uint32_t v12; uint32_t v13; uint32_t v14; uint32_t v15;
-	uint32_t v16; uint32_t v17; uint32_t v18; uint32_t v19;	uint32_t v20; uint32_t v21; uint32_t v22; uint32_t v23;
-	uint32_t v24; uint32_t v25; uint32_t v26; uint32_t v27;	uint32_t v28; uint32_t v29; uint32_t v30; uint32_t v31;
-	uint32_t v32; uint32_t v33; uint32_t v34; uint32_t v35;	uint32_t v36; uint32_t v37; uint32_t v38; uint32_t v39;
-	uint32_t v40; uint32_t v41; uint32_t v42; uint32_t v43;	uint32_t v44; uint32_t v45; uint32_t v46; uint32_t v47;
-	uint32_t v48; uint32_t v49; uint32_t v50; uint32_t v51;	uint32_t v52; uint32_t v53; uint32_t v54; uint32_t v55;
-	uint32_t v56; uint32_t v57; uint32_t v58; uint32_t v59;	uint32_t v60; uint32_t v61; uint32_t v62; uint32_t v63; };
+struct UB32_64 { uint32_t u32[64]; };
 
 void save_image(void* image_data, std::string fname, uint32_t w, uint32_t h, GLFW_mouse m, bool cursor = false) {
 	fname = "out/" + fname + ".PAM";
@@ -372,6 +365,13 @@ void save_sound(void* image_data, std::string fname, uint32_t w, uint32_t h, GLF
 			std::ofstream file(fname.c_str(), std::ios::out | std::ios::binary);
 				file.write( (const char*)line, w*4 );
 			file.close(); } }
+
+struct fspec256 {
+	float rl[256];
+	float im[256];
+};
+
+void new_fspec256(fspec256 *fs) { for(int i = 0; i < 256; i++) { fs->rl[i] = 0.0f; fs->im[i] = 0.0f; } }
 
 struct NS_Timer {
 	std::chrono::_V2::system_clock::time_point st;
@@ -475,6 +475,10 @@ struct IMGUI_Config {
 	int			load_pattern_last_value;
 	bool		load_pattern_random;
 	bool		save_to_archive;
+	bool 		load_A256_confirm;
+	int 		load_A256_index;
+	int 		load_A256_index_last;
+	int 		load_A256_count;
 	bool		mutate_menu;
 	bool		mutate_full_random;
 	bool		mutate_set_target;
@@ -515,7 +519,7 @@ struct IMGUI_Config {
 	bool		record_imgui;
 	bool 		recording_config; };
 
-const char* notification_list[19] = {
+const char* notification_list[20] = {
 	"Welcome!",
 	"Saved to Archive (PCD256)",
 	"Target Updated\nScale & Zoom Discarded",
@@ -534,7 +538,8 @@ const char* notification_list[19] = {
 	"Scale",
 	"Frame-time Throttle enabled",
 	"Frame-time Throttle disabled",
-	"Zoom"
+	"Zoom",
+	"Export Frequency"
 };
 
 void send_notif(int idx, IMGUI_Config *gc, bool clear = true) {
@@ -605,6 +610,7 @@ void do_action(int idx, UI_info *ui, EngineInfo *ei, IMGUI_Config *gc) {
 		gc->scale_update			= true;
 		gc->zoom_update				= true;
 		gc->mutate_full_random 		= true;
+		gc->mutate_backstep_idx 	= gc->mutate_backstep_idx - 1;
 		/*gc->mutate_backstep_idx 	= -1;
 		gc->mutate_backstep 		= true;*/ }
 
@@ -707,10 +713,14 @@ void do_action(int idx, UI_info *ui, EngineInfo *ei, IMGUI_Config *gc) {
 		gc->mutate_backstep_last_value 	= gc->mutate_backstep_idx; }
 
 //	Increase export frequency
-	if( idx == 26 ) { ei->export_frequency++; }
+	if( idx == 26 ) { 
+		ei->export_frequency++;
+		send_notif_float(19, float(ei->export_frequency), gc);  }
 
 //	Decrease export frequency
-	if( idx == 27 ) { ei->export_frequency--; }
+	if( idx == 27 ) { 
+		ei->export_frequency--;
+		send_notif_float(19, float(ei->export_frequency), gc); }
 
 //	Set default parameter mapping
 	if( idx == 28 ) {
@@ -758,6 +768,25 @@ void do_action(int idx, UI_info *ui, EngineInfo *ei, IMGUI_Config *gc) {
 		send_notif_float(18, gc->zoom_value, gc);
 		gc->zoom_update		 = true; }
 
+//	Next Archive256 Pattern
+	if( idx == 37 ) {
+		gc->load_A256_confirm 	= true;
+		gc->load_A256_index		= ( gc->load_A256_index + 1 ) % gc->load_A256_count; }
+
+//	Prev Archive256 Pattern
+	if( idx == 38 ) {
+		gc->load_A256_confirm 	= true;
+		gc->load_A256_index 	= ( gc->load_A256_index + gc->load_A256_count - 1 ) % gc->load_A256_count; }
+
+//	Rand Archive256 Pattern
+	if( idx == 39 ) {
+		gc->load_A256_confirm 	= true;
+		gc->load_A256_index 	= rand()%gc->load_A256_count; }
+
+//	Load Archive256 Pattern
+	if( idx == 40 ) {
+		gc->load_A256_confirm 	= true; }
+
 }
 
 bool check_input_update(auto *val, auto *last) {
@@ -779,9 +808,9 @@ void imgui_menu(GLFWwindow *w, UI_info *ui, EngineInfo *ei, IMGUI_Config *gc) {
 		if( ImGui::BeginMenu("Archive") ) {
 		//	if( ImGui::MenuItem( "Reload" ) ) 											{ do_action(  3, ui, ei, gc ); }
 		//	ImGui::Separator();
-			if( ImGui::MenuItem( "Random Pattern", "TAB" ) )							{ do_action(  4, ui, ei, gc ); }
-			if( ImGui::MenuItem( "Next", "MB-Forward" ) ) 								{ do_action(  5, ui, ei, gc ); }
-			if( ImGui::MenuItem( "Previous", "MB-Back" ) ) 								{ do_action(  6, ui, ei, gc ); }
+			if( ImGui::MenuItem( "Random Pattern", "TAB" ) )							{ do_action( 39, ui, ei, gc ); }
+			if( ImGui::MenuItem( "Next", "MB-Forward" ) ) 								{ do_action( 37, ui, ei, gc ); }
+			if( ImGui::MenuItem( "Previous", "MB-Back" ) ) 								{ do_action( 38, ui, ei, gc ); }
 			ImGui::Separator();
 			if( ImGui::MenuItem( "Load Pattern", "..." ) ) 								{ gc->load_pattern 		= true; }
 			ImGui::Separator();
@@ -990,16 +1019,16 @@ void imgui_menu(GLFWwindow *w, UI_info *ui, EngineInfo *ei, IMGUI_Config *gc) {
 			ImGui::End(); } 
 		else {
 			ImGui::SetNextItemWidth(112);
-			ImGui::InputInt("", &ei->load_pattern);
+			ImGui::InputInt("", &gc->load_A256_index);
 		    ImGui::SameLine();
-			if(ImGui::Button( "Load", ImVec2(64.0,0.0) )) 										{ do_action(  3, ui, ei, gc ); }
+			if(ImGui::Button( "Load", ImVec2(64.0,0.0) )) 										{ do_action( 40, ui, ei, gc ); }
 		    ImGui::SameLine();
-			if(ImGui::Button( "Random", ImVec2(64.0,0.0) ))										{ do_action(  4, ui, ei, gc ); }
+			if(ImGui::Button( "Random", ImVec2(64.0,0.0) ))										{ do_action( 39, ui, ei, gc ); }
 			ImGui::Checkbox("Instant", 	&gc->load_pattern_check_instant);
 		    ImGui::SameLine();
 			ImGui::Checkbox("Reseed", 	&gc->load_pattern_check_reseed);
 			if(	gc->load_pattern_check_instant
-			&&	check_input_update(&ei->load_pattern, &gc->load_pattern_last_value) ) 			{ do_action(  3, ui, ei, gc ); }
+			&&	check_input_update(&gc->load_A256_index, &gc->load_A256_index_last) ) 			{ do_action( 40, ui, ei, gc ); }
 			ImGui::End(); } }
 }
 
@@ -1052,23 +1081,8 @@ void glfw_mousescroll_event(GLFWwindow* window, double xoffset, double yoffset) 
 	ov( "mouse yoffset", yoffset );
 	loglevel = -1;*/ }
 
-void update_ub( PatternConfigData_256 *pcd, UniBuf *ub ) {
-	ub->v0  = pcd->ubi[ 0]; ub->v1  = pcd->ubi[ 1]; ub->v2  = pcd->ubi[ 2]; ub->v3  = pcd->ubi[ 3];
-	ub->v4  = pcd->ubi[ 4]; ub->v5  = pcd->ubi[ 5]; ub->v6  = pcd->ubi[ 6]; ub->v7  = pcd->ubi[ 7];
-	ub->v8  = pcd->ubi[ 8]; ub->v9  = pcd->ubi[ 9]; ub->v10 = pcd->ubi[10]; ub->v11 = pcd->ubi[11];
-	ub->v12 = pcd->ubi[12]; ub->v13 = pcd->ubi[13]; ub->v14 = pcd->ubi[14]; ub->v15 = pcd->ubi[15];
-	ub->v16 = pcd->ubi[16]; ub->v17 = pcd->ubi[17]; ub->v18 = pcd->ubi[18]; ub->v19 = pcd->ubi[19];
-	ub->v20 = pcd->ubi[20]; ub->v21 = pcd->ubi[21]; ub->v22 = pcd->ubi[22]; ub->v23 = pcd->ubi[23];
-	ub->v24 = pcd->ubi[24]; ub->v25 = pcd->ubi[25]; ub->v26 = pcd->ubi[26]; ub->v27 = pcd->ubi[27];
-	ub->v28 = pcd->ubi[28]; ub->v29 = pcd->ubi[29]; ub->v30 = pcd->ubi[30]; ub->v31 = pcd->ubi[31];
-	ub->v32 = pcd->ubi[32]; ub->v33 = pcd->ubi[33]; ub->v34 = pcd->ubi[34]; ub->v35 = pcd->ubi[35];
-	ub->v36 = pcd->ubi[36]; ub->v37 = pcd->ubi[37]; ub->v38 = pcd->ubi[38]; ub->v39 = pcd->ubi[39];
-	ub->v40 = pcd->ubi[40]; ub->v41 = pcd->ubi[41]; ub->v42 = pcd->ubi[42]; ub->v43 = pcd->ubi[43];
-	ub->v44 = pcd->ubi[44]; ub->v45 = pcd->ubi[45]; ub->v46 = pcd->ubi[46]; ub->v47 = pcd->ubi[47];
-	ub->v48 = pcd->ubi[48]; ub->v49 = pcd->ubi[49]; ub->v50 = pcd->ubi[50]; ub->v51 = pcd->ubi[51];
-	ub->v52 = pcd->ubi[52]; ub->v53 = pcd->ubi[53]; ub->v54 = pcd->ubi[54]; ub->v55 = pcd->ubi[55];
-	ub->v56 = pcd->ubi[56]; ub->v57 = pcd->ubi[57]; ub->v58 = pcd->ubi[58]; ub->v59 = pcd->ubi[59];
-	ub->v60 = pcd->ubi[60]; ub->v61 = pcd->ubi[61]; ub->v62 = pcd->ubi[62]; ub->v63 = pcd->ubi[63]; }
+void update_ub( PatternConfigData_256 *pcd, UB32_64 *ub ) {
+	for(int i = 0; i < 64; i++) { ub->u32[i] =  pcd->ubi[i]; } }
 
 void loadPattern_PCD408_to_256( EngineInfo *ei, PatternConfigData_256 *pcd ) {
 	PatternConfigData_408 pcd_load 	= get_PCD_408("res/data/save_global.vkpat", ei->load_pattern, ei);
@@ -1092,6 +1106,14 @@ void save_PCD256(std::string savefile, PatternConfigData_256 *pcd) {
 	fwrite(pcd, sizeof(PatternConfigData_256), 1, f);
 	fclose(f); }
 
+int get_PCD256_count(std::string loadfile) {
+	int count = 0;
+	std::ifstream fload_pcd256(loadfile.c_str(), std::ios::in | std::ios::binary);
+		fload_pcd256.seekg(0, fload_pcd256.end);
+		count = int(fload_pcd256.tellg() / sizeof(PatternConfigData_256));
+	fload_pcd256.close();
+	return count; }
+
 PatternConfigData_256 load_PCD256(std::string loadfile, int idx) {
 	PatternConfigData_256 pcd = new_PCD_256();
 	std::ifstream fload_pcd256(loadfile.c_str(), std::ios::in | std::ios::binary);
@@ -1103,6 +1125,21 @@ PatternConfigData_256 load_PCD256(std::string loadfile, int idx) {
 	fload_pcd256.close();
 	std::cout << "\nLOAD:" << show_PCD256(&pcd);
 	return pcd; }
+
+struct WAVS16_1024 {
+	int16_t i16[1024*8];
+};
+
+WAVS16_1024 load_WAVS16(std::string loadfile, int idx) {
+	WAVS16_1024 WAVS16;
+	std::ifstream fload_WAVS16(loadfile.c_str(), std::ios::in | std::ios::binary);
+		fload_WAVS16.seekg(0, fload_WAVS16.end);
+		int f_len = fload_WAVS16.tellg();
+		fload_WAVS16.seekg (( (idx + (f_len / sizeof(int16_t))) % (f_len / sizeof(int16_t))) * sizeof(int16_t));
+		fload_WAVS16.read((char*)&WAVS16, sizeof(WAVS16_1024));
+	//	std::cout << "\tLoad WAVS16 Data Count: " << idx << " / " << (f_len / sizeof(WAVS16)) << "\n"; // Report how many patterns are in data file
+	fload_WAVS16.close();
+	return WAVS16; }
 
 /*void load_PCD256(PatternConfigData_256 *pcd) {
 	std::cout << show_PCD256(pcd);
@@ -1119,9 +1156,103 @@ uint32_t u32_clr(uint32_t u32, uint32_t off) { return u32 & (1 << off); }
 
 uint32_t mut_rnd() 	{ return rand()%UINT32_MAX; }
 
-uint32_t bit_flp(uint32_t u32, uint32_t rnd) { 
-	for(int i = 0; i < 32; i++) { if(rand()%rnd == 0) { u32 = u32_flp(u32, i); } } 
+uint32_t blk_clr(uint32_t u32) {
+	for(int i = 0; i < 32; i++) { u32 = u32_clr(u32, i); }
 	return u32; }
+
+uint32_t blk_set(uint32_t u32) {
+	for(int i = 0; i < 32; i++) { u32 = u32_set(u32, i); }
+	return u32; }
+
+uint32_t wrd_clr(uint32_t u32, uint32_t off, uint32_t len) {
+	len = len - (((off+len)/32) * ((off+len)%32));
+	for(int i = off; i < off+len; i++) { u32 = u32_set(u32, i); }
+	return u32; }
+
+uint32_t wrd_set(uint32_t u32, uint32_t off, uint32_t len) {
+	len = len - (((off+len)/32) * ((off+len)%32));
+	for(int i = off; i < off+len; i++) { u32 = u32_set(u32, i); }
+	return u32; }
+
+uint32_t wrd_flp(uint32_t u32, uint32_t off, uint32_t len) {
+	len = len - (((off+len)/32) * ((off+len)%32));
+	for(int i = off; i < off+len; i++) { u32 = u32_flp(u32, i); }
+	return u32; }
+
+uint32_t bit_flp(uint32_t u32, uint32_t rnd) { 
+	for(int i = 0; i < 32; i++) { if(rand()%rnd == 0) { u32 = u32_flp(u32, i); } }
+	if(rand()%(rnd*2) == 0) { u32 = wrd_set( u32, rand()%32, rand()%8 ); }
+	if(rand()%(rnd*2) == 0) { u32 = wrd_clr( u32, rand()%32, rand()%8 ); }
+	if(rand()%(rnd*2) == 0) { u32 = wrd_flp( u32, rand()%32, rand()%8 ); }
+	return u32; }
+
+struct fsmag256 { float fsm[256]; };
+
+fsmag256 new_fsmag256() {
+	fsmag256 fsm;
+	for(int i = 0; i < 256; i++) { fsm.fsm[i] = 0.0f; }
+	return fsm; }
+
+void dft1d(int idx, int smp, fspec256* fs, fsmag256* fsm) {
+	new_fspec256(fs);
+	WAVS16_1024 d1024 = load_WAVS16("input.wav", idx+150);
+	for(int s = 0; s < smp; s++) {
+		int16_t d = d1024.i16[s*8];
+		for(int f = 0; f < (smp/2); f++) {
+			double trigpi = (2.0 * M_PI * double(f) * double(s)) / double(smp);
+			fs->rl[f/((smp/2)/256)] +=  float( (double(d)*cos(trigpi) + double(d)*sin(trigpi)) * (1.0f/smp) );
+			fs->im[f/((smp/2)/256)] +=  float( (double(d)*cos(trigpi) - double(d)*sin(trigpi)) * (1.0f/smp) ); } }
+
+	for(int i = 0; i < 256; i++) { fsm->fsm[i] = (fsm->fsm[i] * 0.65) + sqrt(fs->rl[i]*fs->rl[i] + fs->im[i]*fs->im[i]) * 0.35; }
+
+	//for(int i = 0; i < 256; i++) { std::cout << fs->rl[i] << "," << fs->im[i] << "\n"; }
+	/*std::cout << sizeof(int16_t) << "," << sizeof(WAVS16_1024) << "," << sizeof(d1024) << "," << sizeof(d1024.i16[0]) << "\n";*/ }
+
+void save_fspec(fsmag256 *fsm, std::string fname, uint32_t w, uint32_t h) {
+	fname = "out/" + fname + ".PAM";
+	ov("Save Image", fname);
+
+	std::ofstream file(fname.c_str(), std::ios::out | std::ios::binary);
+		file 	<<	"P7" 							<< "\n"
+			 	<< 	"WIDTH "	<< w 				<< "\n"
+			 	<< 	"HEIGHT "	<< h				<< "\n"
+			 	<< 	"DEPTH "	<< "4"				<< "\n"
+			 	<< 	"MAXVAL "	<< "255"			<< "\n"
+			 	<< 	"TUPLTYPE "	<< "RGB_ALPHA"		<< "\n"
+			 	<< 	"ENDHDR"	<< "\n";
+
+		int 	maxsize 	= w*h*4;
+		char* 	buffer 		= new char[maxsize];
+
+		//float 	maxmag = 1.0f;
+		//for(int j = 0; j < 256; j++) { maxmag = (fsm->fsm[j] > maxmag) ? fsm->fsm[j] : maxmag; }
+		//std::cout << maxmag << "\n";
+		for(int j = 0; j < 256; j++) {
+			int xoff = int(		   j   *4+maxsize )%maxsize;
+			int mag = int((fsm->fsm[j] / 4096.0f) * 255.0f);
+		//	int mag = int((fsm->fsm[j] /  maxmag) * 255.0f);
+		//	int mag = int(fsm->fsm[j]);
+			int magclamp = (mag > 255) ? 255 : ((mag < 0) ? 0 : mag);
+			for(int k = 0; k < magclamp; k++) {
+				int yoff = int( k*-1*w*4+maxsize-(w*4) )%maxsize;
+				for(int i = 0; i < 4; i++) {
+					buffer[(xoff+yoff+i-w*4*0+maxsize)%maxsize] = UINT8_MAX; } }
+
+			/*int yclampr = (int(abs(fs->rl[j])) > 255) ? 255 : int(abs(fs->rl[j]));
+			int yclampi = (int(abs(fs->im[j])) > 255) ? 255 : int(abs(fs->im[j]));
+			
+			for(int k = 0; k < yclampr; k++) {
+				int yoff = int( k*-1*w*4+maxsize-(w*4) )%maxsize;
+				for(int i = 0; i < 1; i++) {
+					buffer[(xoff+yoff+i+0-w*4*0+maxsize)%maxsize] = UINT8_MAX; } }
+			for(int k = 0; k < yclampi; k++) {
+				int yoff = int( k*-1*w*4+maxsize-(w*4) )%maxsize;
+				for(int i = 0; i < 1; i++) {
+					buffer[(xoff+yoff+i+1-w*4*0+maxsize)%maxsize] = UINT8_MAX; } }*/ }
+
+		file.write( (const char*)buffer, w*h*4 );
+
+	file.close(); }
 
 int main() {
 
@@ -1144,8 +1275,8 @@ int main() {
 //			W:	16384 	8192 	4096	2048	1024	512		256
 //			H:	8192 	4096  	2048	1024	512		256		128
 
-	const 	uint32_t 	APP_W 	=  1024;	//	Window & Simulation Width
-	const 	uint32_t 	APP_H 	=  512;	//	Window & Simulation Height
+	const 	uint32_t 	APP_W 	= 64*4*2*2;	//	Window & Simulation Width
+	const 	uint32_t 	APP_H 	= 64*4*2*1;	//	Window & Simulation Height
 
 	EngineInfo ei;
 		ei.paused 				= false;				//	Pause Simulation
@@ -2279,8 +2410,8 @@ int main() {
 	///////////////////////////////////////////////////
 
 	VkDeviceSize vkdevsize_work;
-		vkdevsize_work = sizeof(UniBuf);
-	ov("UniBuf size", vkdevsize_work);
+		vkdevsize_work = sizeof(UB32_64);
+	ov("UB32_64 size", vkdevsize_work);
 	VkBufferCreateInfo vkbuff_info_work;
 		vkbuff_info_work.sType = VK_STRUCTURE_TYPE_BUFFER_CREATE_INFO;
 	nf(&vkbuff_info_work);
@@ -3077,18 +3208,18 @@ int main() {
 	NS_Timer 	guitime;
 	NS_Timer 	cmdtime;
 	int  		current_sec		= time(0);
-	int  		fps_freq 		= 4;
+	int  		fps_freq 		= 1;
 	int  		fps_report 		= time(0) - fps_freq;
 
 
 	PatternConfigData_256 pcd 	= new_PCD_256();
 
-	loadPattern_PCD408_to_256( &ei, &pcd );
 
+//	loadPattern_PCD408_to_256( &ei, &pcd );
 //	pcd = load_PCD256("sav/PCD256_archive.vkpat", rand()%106 ); // Too lazy to dynamically get filesize for now
 
 //	Uniform Buffer Object ( 64 * 32 bits maximum )
-	UniBuf ub;
+	UB32_64 ub;
 
 	update_ub( &pcd, &ub );
 
@@ -3135,6 +3266,7 @@ int main() {
 		gc.scale_has_panned				= false;
 		gc.recording_config 			= false;
 		gc.record_imgui					=  true;
+		gc.load_A256_confirm 			=  true;
 
 		gc.load_pattern_last_value 		= ei.load_pattern;
 		gc.mutate_flip_str 				= 80;
@@ -3144,6 +3276,9 @@ int main() {
 		gc.pmap_index					= 0;
 		gc.pmap_index_last				= gc.pmap_index;
 		gc.glfw_mouse_xpos_last			= ui.mx;
+		gc.load_A256_index				= -1;
+		gc.load_A256_index_last			= gc.load_A256_index;
+		gc.load_A256_count				= get_PCD256_count("sav/PCD256_archive.vkpat");
 
 		gc.notification_float_value		= 0.0f;
 
@@ -3157,13 +3292,24 @@ int main() {
 		gc.notification_timer = nottime;
 		send_notif(0, &gc);
 
+	fspec256 fs;
+	fsmag256 fsm = new_fsmag256();
+
+	bool do_ub_update = true;
+
+/*	pcd 			= load_PCD256("sav/PCD256_archive.vkpat", gc.load_A256_index);
+	memcpy(&gc.scale_value, &pcd.ubi[62], sizeof(uint32_t));
+	memcpy(&gc.zoom_value,  &pcd.ubi[61], sizeof(uint32_t));
+	do_ub_update 	= true;
+	gc.scale_update = true;
+	gc.zoom_update 	= true;*/
+
 	  ///////////////////////////////////////////////////
 	 /**/	hd("STAGE:", "MAIN LOOP");				/**/
 	///////////////////////////////////////////////////
 
 //	Main Loop code
 	do {
-		bool do_ub_update = false;
 	//	Record loop start time
     	ftime = start_timer(ftime);
 
@@ -3233,7 +3379,9 @@ int main() {
 						glfw_mouse.action  				= 0;
 						gc.mutate_backstep_last_value 	= gc.mutate_backstep_idx;
 						do_action(  9, &ui, &ei, &gc );
-						if( gc.glfw_mod_LSHIFT ) { gc.save_to_archive = true; } }
+						if( gc.glfw_mod_LSHIFT ) { 
+							gc.save_to_archive = true;
+							gc.load_A256_index = -1; } }
 
 				//	Mouse Wheel Up
 					if( glfw_mouse.yoffset == -1 ) {
@@ -3245,15 +3393,15 @@ int main() {
 						glfw_mouse.yoffset  =  0;
 						do_action( 35, &ui, &ei, &gc ); }
 
-				//	Mouse Forward
+				//	Mouse Back
 					if(glfw_mouse.button == 3 && glfw_mouse.action == 1) {
 						glfw_mouse.action = 0;
-						do_action(  5, &ui, &ei, &gc ); }
+						do_action( 38, &ui, &ei, &gc ); }
 
-				//	Mouse Back
+				//	Mouse Forward
 					if(glfw_mouse.button == 4 && glfw_mouse.action == 1) {
 						glfw_mouse.action = 0;
-						do_action(  6, &ui, &ei, &gc ); } }
+						do_action( 37, &ui, &ei, &gc ); } }
 
 				else { ui.mbl = 0; ui.mbr = 0; }
 
@@ -3286,15 +3434,15 @@ int main() {
 
 				//	Press 		TAB			Show Random Archive Pattern
 					if( glfw_key.key 	== GLFW_KEY_TAB
-		 			&& 	glfw_key.action == 1 ) { do_action(  4, &ui, &ei, &gc ); }
+		 			&& 	glfw_key.action == 1 ) { do_action( 39, &ui, &ei, &gc ); }
 
 				//	Press 		RIGHT 		Show Prev Archive Pattern
 					if( glfw_key.key 	== GLFW_KEY_RIGHT
-		 			&& 	glfw_key.action >= 1 ) { do_action(  5, &ui, &ei, &gc ); }
+		 			&& 	glfw_key.action >= 1 ) { do_action( 37, &ui, &ei, &gc ); }
 
 				//	Press 		LEFT		Show Next Archive Pattern
 					if( glfw_key.key 	== GLFW_KEY_LEFT
-		 			&& 	glfw_key.action >= 1 ) { do_action(  6, &ui, &ei, &gc ); }
+		 			&& 	glfw_key.action >= 1 ) { do_action( 38, &ui, &ei, &gc ); }
 
 				//	Press 		CTRL-S		Save Archive Pattern
 					if( glfw_key.key 	== GLFW_KEY_S
@@ -3372,6 +3520,17 @@ int main() {
 					if( uint_notif_age > 2400000000 ) 	{ tog(&gc.show_notification_float); } }
 
 
+				if( gc.load_A256_confirm ) {
+					gc.load_A256_confirm = false;
+					ui.cmd = 1;
+					ei.tick_loop = 1;
+					pcd = load_PCD256("sav/PCD256_archive.vkpat", gc.load_A256_index);
+					do_ub_update = true;
+					memcpy(&gc.scale_value, &pcd.ubi[62], sizeof(uint32_t));
+					memcpy(&gc.zoom_value, &pcd.ubi[61], sizeof(uint32_t));
+					gc.scale_update = true;
+					gc.zoom_update = true; }
+
 			//	Load random Archive pattern
 				if( gc.load_pattern_confirm ) {
 					gc.load_pattern_confirm = false;
@@ -3390,54 +3549,88 @@ int main() {
 					gc.mutate_set_target = false;
 					save_PCD256("sav/PCD256_global_all.vkpat", &pcd); }
 
-				if( gc.mutate_backstep ) {
-					gc.mutate_backstep = false;
-					ui.cmd = 1;
-					ei.tick_loop = 1;
-					pcd = load_PCD256("sav/PCD256_global_all.vkpat", gc.mutate_backstep_idx);
-					do_ub_update = true;
-					memcpy(&gc.scale_value, &pcd.ubi[62], sizeof(uint32_t));
-					memcpy(&gc.zoom_value, &pcd.ubi[61], sizeof(uint32_t));
-					gc.scale_update = true;
-					gc.zoom_update = true; }
+                if( gc.mutate_backstep ) {
+                    gc.mutate_backstep = false;
+                //    ui.cmd = 1;
+                    ei.tick_loop = 1;
+                    pcd = load_PCD256("sav/PCD256_global_all.vkpat", gc.mutate_backstep_idx);
+                    do_ub_update = true;
+                    memcpy(&gc.scale_value, &pcd.ubi[62], sizeof(uint32_t));
+                    memcpy(&gc.zoom_value, &pcd.ubi[61], sizeof(uint32_t));
+                    gc.scale_update = true;
+                    gc.zoom_update = true; }
 
-				if( gc.mutate_full_random ) {
-					gc.mutate_full_random = false;
-					ui.cmd = 1;
-					ei.tick_loop = 1;
-					for(int i = 0; i < 48; i++) { pcd.ubi[i] = mut_rnd(); }
-					do_ub_update = true;
-					save_PCD256("sav/PCD256_global_all.vkpat", &pcd); }
+                if( gc.mutate_full_random ) {
+                    gc.mutate_full_random = false;
+                    ui.cmd = 1;
+                    ei.tick_loop = 1;
+                    for(int i = 0; i < 48; i++) { pcd.ubi[i] = mut_rnd(); }
+                    do_ub_update = true;
+                    save_PCD256("sav/PCD256_global_all.vkpat", &pcd); }
 
-				if( gc.mutate_flip ) {
-					gc.mutate_flip = false;
-					ui.cmd = 1;
-					ei.tick_loop = 1;
-					for(int i = 0; i < 48; i++) { pcd.ubi[i] = bit_flp( pcd.ubi[i], gc.mutate_flip_str ); }
-					do_ub_update = true;
-					save_PCD256("sav/PCD256_global_all.vkpat", &pcd); }
-
+                if( gc.mutate_flip ) {
+                    gc.mutate_flip = false;
+                //    ui.cmd = 1;
+                    ei.tick_loop = 1;
+                    for(int i = 0; i < 48; i++) { pcd.ubi[i] = bit_flp( pcd.ubi[i], (rand()%(gc.mutate_flip_str*2))+(gc.mutate_flip_str/2)+1 ); }
+                    do_ub_update = true;
+                    save_PCD256("sav/PCD256_global_all.vkpat", &pcd); }
+					
 				if( gc.mutate_backstep_retry ) {
 					gc.mutate_backstep_retry = false;
 					gc.mutate_backstep_idx--;
 					gc.mutate_backstep_last_value = gc.mutate_backstep_idx; }
 
+				//int16_t sound 	 = 0;
+				//float 	soundavg = 0.0f;
+				if(!ei.paused || ei.tick_loop) {
+
+					//dft1d(frame_index*735, 512, &fs, &fsm);
+					//save_fspec(&fsm, "IMG"+std::to_string(ei.imgdat_idx), 256, 256);
+					//ei.imgdat_idx++;
+
+					//for(int i = 0; i < 20; i+=6) {
+					//	sound = load_WAVS16( "input.wav", frame_index + i );
+					//	soundavg += (float(sound) / float(INT16_MAX)) / 20.0f; }
+
+					//if(!verbose_loops) { loglevel = MAXLOG; }
+					//ov( "WAVS16", std::to_string( float(sound) / float(INT16_MAX) ) );
+					//ov( "WAVS16", std::to_string( soundavg ) );
+					//if(!verbose_loops) { loglevel = -1; }
+					//gc.scale_update = true;
+					/*&gc.zoom_value = &gc.zoom_value + &gc.zoom_value * sound * 0.2f;*/ }
+
 			//	Update special floats
 				//	[62]	'Scale' value
 				if( gc.scale_update ) {
 					gc.scale_update = false;
-					memcpy(&pcd.ubi[62], &gc.scale_value, sizeof(uint32_t));
+					//float fsc = gc.scale_value + gc.scale_value * (float(sound) / float(INT16_MAX)) * 0.8f;
+					/*float fsm_sample
+						=	(fsm.fsm[12] 	* 0.02
+						+	fsm.fsm[18] 	* 0.02
+						+	fsm.fsm[24] 	* 0.02
+						+	fsm.fsm[30] 	* 0.03
+						+	fsm.fsm[36] 	* 0.05
+						+	fsm.fsm[48] 	* 0.05
+						+	fsm.fsm[64] 	* 0.07
+						+	fsm.fsm[96] 	* 0.07
+						+	fsm.fsm[128] 	* 0.08
+						+	fsm.fsm[192] 	* 0.09);*/
+					float fsc = gc.scale_value;
+					memcpy(&pcd.ubi[62], &fsc, sizeof(uint32_t));
 					do_ub_update = true; }
 				//	[61]	'Zoom' value
 				if( gc.zoom_update ) {
 					gc.zoom_update = false;
-					memcpy(&pcd.ubi[61], &gc.zoom_value, sizeof(uint32_t));
+					float fzm = gc.zoom_value;// + gc.zoom_value * (float(sound) / float(INT16_MAX)) * 1.0f;
+					memcpy(&pcd.ubi[61], &fzm, sizeof(uint32_t));
 					do_ub_update = true;	}
 
 			//	Save current target to PCD256 Archive
 				if( gc.save_to_archive ) {
 					gc.save_to_archive = false;
 					save_PCD256("sav/PCD256_archive.vkpat", &pcd);
+					gc.load_A256_count = get_PCD256_count("sav/PCD256_archive.vkpat");
 					send_notif(1, &gc); }
 
 				if(ei.show_gui || ei.paused) {
@@ -3490,15 +3683,15 @@ int main() {
 		//		memcpy(&pcd.ubi[61], &gc.zoom_value, sizeof(uint32_t));
 		//		update_ub( &pcd, &ub );	}
 		//		[60]	Mouse info & Command IDs
-			ub.v60 		= pack_ui_info(ui);
+			ub.u32[60] 		= pack_ui_info(ui);
 		//		[59]	Views/Modes
 			vw.pmap		= gc.pmap_index;
 			vw.sdat		= (gc.mode_showdata) ? 1u : 0u;
-			ub.v59 		= pack_vw_info(vw);
-			pcd.ubi[59] = ub.v59;
+			ub.u32[59] 	= pack_vw_info(vw);
+			pcd.ubi[59] = ub.u32[59];
 		//		[63]	Frame Index, Time-Seed
 			ft.frame 	= frame_index;
-			ub.v63		= pack_ft_info(ft);
+			ub.u32[63]	= pack_ft_info(ft);
 
 		//	Send UB values to GPU
 			rv("memcpy");
@@ -3595,6 +3788,7 @@ int main() {
 				end_timer(optime, "Save ImageData");
 				if(!verbose_loops) { loglevel = -1; }
 				ei.imgdat_idx++;
+				dft1d(ei.imgdat_idx*735, 512, &fs, &fsm);
 				if( ei.export_batch_size  > 0
 				&&	ei.export_batch_left  > 0 ) { ei.export_batch_left--; }
 				if( !ei.run_headless
@@ -3618,6 +3812,8 @@ int main() {
 
 		if(ei.tick_loop > 0) { ei.tick_loop--; }
 		if(verbose_loops > 0) { verbose_loops--; } else { loglevel = -1; }
+
+		do_ub_update = false;
 
 	} while ( valid && ((!ei.run_headless && !glfwWindowShouldClose(glfw_W)) || ei.run_headless) );
 

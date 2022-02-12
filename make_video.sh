@@ -64,9 +64,12 @@
 
 #	Video output filepaths/filenames
 	v0="vid/VKAutomata"$sf".mp4"
-
+	vz0="vid/VKAutomata"$sf"_120hz.mp4"
+	vr0="vid/VKAutomata"$sf"_ROT.mp4"
 	v1="vid/VKAutomata"$sf"_SCALE.mp4"
+	vr1="vid/VKAutomata"$sf"_SCALE_ROT.mp4"
 	v2="vid/VKAutomata"$sf"_SMALL.mp4"
+	vr2="vid/VKAutomata"$sf"_SMALL_ROT.mp4"
 
 	v3="vid/VKAutomata"$sf"_4096x2048.mp4"
 	v4="vid/VKAutomata"$sf"_2048x1024.mp4"
@@ -74,47 +77,100 @@
 	v6="vid/VKAutomata"$sf"_512x256.mp4"
 	v7="vid/VKAutomata"$sf"_256x128.mp4"
 
+	v8="vid/VKAutomata"$sf"_4096x4096.mp4"
+	v10="vid/VKAutomata"$sf"_2048x2048.mp4"
+	v9="vid/VKAutomata"$sf"_1024x1024.mp4"
+
 #	Create MP4 videos
 	buildtime=$(date +%s)
-	echo "              VID [1/3] "$v0
-	ffmpeg -loglevel 4 -framerate 60 -i out/IMG%00d.PAM -c:v libx264 -crf 12 -movflags +faststart -vf 'eq=gamma_r=1.26:gamma_g=1.19:gamma_b=1.08' -pix_fmt yuv420p $v0
+	echo "              VID [1/7] "$v0
+#	ffmpeg -loglevel 4 -framerate 60 -i out/IMG%00d.PAM -c:v libx264 -crf 12 -movflags +faststart -vf 'eq=gamma_r=1.26:gamma_g=1.19:gamma_b=1.08' -pix_fmt yuv420p $v0
+	ffmpeg -loglevel 4 -framerate 60 -i out/IMG%00d.PAM -c:v libx264 -crf 12 -movflags +faststart -pix_fmt yuv420p $v0
 	echo "                  Seconds elapsed: "$(($(date +%s)-$buildtime))
+#	ffmpeg -loglevel 4 -i $v0 -i input.wav -c:v copy -c:a aac -shortest "vid/VKAutomata"$sf"_Audio.mp4"
 
 	buildtime=$(date +%s)
-	echo "              VID [2/3] "$v2
-	ffmpeg -loglevel 4 -framerate 60 -i out/IMG%00d.PAM -c:v libx264 -crf 12 -movflags +faststart -vf 'scale=iw/2:ih/2:flags=bicubic,eq=gamma_r=1.26:gamma_g=1.19:gamma_b=1.08' -pix_fmt yuv420p $v2
+	echo "              VID [2/7] "$vz0
+#	ffmpeg -loglevel 4 -framerate 60 -i out/IMG%00d.PAM -c:v libx264 -crf 12 -movflags +faststart -vf 'eq=gamma_r=1.26:gamma_g=1.19:gamma_b=1.08' -pix_fmt yuv420p $v0
+	ffmpeg -loglevel 4 -framerate 120 -i out/IMG%00d.PAM -c:v libx264 -crf 12 -movflags +faststart -pix_fmt yuv420p $vz0
 	echo "                  Seconds elapsed: "$(($(date +%s)-$buildtime))
+#	ffmpeg -loglevel 4 -i $v0 -i input.wav -c:v copy -c:a aac -shortest "vid/VKAutomata"$sf"_Audio.mp4"
 
 	buildtime=$(date +%s)
-	echo "              VID [3/3] "$v1
-	ffmpeg -loglevel 4 -framerate 60 -i out/IMG%00d.PAM -c:v libx264 -crf 12 -movflags +faststart -vf 'scale=iw*4:ih*4:flags=neighbor,eq=gamma_r=1.26:gamma_g=1.19:gamma_b=1.08' -pix_fmt yuv420p $v1
+	echo "              VID [3/7] "$vr0
+#	ffmpeg -loglevel 4 -framerate 60 -i out/IMG%00d.PAM -c:v libx264 -crf 12 -movflags +faststart -vf 'eq=gamma_r=1.26:gamma_g=1.19:gamma_b=1.08' -pix_fmt yuv420p $v0
+	ffmpeg -loglevel 4 -framerate 60 -i out/IMG%00d.PAM -c:v libx264 -crf 12 -movflags +faststart -vf 'transpose=1' -pix_fmt yuv420p $vr0
 	echo "                  Seconds elapsed: "$(($(date +%s)-$buildtime))
+#	ffmpeg -loglevel 4 -i $v0 -i input.wav -c:v copy -c:a aac -shortest "vid/VKAutomata"$sf"_Audio.mp4"
 
+	buildtime=$(date +%s)
+	echo "              VID [4/7] "$v2
+#	ffmpeg -loglevel 4 -framerate 60 -i out/IMG%00d.PAM -c:v libx264 -crf 12 -movflags +faststart -vf 'scale=iw/2:ih/2:flags=bicubic,eq=gamma_r=1.26:gamma_g=1.19:gamma_b=1.08' -pix_fmt yuv420p $v2
+	ffmpeg -loglevel 4 -framerate 60 -i out/IMG%00d.PAM -c:v libx264 -crf 12 -movflags +faststart -vf 'scale=iw/2:ih/2:flags=bicubic' -pix_fmt yuv420p $v2
+	echo "                  Seconds elapsed: "$(($(date +%s)-$buildtime))
+#	ffmpeg -loglevel 4 -i $v2 -i input.wav -c:v copy -c:a aac -shortest "vid/VKAutomata"$sf"_SMALL_Audio.mp4"
+
+	buildtime=$(date +%s)
+	echo "              VID [5/7] "$vr2
+#	ffmpeg -loglevel 4 -framerate 60 -i out/IMG%00d.PAM -c:v libx264 -crf 12 -movflags +faststart -vf 'scale=iw/2:ih/2:flags=bicubic,eq=gamma_r=1.26:gamma_g=1.19:gamma_b=1.08' -pix_fmt yuv420p $v2
+	ffmpeg -loglevel 4 -framerate 60 -i out/IMG%00d.PAM -c:v libx264 -crf 12 -movflags +faststart -vf 'transpose=1,scale=iw/2:ih/2:flags=bicubic' -pix_fmt yuv420p $vr2
+	echo "                  Seconds elapsed: "$(($(date +%s)-$buildtime))
+#	ffmpeg -loglevel 4 -i $v2 -i input.wav -c:v copy -c:a aac -shortest "vid/VKAutomata"$sf"_SMALL_Audio.mp4"
+
+	buildtime=$(date +%s)
+	echo "              VID [6/7] "$v1
+#	ffmpeg -loglevel 4 -framerate 60 -i out/IMG%00d.PAM -c:v libx264 -crf 12 -movflags +faststart -vf 'scale=iw*4:ih*4:flags=neighbor,eq=gamma_r=1.26:gamma_g=1.19:gamma_b=1.08' -pix_fmt yuv420p $v1
+	ffmpeg -loglevel 4 -framerate 60 -i out/IMG%00d.PAM -c:v libx264 -crf 12 -movflags +faststart -vf 'scale=iw*4:ih*4:flags=neighbor' -pix_fmt yuv420p $v1
+	echo "                  Seconds elapsed: "$(($(date +%s)-$buildtime))
+#	ffmpeg -loglevel 4 -i $v1 -i input.wav -c:v copy -c:a aac -shortest "vid/VKAutomata"$sf"_SCALE_Audio.mp4"
+
+	buildtime=$(date +%s)
+	echo "              VID [7/7] "$vr1
+#	ffmpeg -loglevel 4 -framerate 60 -i out/IMG%00d.PAM -c:v libx264 -crf 12 -movflags +faststart -vf 'scale=iw*4:ih*4:flags=neighbor,eq=gamma_r=1.26:gamma_g=1.19:gamma_b=1.08' -pix_fmt yuv420p $v1
+	ffmpeg -loglevel 4 -framerate 60 -i out/IMG%00d.PAM -c:v libx264 -crf 12 -movflags +faststart -vf 'transpose=1,scale=iw*4:ih*4:flags=neighbor' -pix_fmt yuv420p $vr1
+	echo "                  Seconds elapsed: "$(($(date +%s)-$buildtime))
+#	ffmpeg -loglevel 4 -i $v1 -i input.wav -c:v copy -c:a aac -shortest "vid/VKAutomata"$sf"_SCALE_Audio.mp4"
 
 	buildtime=$(date +%s)
 	echo "              VID [4/8] "$v3
-#	ffmpeg -loglevel 4 -framerate 60 -i out/IMG%00d.PAM -s 4096x2048 -sws_flags neighbor -c:v libx264 -crf 14 -movflags +faststart -pix_fmt yuv420p $v3
+	ffmpeg -loglevel 4 -framerate 60 -i out/IMG%00d.PAM -s 4096x2048 -sws_flags neighbor -c:v libx264 -crf 14 -movflags +faststart -pix_fmt yuv420p $v3
 	echo "                  Seconds elapsed: "$(($(date +%s)-$buildtime))
 
 	buildtime=$(date +%s)
 	echo "              VID [5/8] "$v4
-#	ffmpeg -loglevel 4 -framerate 60 -i out/IMG%00d.PAM -s 2048x1024 -sws_flags neighbor -c:v libx264 -crf 14 -movflags +faststart -pix_fmt yuv420p $v4
+	ffmpeg -loglevel 4 -framerate 60 -i out/IMG%00d.PAM -s 2048x1024 -sws_flags neighbor -c:v libx264 -crf 14 -movflags +faststart -pix_fmt yuv420p $v4
 	echo "                  Seconds elapsed: "$(($(date +%s)-$buildtime))
 
 	buildtime=$(date +%s)
 	echo "              VID [6/8] "$v5
-#	ffmpeg -loglevel 4 -framerate 60 -i out/IMG%00d.PAM -s 1024x512 -sws_flags neighbor -c:v libx264 -crf 14 -movflags +faststart -pix_fmt yuv420p $v5
+	ffmpeg -loglevel 4 -framerate 60 -i out/IMG%00d.PAM -s 1024x512 -sws_flags neighbor -c:v libx264 -crf 14 -movflags +faststart -pix_fmt yuv420p $v5
 	echo "                  Seconds elapsed: "$(($(date +%s)-$buildtime))
 
 	buildtime=$(date +%s)
 	echo "              VID [7/8] "$v6
-#	ffmpeg -loglevel 4 -framerate 60 -i out/IMG%00d.PAM -s 512x256 -sws_flags bicubic -c:v libx264 -crf 14 -movflags +faststart -pix_fmt yuv420p $v6
+	ffmpeg -loglevel 4 -framerate 60 -i out/IMG%00d.PAM -s 512x256 -sws_flags bicubic -c:v libx264 -crf 14 -movflags +faststart -pix_fmt yuv420p $v6
 	echo "                  Seconds elapsed: "$(($(date +%s)-$buildtime))
 
 	buildtime=$(date +%s)
 	echo "              VID [8/8] "$v7
-#	ffmpeg -loglevel 4 -framerate 60 -i out/IMG%00d.PAM -s 256x128 -sws_flags bicubic -c:v libx264 -crf 14 -movflags +faststart -pix_fmt yuv420p $v7
+	ffmpeg -loglevel 4 -framerate 60 -i out/IMG%00d.PAM -s 256x128 -sws_flags bicubic -c:v libx264 -crf 14 -movflags +faststart -pix_fmt yuv420p $v7
 	echo "                  Seconds elapsed: "$(($(date +%s)-$buildtime))
+
+	buildtime=$(date +%s)
+	echo "              VID [8/8] "$v9
+	ffmpeg -loglevel 4 -framerate 60 -i out/IMG%00d.PAM -s 1024x1024 -sws_flags neighbor -c:v libx264 -crf 14 -movflags +faststart -pix_fmt yuv420p $v9
+	echo "                  Seconds elapsed: "$(($(date +%s)-$buildtime))
+
+	buildtime=$(date +%s)
+	echo "              VID [8/8] "$v10
+	ffmpeg -loglevel 4 -framerate 60 -i out/IMG%00d.PAM -s 2048x2048 -sws_flags neighbor -c:v libx264 -crf 14 -movflags +faststart -pix_fmt yuv420p $v10
+
+	echo "                  Seconds elapsed: "$(($(date +%s)-$buildtime))
+	buildtime=$(date +%s)
+	echo "              VID [8/8] "$v8
+	ffmpeg -loglevel 4 -framerate 60 -i out/IMG%00d.PAM -s 4096x4096 -sws_flags neighbor -c:v libx264 -crf 14 -movflags +faststart -pix_fmt yuv420p $v8
+	echo "                  Seconds elapsed: "$(($(date +%s)-$buildtime))
+
 
 
 #	Temporary "Size" GIF output filepaths/filenames

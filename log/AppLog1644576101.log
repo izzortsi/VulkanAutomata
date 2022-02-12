@@ -1,0 +1,244 @@
+Script started on 2022-02-11 07:41:41-03:00 [TERM="screen-256color" TTY="/dev/pts/26" COLUMNS="117" LINES="27"]
+rm: cannot remove './app/frag_automata0000.spv': No such file or directory
+[H[J
+  glslc -O ./res/vert/vert_TriQuad.vert -o ./app/vert_TriQuad.spv
+
+  glslc -O ./res/frag/frag_automata0000.frag -o ./app/frag_automata0000.spv
+./res/frag/frag_automata0000.frag:489: error: 'res' : undeclared identifier
+./res/frag/frag_automata0000.frag:489: error: 'res' :  left of '[' is not of type array, matrix, or vector
+./res/frag/frag_automata0000.frag:490: error: 'res' :  left of '[' is not of type array, matrix, or vector
+./res/frag/frag_automata0000.frag:491: error: 'res' :  left of '[' is not of type array, matrix, or vector
+./res/frag/frag_automata0000.frag:491: error: 'res' :  left of '[' is not of type array, matrix, or vector
+./res/frag/frag_automata0000.frag:493: error: 'res' :  left of '[' is not of type array, matrix, or vector
+./res/frag/frag_automata0000.frag:494: error: 'res' :  left of '[' is not of type array, matrix, or vector
+./res/frag/frag_automata0000.frag:495: error: 'res' :  left of '[' is not of type array, matrix, or vector
+./res/frag/frag_automata0000.frag:495: error: 'res' :  left of '[' is not of type array, matrix, or vector
+./res/frag/frag_automata0000.frag:497: error: 'res' :  left of '[' is not of type array, matrix, or vector
+./res/frag/frag_automata0000.frag:498: error: 'res' :  left of '[' is not of type array, matrix, or vector
+./res/frag/frag_automata0000.frag:499: error: 'res' :  left of '[' is not of type array, matrix, or vector
+./res/frag/frag_automata0000.frag:499: error: 'res' :  left of '[' is not of type array, matrix, or vector
+./res/frag/frag_automata0000.frag:501: error: 'res' :  left of '[' is not of type array, matrix, or vector
+./res/frag/frag_automata0000.frag:502: error: 'res' :  left of '[' is not of type array, matrix, or vector
+./res/frag/frag_automata0000.frag:503: error: 'res' :  left of '[' is not of type array, matrix, or vector
+./res/frag/frag_automata0000.frag:503: error: 'res' :  left of '[' is not of type array, matrix, or vector
+17 errors generated.
+
+  g++ -g -std=c++17 lib/*.cpp VulkanAutomataGLFW.cpp -fconcepts -lglfw -lvulkan -o ./app/RunVulkanAutomataGLFW
+
+  BEGIN ./app/RunVulkanAutomataGLFW
+
+________________________________________________________________________________
+ STAGE:	USER CONFIG
+________________________________________________________________________________
+ STAGE:	APPLICATION INIT
+	info:	    Application Width ........................ [1024]
+	info:	    Application Height ....................... [512]
+	info:	    ei.load_pattern .......................... [18372]
+	info:	0	Vertex Shaders ....................... [./app/vert_TriQuad.spv]
+	info:	0	Fragment Shaders ..................... [./app/frag_automata0000.spv]
+________________________________________________________________________________
+ STAGE:	GLFW EXTENSIONS
+     0:	1 	glfwInit                                       [GLFW]
+     1:	1 	glfwVulkanSupported                            [GLFW]
+  void: 	glfwGetRequiredInstanceExtensions
+	info:	0	GLFW Extensions ...................... [VK_KHR_surface]
+	info:	1	GLFW Extensions ...................... [VK_KHR_xcb_surface]
+________________________________________________________________________________
+ STAGE:	VULKAN EXTENSIONS
+	info:	0	Instance Extensions .................. [VK_EXT_debug_utils]
+	info:	1	Instance Extensions .................. [VK_KHR_surface]
+	info:	2	Instance Extensions .................. [VK_KHR_xcb_surface]
+	info:	0	Layer Extensions ..................... [VK_LAYER_KHRONOS_validation]
+	info:	0	Logical Device Extensions ............ [VK_KHR_swapchain]
+________________________________________________________________________________
+ STAGE:	VULKAN INIT
+     2:	-13 	init                                           [INIT]
+     3:	  	vkCreateInstance                               [0x55c1235e60d0]
+________________________________________________________________________________
+ STAGE:	DEBUG UTILS
+  void: 	vkGetInstanceProcAddr
+     4:	  	vkCreateDebugUtilsMessengerEXT                 [0xfd5b260000000001]
+________________________________________________________________________________
+ STAGE:	PHYSICAL DEVICE
+MESA-INTEL: warning: Performance support disabled, consider sysctl dev.i915.perf_stream_paranoid=0
+
+     5:	  	vkEnumeratePhysicalDevices                     [2]
+     6:	  	vkEnumeratePhysicalDevices                     [0x7ffd51be91c0]
+  void: 	vkGetPhysicalDeviceProperties
+	info:	0	Physical Devices ..................... [0x55c123c7a8d0]
+	info:	0	apiVersion ........................... [4202682]
+	info:	0	driverVersion ........................ [2076901376]
+	info:	0	deviceType ........................... [2]
+	info:	0	deviceName ........................... [NVIDIA GeForce RTX 3080 Ti]
+	info:	0	maxImageDimension2D .................. [32768]
+	info:	0	maxPushConstantsSize ................. [256]
+	info:	0	maxBoundDescriptorSets ............... [32]
+	info:	0	maxFragmentInputComponents ........... [128]
+	info:	0	maxFragmentOutputAttachments ......... [8]
+	info:	0	maxComputeSharedMemorySize ........... [49152]
+	info:	0	maxComputeWorkGroupInvocations ....... [1024]
+	info:	0	maxViewports ......................... [16]
+	info:	0	minMemoryMapAlignment ................ [64]
+	info:	0	minUniformBufferOffsetAlignment ...... [64]
+	info:	0	minTexelOffset ....................... [-8]
+	info:	0	maxTexelOffset ....................... [7]
+	info:	0	minTexelGatherOffset ................. [-32]
+	info:	0	maxTexelGatherOffset ................. [31]
+	info:	0	maxFramebufferWidth .................. [32768]
+	info:	0	maxFramebufferHeight ................. [32768]
+	info:	0	maxFramebufferLayers ................. [2048]
+	info:	0	maxColorAttachments .................. [8]
+  void: 	vkGetPhysicalDeviceFeatures
+  void: 	vkGetPhysicalDeviceProperties
+	info:	1	Physical Devices ..................... [0x55c123c7a840]
+	info:	1	apiVersion ........................... [4202678]
+	info:	1	driverVersion ........................ [88088581]
+	info:	1	deviceType ........................... [1]
+	info:	1	deviceName ........................... [Intel(R) UHD Graphics 630 (CML GT2)]
+	info:	1	maxImageDimension2D .................. [16384]
+	info:	1	maxPushConstantsSize ................. [128]
+	info:	1	maxBoundDescriptorSets ............... [8]
+	info:	1	maxFragmentInputComponents ........... [116]
+	info:	1	maxFragmentOutputAttachments ......... [8]
+	info:	1	maxComputeSharedMemorySize ........... [65536]
+	info:	1	maxComputeWorkGroupInvocations ....... [1792]
+	info:	1	maxViewports ......................... [16]
+	info:	1	minMemoryMapAlignment ................ [4096]
+	info:	1	minUniformBufferOffsetAlignment ...... [64]
+	info:	1	minTexelOffset ....................... [-8]
+	info:	1	maxTexelOffset ....................... [7]
+	info:	1	minTexelGatherOffset ................. [-32]
+	info:	1	maxTexelGatherOffset ................. [31]
+	info:	1	maxFramebufferWidth .................. [16384]
+	info:	1	maxFramebufferHeight ................. [16384]
+	info:	1	maxFramebufferLayers ................. [2048]
+	info:	1	maxColorAttachments .................. [8]
+  void: 	vkGetPhysicalDeviceFeatures
+	info:	    PDev_Index ............................... [0]
+	info:	    PDev_Index deviceType .................... [2]
+  void: 	vkGetPhysicalDeviceMemoryProperties
+	info:	    memoryTypeCount .......................... [11]
+	info:	0	propertyFlags ........................ [0]
+	info:	0	heapIndex ............................ [1]
+	info:	1	propertyFlags ........................ [0]
+	info:	1	heapIndex ............................ [1]
+	info:	2	propertyFlags ........................ [0]
+	info:	2	heapIndex ............................ [1]
+	info:	3	propertyFlags ........................ [0]
+	info:	3	heapIndex ............................ [1]
+	info:	4	propertyFlags ........................ [0]
+	info:	4	heapIndex ............................ [1]
+	info:	5	propertyFlags ........................ [0]
+	info:	5	heapIndex ............................ [1]
+	info:	6	propertyFlags ........................ [0]
+	info:	6	heapIndex ............................ [1]
+	info:	7	propertyFlags ........................ [1]
+	info:	7	heapIndex ............................ [0]
+	info:	8	propertyFlags ........................ [6]
+	info:	8	heapIndex ............................ [1]
+	info:	9	propertyFlags ........................ [14]
+	info:	9	heapIndex ............................ [1]
+	info:	10	propertyFlags ........................ [7]
+	info:	10	heapIndex ............................ [0]
+	info:	    memoryHeapCount .......................... [2]
+	info:	0	size ................................. [12884901888]
+	info:	0	flags ................................ [1]
+	info:	1	size ................................. [12434721792]
+	info:	1	flags ................................ [0]
+________________________________________________________________________________
+ STAGE:	QUEUES
+  void: 	vkGetPhysicalDeviceQueueFamilyProperties
+	info:	    PDev Queue Family Props .................. [3]
+  void: 	vkGetPhysicalDeviceQueueFamilyProperties
+	info:	0	queueFlags ........................... [15]
+	info:	0	queueCount ........................... [16]
+	info:	1	queueFlags ........................... [12]
+	info:	1	queueCount ........................... [2]
+	info:	2	queueFlags ........................... [14]
+	info:	2	queueCount ........................... [8]
+	info:	    PDev_QFP_Index ........................... [0]
+	info:	    PDev_QFP_Index queueFlags ................ [15]
+	info:	    PDev_QFP_Index queueCount ................ [16]
+________________________________________________________________________________
+ STAGE:	GLFW VULKAN SURFACE
+	info:	    glfwCreateWindow ......................... [0]
+     7:	1 	glfwGetPhysicalDevicePresentationSupport       [GLFW]
+     8:	  	glfwCreateWindowSurface                        [GLFW]
+     9:	  	vkGetPhysicalDeviceSurfaceCapabilitiesKHR      [ARRAY]
+	info:	    minImageCount ............................ [2]
+	info:	    maxImageCount ............................ [8]
+	info:	    currentExtent.width ...................... [1024]
+	info:	    currentExtent.height ..................... [512]
+	info:	    maxImageArrayLayers ...................... [1]
+	info:	    supportedCompositeAlpha .................. [1]
+	info:	    supportedUsageFlags ...................... [159]
+    10:	  	vkGetPhysicalDeviceSurfaceFormatsKHR           [2]
+    11:	  	vkGetPhysicalDeviceSurfaceFormatsKHR           [ARRAY]
+	info:	0	vk_surface_format.format ............. [44]
+	info:	0	vk_surface_format.colorSpace ......... [0]
+	info:	1	vk_surface_format.format ............. [50]
+	info:	1	vk_surface_format.colorSpace ......... [0]
+    12:	  	vkGetPhysicalDeviceSurfaceSupportKHR           [0]
+	info:	    Surface Supported ........................ [TRUE]
+________________________________________________________________________________
+ STAGE:	LOGICAL DEVICE
+    13:	  	vkCreateDevice                                 [0x55c123e4e5f0]
+	info:	    VkDevice ................................. [0x55c123e4e5f0]
+________________________________________________________________________________
+ STAGE:	SWAPCHAIN
+    14:	  	vkCreateSwapchainKHR                           [0xfa21a40000000003]
+    15:	  	vkGetSwapchainImagesKHR                        [2]
+    16:	  	vkGetSwapchainImagesKHR                        [ARRAY]
+	info:	0	Swapchain Image ...................... [0xf56c9b0000000004]
+	info:	1	Swapchain Image ...................... [0xe7f79a0000000005]
+________________________________________________________________________________
+ STAGE:	WORK LAYER IMAGES
+    17:	  	vkCreateImage                                  [0xf443490000000006]
+  void: 	vkGetImageMemoryRequirements
+	info:	0	vk_mem_reqs size ..................... [4194304]
+	info:	0	vk_mem_reqs alignment ................ [1024]
+	info:	0	vk_mem_reqs memoryTypeBits ........... [130]
+	info:	0	memoryTypeIndex ...................... [7]
+    18:	  	vkAllocateMemory                               [0xcb3ee80000000007]
+    19:	  	vkBindImageMemory                              [0xf443490000000006]
+    20:	  	vkCreateImage                                  [0xead9370000000008]
+  void: 	vkGetImageMemoryRequirements
+	info:	1	vk_mem_reqs size ..................... [4194304]
+	info:	1	vk_mem_reqs alignment ................ [1024]
+	info:	1	vk_mem_reqs memoryTypeBits ........... [130]
+	info:	1	memoryTypeIndex ...................... [7]
+    21:	  	vkAllocateMemory                               [0xee647e0000000009]
+    22:	  	vkBindImageMemory                              [0xead9370000000008]
+________________________________________________________________________________
+ STAGE:	BLIT EXPORT IMAGE
+    23:	  	vkCreateImage                                  [0xcfef35000000000a]
+  void: 	vkGetImageMemoryRequirements
+	info:	    vk_mem_reqs size ......................... [2097152]
+	info:	    vk_mem_reqs alignment .................... [1024]
+	info:	    vk_mem_reqs memoryTypeBits ............... [130]
+	info:	    memoryTypeIndex .......................... [7]
+    24:	  	vkAllocateMemory                               [0xec4bec000000000b]
+    25:	  	vkBindImageMemory                              [0xcfef35000000000a]
+________________________________________________________________________________
+ STAGE:	BLIT EXPORT BUFFER
+    26:	  	vkCreateBuffer                                 [0xe88693000000000c]
+  void: 	vkGetBufferMemoryRequirements
+	info:	    blit2buff size ........................... [2097152]
+	info:	    blit2buff alignment ...................... [256]
+	info:	    blit2buff memoryTypeBits ................. [1921]
+	info:	    memoryTypeIndex .......................... [9]
+    27:	  	vkAllocateMemory                               [0xcad092000000000d]
+    28:	  	vkBindBufferMemory                             [0xe88693000000000c]
+    29:	  	vkMapMemory                                    [0x7fdf23ac0000]
+________________________________________________________________________________
+ STAGE:	SHADER DATA
+  void: 	getShaderCodeInfo
+  void: 	getShaderCodeInfo
+terminate called after throwing an instance of 'std::length_error'
+  what():  cannot create std::vector larger than max_size()
+./buildrun.sh: line 18: 115406 Aborted                 (core dumped) ./app/RunVulkanAutomataGLFW
+
+  END   ./app/RunVulkanAutomataGLFW
+
+
+Script done on 2022-02-11 07:41:48-03:00 [COMMAND_EXIT_CODE="0"]

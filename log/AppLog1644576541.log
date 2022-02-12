@@ -1,0 +1,1273 @@
+Script started on 2022-02-11 07:49:01-03:00 [TERM="screen-256color" TTY="/dev/pts/26" COLUMNS="117" LINES="27"]
+[H[J
+  glslc -O ./res/vert/vert_TriQuad.vert -o ./app/vert_TriQuad.spv
+
+  glslc -O ./res/frag/frag_automata0000.frag -o ./app/frag_automata0000.spv
+
+  g++ -g -std=c++17 lib/*.cpp VulkanAutomataGLFW.cpp -fconcepts -lglfw -lvulkan -o ./app/RunVulkanAutomataGLFW
+
+  BEGIN ./app/RunVulkanAutomataGLFW
+
+________________________________________________________________________________
+ STAGE:	USER CONFIG
+________________________________________________________________________________
+ STAGE:	APPLICATION INIT
+	info:	    Application Width ........................ [1024]
+	info:	    Application Height ....................... [512]
+	info:	    ei.load_pattern .......................... [18372]
+	info:	0	Vertex Shaders ....................... [./app/vert_TriQuad.spv]
+	info:	0	Fragment Shaders ..................... [./app/frag_automata0000.spv]
+________________________________________________________________________________
+ STAGE:	GLFW EXTENSIONS
+     0:	1 	glfwInit                                       [GLFW]
+     1:	1 	glfwVulkanSupported                            [GLFW]
+  void: 	glfwGetRequiredInstanceExtensions
+	info:	0	GLFW Extensions ...................... [VK_KHR_surface]
+	info:	1	GLFW Extensions ...................... [VK_KHR_xcb_surface]
+________________________________________________________________________________
+ STAGE:	VULKAN EXTENSIONS
+	info:	0	Instance Extensions .................. [VK_EXT_debug_utils]
+	info:	1	Instance Extensions .................. [VK_KHR_surface]
+	info:	2	Instance Extensions .................. [VK_KHR_xcb_surface]
+	info:	0	Layer Extensions ..................... [VK_LAYER_KHRONOS_validation]
+	info:	0	Logical Device Extensions ............ [VK_KHR_swapchain]
+________________________________________________________________________________
+ STAGE:	VULKAN INIT
+     2:	-13 	init                                           [INIT]
+     3:	  	vkCreateInstance                               [0x56534221f0d0]
+________________________________________________________________________________
+ STAGE:	DEBUG UTILS
+  void: 	vkGetInstanceProcAddr
+     4:	  	vkCreateDebugUtilsMessengerEXT                 [0xfd5b260000000001]
+________________________________________________________________________________
+ STAGE:	PHYSICAL DEVICE
+MESA-INTEL: warning: Performance support disabled, consider sysctl dev.i915.perf_stream_paranoid=0
+
+     5:	  	vkEnumeratePhysicalDevices                     [2]
+     6:	  	vkEnumeratePhysicalDevices                     [0x7ffd627488e0]
+  void: 	vkGetPhysicalDeviceProperties
+	info:	0	Physical Devices ..................... [0x5653428b3790]
+	info:	0	apiVersion ........................... [4202682]
+	info:	0	driverVersion ........................ [2076901376]
+	info:	0	deviceType ........................... [2]
+	info:	0	deviceName ........................... [NVIDIA GeForce RTX 3080 Ti]
+	info:	0	maxImageDimension2D .................. [32768]
+	info:	0	maxPushConstantsSize ................. [256]
+	info:	0	maxBoundDescriptorSets ............... [32]
+	info:	0	maxFragmentInputComponents ........... [128]
+	info:	0	maxFragmentOutputAttachments ......... [8]
+	info:	0	maxComputeSharedMemorySize ........... [49152]
+	info:	0	maxComputeWorkGroupInvocations ....... [1024]
+	info:	0	maxViewports ......................... [16]
+	info:	0	minMemoryMapAlignment ................ [64]
+	info:	0	minUniformBufferOffsetAlignment ...... [64]
+	info:	0	minTexelOffset ....................... [-8]
+	info:	0	maxTexelOffset ....................... [7]
+	info:	0	minTexelGatherOffset ................. [-32]
+	info:	0	maxTexelGatherOffset ................. [31]
+	info:	0	maxFramebufferWidth .................. [32768]
+	info:	0	maxFramebufferHeight ................. [32768]
+	info:	0	maxFramebufferLayers ................. [2048]
+	info:	0	maxColorAttachments .................. [8]
+  void: 	vkGetPhysicalDeviceFeatures
+  void: 	vkGetPhysicalDeviceProperties
+	info:	1	Physical Devices ..................... [0x5653428b3700]
+	info:	1	apiVersion ........................... [4202678]
+	info:	1	driverVersion ........................ [88088581]
+	info:	1	deviceType ........................... [1]
+	info:	1	deviceName ........................... [Intel(R) UHD Graphics 630 (CML GT2)]
+	info:	1	maxImageDimension2D .................. [16384]
+	info:	1	maxPushConstantsSize ................. [128]
+	info:	1	maxBoundDescriptorSets ............... [8]
+	info:	1	maxFragmentInputComponents ........... [116]
+	info:	1	maxFragmentOutputAttachments ......... [8]
+	info:	1	maxComputeSharedMemorySize ........... [65536]
+	info:	1	maxComputeWorkGroupInvocations ....... [1792]
+	info:	1	maxViewports ......................... [16]
+	info:	1	minMemoryMapAlignment ................ [4096]
+	info:	1	minUniformBufferOffsetAlignment ...... [64]
+	info:	1	minTexelOffset ....................... [-8]
+	info:	1	maxTexelOffset ....................... [7]
+	info:	1	minTexelGatherOffset ................. [-32]
+	info:	1	maxTexelGatherOffset ................. [31]
+	info:	1	maxFramebufferWidth .................. [16384]
+	info:	1	maxFramebufferHeight ................. [16384]
+	info:	1	maxFramebufferLayers ................. [2048]
+	info:	1	maxColorAttachments .................. [8]
+  void: 	vkGetPhysicalDeviceFeatures
+	info:	    PDev_Index ............................... [0]
+	info:	    PDev_Index deviceType .................... [2]
+  void: 	vkGetPhysicalDeviceMemoryProperties
+	info:	    memoryTypeCount .......................... [11]
+	info:	0	propertyFlags ........................ [0]
+	info:	0	heapIndex ............................ [1]
+	info:	1	propertyFlags ........................ [0]
+	info:	1	heapIndex ............................ [1]
+	info:	2	propertyFlags ........................ [0]
+	info:	2	heapIndex ............................ [1]
+	info:	3	propertyFlags ........................ [0]
+	info:	3	heapIndex ............................ [1]
+	info:	4	propertyFlags ........................ [0]
+	info:	4	heapIndex ............................ [1]
+	info:	5	propertyFlags ........................ [0]
+	info:	5	heapIndex ............................ [1]
+	info:	6	propertyFlags ........................ [0]
+	info:	6	heapIndex ............................ [1]
+	info:	7	propertyFlags ........................ [1]
+	info:	7	heapIndex ............................ [0]
+	info:	8	propertyFlags ........................ [6]
+	info:	8	heapIndex ............................ [1]
+	info:	9	propertyFlags ........................ [14]
+	info:	9	heapIndex ............................ [1]
+	info:	10	propertyFlags ........................ [7]
+	info:	10	heapIndex ............................ [0]
+	info:	    memoryHeapCount .......................... [2]
+	info:	0	size ................................. [12884901888]
+	info:	0	flags ................................ [1]
+	info:	1	size ................................. [12434721792]
+	info:	1	flags ................................ [0]
+________________________________________________________________________________
+ STAGE:	QUEUES
+  void: 	vkGetPhysicalDeviceQueueFamilyProperties
+	info:	    PDev Queue Family Props .................. [3]
+  void: 	vkGetPhysicalDeviceQueueFamilyProperties
+	info:	0	queueFlags ........................... [15]
+	info:	0	queueCount ........................... [16]
+	info:	1	queueFlags ........................... [12]
+	info:	1	queueCount ........................... [2]
+	info:	2	queueFlags ........................... [14]
+	info:	2	queueCount ........................... [8]
+	info:	    PDev_QFP_Index ........................... [0]
+	info:	    PDev_QFP_Index queueFlags ................ [15]
+	info:	    PDev_QFP_Index queueCount ................ [16]
+________________________________________________________________________________
+ STAGE:	GLFW VULKAN SURFACE
+	info:	    glfwCreateWindow ......................... [0]
+     7:	1 	glfwGetPhysicalDevicePresentationSupport       [GLFW]
+     8:	  	glfwCreateWindowSurface                        [GLFW]
+     9:	  	vkGetPhysicalDeviceSurfaceCapabilitiesKHR      [ARRAY]
+	info:	    minImageCount ............................ [2]
+	info:	    maxImageCount ............................ [8]
+	info:	    currentExtent.width ...................... [1024]
+	info:	    currentExtent.height ..................... [512]
+	info:	    maxImageArrayLayers ...................... [1]
+	info:	    supportedCompositeAlpha .................. [1]
+	info:	    supportedUsageFlags ...................... [159]
+    10:	  	vkGetPhysicalDeviceSurfaceFormatsKHR           [2]
+    11:	  	vkGetPhysicalDeviceSurfaceFormatsKHR           [ARRAY]
+	info:	0	vk_surface_format.format ............. [44]
+	info:	0	vk_surface_format.colorSpace ......... [0]
+	info:	1	vk_surface_format.format ............. [50]
+	info:	1	vk_surface_format.colorSpace ......... [0]
+    12:	  	vkGetPhysicalDeviceSurfaceSupportKHR           [0]
+	info:	    Surface Supported ........................ [TRUE]
+________________________________________________________________________________
+ STAGE:	LOGICAL DEVICE
+    13:	  	vkCreateDevice                                 [0x565342a87540]
+	info:	    VkDevice ................................. [0x565342a87540]
+________________________________________________________________________________
+ STAGE:	SWAPCHAIN
+    14:	  	vkCreateSwapchainKHR                           [0xfa21a40000000003]
+    15:	  	vkGetSwapchainImagesKHR                        [2]
+    16:	  	vkGetSwapchainImagesKHR                        [ARRAY]
+	info:	0	Swapchain Image ...................... [0xf56c9b0000000004]
+	info:	1	Swapchain Image ...................... [0xe7f79a0000000005]
+________________________________________________________________________________
+ STAGE:	WORK LAYER IMAGES
+    17:	  	vkCreateImage                                  [0xf443490000000006]
+  void: 	vkGetImageMemoryRequirements
+	info:	0	vk_mem_reqs size ..................... [4194304]
+	info:	0	vk_mem_reqs alignment ................ [1024]
+	info:	0	vk_mem_reqs memoryTypeBits ........... [130]
+	info:	0	memoryTypeIndex ...................... [7]
+    18:	  	vkAllocateMemory                               [0xcb3ee80000000007]
+    19:	  	vkBindImageMemory                              [0xf443490000000006]
+    20:	  	vkCreateImage                                  [0xead9370000000008]
+  void: 	vkGetImageMemoryRequirements
+	info:	1	vk_mem_reqs size ..................... [4194304]
+	info:	1	vk_mem_reqs alignment ................ [1024]
+	info:	1	vk_mem_reqs memoryTypeBits ........... [130]
+	info:	1	memoryTypeIndex ...................... [7]
+    21:	  	vkAllocateMemory                               [0xee647e0000000009]
+    22:	  	vkBindImageMemory                              [0xead9370000000008]
+________________________________________________________________________________
+ STAGE:	BLIT EXPORT IMAGE
+    23:	  	vkCreateImage                                  [0xcfef35000000000a]
+  void: 	vkGetImageMemoryRequirements
+	info:	    vk_mem_reqs size ......................... [2097152]
+	info:	    vk_mem_reqs alignment .................... [1024]
+	info:	    vk_mem_reqs memoryTypeBits ............... [130]
+	info:	    memoryTypeIndex .......................... [7]
+    24:	  	vkAllocateMemory                               [0xec4bec000000000b]
+    25:	  	vkBindImageMemory                              [0xcfef35000000000a]
+________________________________________________________________________________
+ STAGE:	BLIT EXPORT BUFFER
+    26:	  	vkCreateBuffer                                 [0xe88693000000000c]
+  void: 	vkGetBufferMemoryRequirements
+	info:	    blit2buff size ........................... [2097152]
+	info:	    blit2buff alignment ...................... [256]
+	info:	    blit2buff memoryTypeBits ................. [1921]
+	info:	    memoryTypeIndex .......................... [9]
+    27:	  	vkAllocateMemory                               [0xcad092000000000d]
+    28:	  	vkBindBufferMemory                             [0xe88693000000000c]
+    29:	  	vkMapMemory                                    [0x7feea519f000]
+________________________________________________________________________________
+ STAGE:	SHADER DATA
+  void: 	getShaderCodeInfo
+  void: 	getShaderCodeInfo
+	info:	0	Vert shaderFilename .................. [./app/vert_TriQuad.spv]
+	info:	0	Vert shaderBytes ..................... [876]
+	info:	0	Vert shaderBytesValid ................ [TRUE]
+	info:	1	Vert shaderFilename .................. [./app/frag_automata0000.spv]
+	info:	1	Vert shaderBytes ..................... [76608]
+	info:	1	Vert shaderBytesValid ................ [TRUE]
+    30:	  	vkCreateShaderModule                           [0x967dd1000000000e]
+    31:	  	vkCreateShaderModule                           [0xe7e6d0000000000f]
+________________________________________________________________________________
+ STAGE:	RENDERPASS INFO
+    32:	  	vkCreateSampler                                [0xd5b26f0000000010]
+________________________________________________________________________________
+ STAGE:	PIPELINE INFO
+________________________________________________________________________________
+ STAGE:	COMMAND BUFFERS
+    33:	  	vkCreateCommandPool                            [0x980f360000000011]
+    34:	  	vkAllocateCommandBuffers                       [0x56534402bba0]
+    35:	  	vkCreateCommandPool                            [0xdcc8fd0000000012]
+    36:	  	vkAllocateCommandBuffers                       [0x56534404d900]
+    37:	  	vkCreateCommandPool                            [0xd175b40000000013]
+    38:	  	vkAllocateCommandBuffers                       [0x565344039130]
+    39:	  	vkCreateCommandPool                            [0x9fde6b0000000014]
+    40:	  	vkAllocateCommandBuffers                       [0x565344081c40]
+    41:	  	vkCreateCommandPool                            [0xdd3a8a0000000015]
+    42:	  	vkAllocateCommandBuffers                       [0x565344082cd0]
+    43:	  	vkCreateCommandPool                            [0xd897d90000000016]
+    44:	  	vkAllocateCommandBuffers                       [0x565344030f10]
+    45:	  	vkCreateCommandPool                            [0x84c0580000000017]
+    46:	  	vkAllocateCommandBuffers                       [0x565344031fa0]
+    47:	  	vkCreateCommandPool                            [0xd10d270000000018]
+    48:	  	vkAllocateCommandBuffers                       [0x56534407deb0]
+    49:	  	vkCreateCommandPool                            [0x27d60e0000000019]
+    50:	  	vkAllocateCommandBuffers                       [0x56534402e530]
+    51:	  	vkCreateCommandPool                            [0x95a125000000001a]
+    52:	  	vkAllocateCommandBuffers                       [0x56534403b280]
+    53:	  	vkCreateCommandPool                            [0xcb1c7c000000001b]
+    54:	  	vkAllocateCommandBuffers                       [0x565343e507f0]
+    55:	  	vkCreateCommandPool                            [0x2cfba2000000001c]
+    56:	  	vkAllocateCommandBuffers                       [0x565343e53c70]
+    57:	  	vkCreateCommandPool                            [0x908683000000001d]
+    58:	  	vkAllocateCommandBuffers                       [0x565343e57d90]
+    59:	  	vkCreateCommandPool                            [0xcfcda0000000001e]
+    60:	  	vkAllocateCommandBuffers                       [0x565344046920]
+    61:	  	vkCreateCommandPool                            [0x2e2941000000001f]
+    62:	  	vkAllocateCommandBuffers                       [0x5653440498f0]
+    63:	  	vkCreateCommandPool                            [0xab64de0000000020]
+    64:	  	vkAllocateCommandBuffers                       [0x565343e6c000]
+    65:	  	vkCreateCommandPool                            [0xc4f3070000000021]
+    66:	  	vkAllocateCommandBuffers                       [0x565343e6ed50]
+    67:	  	vkCreateCommandPool                            [0x301e6c0000000022]
+    68:	  	vkAllocateCommandBuffers                       [0x565343e73560]
+________________________________________________________________________________
+ STAGE:	QUEUE SYNC
+  void: 	vkGetDeviceQueue
+    69:	  	vkCreateFence                                  [0xa7c5450000000023]
+________________________________________________________________________________
+ STAGE:	SWAPCHAIN SYNC
+    70:	  	vkCreateSemaphore                              [0xb991fa0000000024]
+    71:	  	vkCreateSemaphore                              [0x3a6cbb0000000025]
+    72:	  	vkCreateSemaphore                              [0xa2eb680000000026]
+  void: 	vkGetDeviceQueue
+  void: 	vkGetDeviceQueue
+________________________________________________________________________________
+ STAGE:	WORK IMAGE VIEWS
+    73:	  	vkCreateImageView                              [0xb097c90000000027]
+    74:	  	vkCreateImageView                              [0x3fbcd60000000028]
+________________________________________________________________________________
+ STAGE:	RECORD WORK_INIT
+    75:	  	vkBeginCommandBuffer                           [0]
+  void: 	vkCmdPipelineBarrier
+    76:	  	vkEndCommandBuffer                             [0]
+    77:	  	vkBeginCommandBuffer                           [1]
+  void: 	vkCmdPipelineBarrier
+    78:	  	vkEndCommandBuffer                             [1]
+________________________________________________________________________________
+ STAGE:	SUBMIT WORK_INIT
+  void: 	vkcombuf_work_init
+    79:	  	vkQueueSubmit                                  [0]
+  void: 	vkcombuf_work_init
+    80:	  	vkQueueSubmit                                  [1]
+________________________________________________________________________________
+ STAGE:	WORK DESCRIPTOR SETS
+	info:	    pool_info.maxSets ........................ [4]
+    81:	  	vkCreateDescriptorSetLayout                    [0xb9181f0000000029]
+    82:	  	vkCreateDescriptorPool                         [0xba7514000000002a]
+    83:	  	vkAllocateDescriptorSets                       [0x2e2cd000000002b]
+    84:	  	vkAllocateDescriptorSets                       [0xb12fb2000000002c]
+________________________________________________________________________________
+ STAGE:	WORK SAMPLER
+________________________________________________________________________________
+ STAGE:	WORK UNIFORM BUFFER
+	info:	    UB32_64 size ............................. [256]
+    85:	  	vkCreateBuffer                                 [0xa43473000000002d]
+________________________________________________________________________________
+ STAGE:	WORK DESCRIPTOR MEMORY
+  void: 	vkGetBufferMemoryRequirements
+	info:	    memreq size .............................. [256]
+	info:	    memreq alignment ......................... [256]
+	info:	    memreq memoryTypeBits .................... [1921]
+	info:	    memoryTypeIndex .......................... [8]
+    86:	  	vkAllocateMemory                               [0x980b0000000002e]
+    87:	  	vkBindBufferMemory                             [0xa43473000000002d]
+  void: 	vkUpdateDescriptorSets
+  void: 	vkUpdateDescriptorSets
+  void: 	vkUpdateDescriptorSets
+  void: 	vkUpdateDescriptorSets
+    88:	  	vkMapMemory                                    [0x7feea510ee00]
+________________________________________________________________________________
+ STAGE:	WORK RENDER PASS
+    89:	  	vkCreateRenderPass                             [0x4b7df1000000002f]
+________________________________________________________________________________
+ STAGE:	WORK FRAMEBUFFER
+    90:	  	vkCreateFramebuffer                            [0xa21a4e0000000030]
+    91:	  	vkCreateFramebuffer                            [0xea7170000000031]
+________________________________________________________________________________
+ STAGE:	WORK PIPELINE
+    92:	  	vkCreatePipelineLayout                         [0x4fac1c0000000032]
+    93:	  	vkCreateGraphicsPipelines                      [0xa808d50000000033]
+________________________________________________________________________________
+ STAGE:	RECORD WORK LOOP
+    94:	  	vkBeginCommandBuffer                           [0]
+  void: 	vkCmdBeginRenderPass
+  void: 	vkCmdBindPipeline
+  void: 	vkCmdBindDescriptorSets
+  void: 	vkCmdDraw
+  void: 	vkCmdEndRenderPass
+    95:	  	vkEndCommandBuffer                             [0]
+    96:	  	vkBeginCommandBuffer                           [1]
+  void: 	vkCmdBeginRenderPass
+  void: 	vkCmdBindPipeline
+  void: 	vkCmdBindDescriptorSets
+  void: 	vkCmdDraw
+  void: 	vkCmdEndRenderPass
+    97:	  	vkEndCommandBuffer                             [1]
+________________________________________________________________________________
+ STAGE:	IMGUI RENDER PASS
+    98:	  	vkCreateRenderPass                             [0x2b424a0000000034]
+________________________________________________________________________________
+ STAGE:	IMGUI FRAMEBUFFER
+    99:	  	vkCreateImageView                              [0x4295ab0000000035]
+   100:	  	vkCreateImageView                              [0x9638f80000000036]
+   101:	  	vkCreateFramebuffer                            [0x2723ba0000000037]
+   102:	  	vkCreateFramebuffer                            [0x59f7450000000038]
+________________________________________________________________________________
+ STAGE:	BARRIERS
+________________________________________________________________________________
+ STAGE:	RECORD IMAGEDATA INIT
+   103:	  	vkBeginCommandBuffer                           [0]
+  void: 	vkCmdPipelineBarrier
+   104:	  	vkEndCommandBuffer                             [0]
+________________________________________________________________________________
+ STAGE:	SUBMIT IMAGEDATA INIT
+  void: 	vkcombuf_work_init
+   105:	  	vkQueueSubmit                                  [0]
+________________________________________________________________________________
+ STAGE:	RECORD IMAGEDATA OUT
+   106:	  	vkBeginCommandBuffer                           [0]
+  void: 	vkCmdPipelineBarrier
+  void: 	vkCmdBlitImage
+  void: 	vkCmdPipelineBarrier
+   107:	  	vkEndCommandBuffer                             [0]
+   108:	  	vkBeginCommandBuffer                           [1]
+  void: 	vkCmdPipelineBarrier
+  void: 	vkCmdBlitImage
+  void: 	vkCmdPipelineBarrier
+   109:	  	vkEndCommandBuffer                             [1]
+________________________________________________________________________________
+ STAGE:	RECORD BLIT IMGUI OUT
+   110:	  	vkBeginCommandBuffer                           [0]
+  void: 	vkCmdPipelineBarrier
+  void: 	vkCmdBlitImage
+  void: 	vkCmdPipelineBarrier
+   111:	  	vkEndCommandBuffer                             [0]
+   112:	  	vkBeginCommandBuffer                           [1]
+  void: 	vkCmdPipelineBarrier
+  void: 	vkCmdBlitImage
+  void: 	vkCmdPipelineBarrier
+   113:	  	vkEndCommandBuffer                             [1]
+________________________________________________________________________________
+ STAGE:	RECORD BLIT2BUFF
+   114:	  	vkBeginCommandBuffer                           [0]
+  void: 	vkCmdPipelineBarrier
+  void: 	vkCmdCopyImageToBuffer
+  void: 	vkCmdPipelineBarrier
+   115:	  	vkEndCommandBuffer                             [0]
+________________________________________________________________________________
+ STAGE:	RECORD PRES INIT
+   116:	  	vkBeginCommandBuffer                           [0]
+  void: 	vkCmdPipelineBarrier
+   117:	  	vkEndCommandBuffer                             [0]
+   118:	  	vkBeginCommandBuffer                           [1]
+  void: 	vkCmdPipelineBarrier
+   119:	  	vkEndCommandBuffer                             [1]
+________________________________________________________________________________
+ STAGE:	SUBMIT PRES INIT
+  void: 	vkcombuf_pres_init
+   120:	  	vkQueueSubmit                                  [0]
+  void: 	vkcombuf_pres_init
+   121:	  	vkQueueSubmit                                  [1]
+________________________________________________________________________________
+ STAGE:	RECORD PRES LOOP
+   122:	  	vkBeginCommandBuffer                           [0]
+  void: 	vkCmdPipelineBarrier
+  void: 	vkCmdPipelineBarrier
+  void: 	vkCmdBlitImage
+  void: 	vkCmdPipelineBarrier
+  void: 	vkCmdPipelineBarrier
+   123:	  	vkEndCommandBuffer                             [0]
+   124:	  	vkBeginCommandBuffer                           [1]
+  void: 	vkCmdPipelineBarrier
+  void: 	vkCmdPipelineBarrier
+  void: 	vkCmdBlitImage
+  void: 	vkCmdPipelineBarrier
+  void: 	vkCmdPipelineBarrier
+   125:	  	vkEndCommandBuffer                             [1]
+   126:	  	vkBeginCommandBuffer                           [2]
+  void: 	vkCmdPipelineBarrier
+  void: 	vkCmdPipelineBarrier
+  void: 	vkCmdBlitImage
+  void: 	vkCmdPipelineBarrier
+  void: 	vkCmdPipelineBarrier
+   127:	  	vkEndCommandBuffer                             [2]
+   128:	  	vkBeginCommandBuffer                           [3]
+  void: 	vkCmdPipelineBarrier
+  void: 	vkCmdPipelineBarrier
+  void: 	vkCmdBlitImage
+  void: 	vkCmdPipelineBarrier
+  void: 	vkCmdPipelineBarrier
+   129:	  	vkEndCommandBuffer                             [3]
+________________________________________________________________________________
+ STAGE:	SWAPCHAIN PRESENT INFO
+________________________________________________________________________________
+ STAGE:	DEAR IMGUI
+	info:	    IMGUI Version ............................ [1]
+  void: 	ImGui::CreateContext
+  void: 	ImGui::StyleColorsDark
+  void: 	ImGui::GetIO
+  void: 	ImGui_ImplGlfw_InitForVulkan
+   130:	  	vkCreateDescriptorPool                         [0x944a2c0000000039]
+  void: 	ImGui_ImplVulkan_Init
+   131:	  	vkCreateCommandPool                            [0x6612e40000000041]
+   132:	  	vkAllocateCommandBuffers                       [0x565343e8f7e0]
+   133:	  	vkBeginCommandBuffer                           [0x565343e8f7e0]
+  void: 	ImGui_ImplVulkan_CreateFontsTexture
+   134:	  	vkEndCommandBuffer                             [0x565343e8f7e0]
+  void: 	combuf_imgui
+   135:	  	vkQueueSubmit                                  [0]
+________________________________________________________________________________
+ STAGE:	MAIN LOOP INIT
+Welcome!
+________________________________________________________________________________
+ STAGE:	MAIN LOOP
+	Load PCD256 Data Count: -1 / 10848
+
+LOAD:
+  PatternConfigData_256:
+    3004447363, 2960563374, 1275055524, 831033836, 
+    3349146621, 2101501589, 4106684748, 3334143362, 
+    2904913003, 2899623133, 1336635844, 2629053572, 
+    3192411957, 2185502072, 3417540059, 3218474038, 
+    2054220142, 2978040251, 1991105235, 2700817717, 
+    4166133147, 2086194139, 1593715627, 908289265, 
+    3325806355, 2698046642, 94198304, 789645310, 
+    3969320414, 1745386401, 2951966358, 3610359331, 
+    3084887154, 1840753572, 118413839, 574118257, 
+    811615525, 1597186704, 3096401663, 2652615516, 
+    3226828519, 2934483458, 3589481104, 2471895979, 
+    2886441825, 1241282554, 1964191771, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+
+SAVE:
+  PatternConfigData_256:
+    3004447363, 2960563374, 1275055524, 831033836, 
+    3349146621, 2101501589, 4106684748, 3334143362, 
+    2904913003, 2899623133, 1336635844, 2629053572, 
+    3192411957, 2185502072, 3417540059, 3218474038, 
+    2054220142, 2978040251, 1991105235, 2700817717, 
+    4166133147, 2086194139, 1593715627, 908289265, 
+    3325806355, 2698046642, 94198304, 789645310, 
+    3969320414, 1745386401, 2951966358, 3610359331, 
+    3084887154, 1840753572, 118413839, 574118257, 
+    811615525, 1597186704, 3096401663, 2652615516, 
+    3226828519, 2934483458, 3589481104, 2471895979, 
+    2886441825, 1241282554, 1964191771, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+	info:	    IMGUI Build Time ......................... [189218 ns, 5284 FPS]
+   136:	  	vkBeginCommandBuffer                           [0]
+  void: 	vkCmdBeginRenderPass
+  void: 	vkCmdEndRenderPass
+  void: 	vkCmdPipelineBarrier
+   137:	  	vkEndCommandBuffer                             [0]
+   138:	  	vkBeginCommandBuffer                           [1]
+  void: 	vkCmdBeginRenderPass
+  void: 	vkCmdEndRenderPass
+  void: 	vkCmdPipelineBarrier
+   139:	  	vkEndCommandBuffer                             [1]
+	info:	    Command Buffer Build Time ................ [242345 ns, 4126 FPS]
+  void: 	memcpy
+  void: 	vkcombuf_work
+   140:	  	vkQueueSubmit                                  [0x7ffd6274a268]
+   141:	  	vkAcquireNextImageKHR                          [0]
+	info:	    swap_image_index ......................... [0]
+  void: 	vkcombuf_pres
+   142:	  	vkQueueSubmit                                  [0x7ffd627478f0]
+  void: 	vkcombuf_IMGUI
+   143:	  	vkQueueSubmit                                  [0x7ffd62747b60]
+   144:	  	vkWaitForFences <100ms>                        [0xa7c5450000000023]
+	info:	    Work Queue Time .......................... [28361806 ns, 35 FPS]
+   145:	  	vkResetFences                                  [0xa7c5450000000023]
+   146:	  	vkQueuePresentKHR                              [0]
+	info:	    Full Loop Time ........................... [29779109 ns, 33 FPS]
+________________________________________________________________________________
+ STAGE:	LOOP
+	info:	    IMGUI Build Time ......................... [553204 ns, 1807 FPS]
+   147:	  	vkBeginCommandBuffer                           [0]
+  void: 	vkCmdBeginRenderPass
+  void: 	vkCmdEndRenderPass
+  void: 	vkCmdPipelineBarrier
+   148:	  	vkEndCommandBuffer                             [0]
+   149:	  	vkBeginCommandBuffer                           [1]
+  void: 	vkCmdBeginRenderPass
+  void: 	vkCmdEndRenderPass
+  void: 	vkCmdPipelineBarrier
+   150:	  	vkEndCommandBuffer                             [1]
+	info:	    Command Buffer Build Time ................ [279558 ns, 3577 FPS]
+  void: 	memcpy
+  void: 	vkcombuf_work
+   151:	  	vkQueueSubmit                                  [0x7ffd6274a200]
+   152:	  	vkAcquireNextImageKHR                          [1]
+	info:	    swap_image_index ......................... [1]
+  void: 	vkcombuf_pres
+   153:	  	vkQueueSubmit                                  [0x7ffd62747a28]
+  void: 	vkcombuf_IMGUI
+   154:	  	vkQueueSubmit                                  [0x7ffd62747bc8]
+   155:	  	vkWaitForFences <100ms>                        [0xa7c5450000000023]
+	info:	    Work Queue Time .......................... [253094 ns, 3951 FPS]
+   156:	  	vkResetFences                                  [0xa7c5450000000023]
+   157:	  	vkQueuePresentKHR                              [1]
+	info:	    Full Loop Time ........................... [1212775 ns, 824 FPS]
+________________________________________________________________________________
+ STAGE:	LOOP
+	info:	    IMGUI Build Time ......................... [203914 ns, 4904 FPS]
+   158:	  	vkBeginCommandBuffer                           [0]
+  void: 	vkCmdBeginRenderPass
+  void: 	vkCmdEndRenderPass
+  void: 	vkCmdPipelineBarrier
+   159:	  	vkEndCommandBuffer                             [0]
+   160:	  	vkBeginCommandBuffer                           [1]
+  void: 	vkCmdBeginRenderPass
+  void: 	vkCmdEndRenderPass
+  void: 	vkCmdPipelineBarrier
+   161:	  	vkEndCommandBuffer                             [1]
+	info:	    Command Buffer Build Time ................ [98458 ns, 10156 FPS]
+  void: 	memcpy
+  void: 	vkcombuf_work
+   162:	  	vkQueueSubmit                                  [0x7ffd6274a268]
+   163:	  	vkAcquireNextImageKHR                          [0]
+	info:	    swap_image_index ......................... [0]
+  void: 	vkcombuf_pres
+   164:	  	vkQueueSubmit                                  [0x7ffd627478f0]
+  void: 	vkcombuf_IMGUI
+   165:	  	vkQueueSubmit                                  [0x7ffd62747b60]
+   166:	  	vkWaitForFences <100ms>                        [0xa7c5450000000023]
+	info:	    Work Queue Time .......................... [194213 ns, 5148 FPS]
+   167:	  	vkResetFences                                  [0xa7c5450000000023]
+   168:	  	vkQueuePresentKHR                              [0]
+	info:	    Full Loop Time ........................... [566974 ns, 1763 FPS]
+________________________________________________________________________________
+ STAGE:	LOOP
+	info:	    IMGUI Build Time ......................... [178110 ns, 5614 FPS]
+   169:	  	vkBeginCommandBuffer                           [0]
+  void: 	vkCmdBeginRenderPass
+  void: 	vkCmdEndRenderPass
+  void: 	vkCmdPipelineBarrier
+   170:	  	vkEndCommandBuffer                             [0]
+   171:	  	vkBeginCommandBuffer                           [1]
+  void: 	vkCmdBeginRenderPass
+  void: 	vkCmdEndRenderPass
+  void: 	vkCmdPipelineBarrier
+   172:	  	vkEndCommandBuffer                             [1]
+	info:	    Command Buffer Build Time ................ [99379 ns, 10062 FPS]
+  void: 	memcpy
+  void: 	vkcombuf_work
+   173:	  	vkQueueSubmit                                  [0x7ffd6274a200]
+   174:	  	vkAcquireNextImageKHR                          [1]
+	info:	    swap_image_index ......................... [1]
+  void: 	vkcombuf_pres
+   175:	  	vkQueueSubmit                                  [0x7ffd62747a28]
+  void: 	vkcombuf_IMGUI
+   176:	  	vkQueueSubmit                                  [0x7ffd62747bc8]
+   177:	  	vkWaitForFences <100ms>                        [0xa7c5450000000023]
+	info:	    Work Queue Time .......................... [198846 ns, 5029 FPS]
+   178:	  	vkResetFences                                  [0xa7c5450000000023]
+   179:	  	vkQueuePresentKHR                              [1]
+	info:	    Full Loop Time ........................... [591912 ns, 1689 FPS]
+________________________________________________________________________________
+ STAGE:	LOOP
+	info:	    IMGUI Build Time ......................... [67444 ns, 14827 FPS]
+   180:	  	vkBeginCommandBuffer                           [0]
+  void: 	vkCmdBeginRenderPass
+  void: 	vkCmdEndRenderPass
+  void: 	vkCmdPipelineBarrier
+   181:	  	vkEndCommandBuffer                             [0]
+   182:	  	vkBeginCommandBuffer                           [1]
+  void: 	vkCmdBeginRenderPass
+  void: 	vkCmdEndRenderPass
+  void: 	vkCmdPipelineBarrier
+   183:	  	vkEndCommandBuffer                             [1]
+	info:	    Command Buffer Build Time ................ [89840 ns, 11130 FPS]
+  void: 	memcpy
+  void: 	vkcombuf_work
+   184:	  	vkQueueSubmit                                  [0x7ffd6274a268]
+   185:	  	vkAcquireNextImageKHR                          [0]
+	info:	    swap_image_index ......................... [0]
+  void: 	vkcombuf_pres
+   186:	  	vkQueueSubmit                                  [0x7ffd627478f0]
+  void: 	vkcombuf_IMGUI
+   187:	  	vkQueueSubmit                                  [0x7ffd62747b60]
+   188:	  	vkWaitForFences <100ms>                        [0xa7c5450000000023]
+	info:	    Work Queue Time .......................... [184396 ns, 5423 FPS]
+   189:	  	vkResetFences                                  [0xa7c5450000000023]
+   190:	  	vkQueuePresentKHR                              [0]
+	info:	    Full Loop Time ........................... [447793 ns, 2233 FPS]
+________________________________________________________________________________
+ STAGE:	LOOP
+	info:	    IMGUI Build Time ......................... [124397 ns, 8038 FPS]
+   191:	  	vkBeginCommandBuffer                           [0]
+  void: 	vkCmdBeginRenderPass
+  void: 	vkCmdEndRenderPass
+  void: 	vkCmdPipelineBarrier
+   192:	  	vkEndCommandBuffer                             [0]
+   193:	  	vkBeginCommandBuffer                           [1]
+  void: 	vkCmdBeginRenderPass
+  void: 	vkCmdEndRenderPass
+  void: 	vkCmdPipelineBarrier
+   194:	  	vkEndCommandBuffer                             [1]
+	info:	    Command Buffer Build Time ................ [103366 ns, 9674 FPS]
+  void: 	memcpy
+  void: 	vkcombuf_work
+   195:	  	vkQueueSubmit                                  [0x7ffd6274a200]
+   196:	  	vkAcquireNextImageKHR                          [1]
+	info:	    swap_image_index ......................... [1]
+  void: 	vkcombuf_pres
+   197:	  	vkQueueSubmit                                  [0x7ffd62747a28]
+  void: 	vkcombuf_IMGUI
+   198:	  	vkQueueSubmit                                  [0x7ffd62747bc8]
+   199:	  	vkWaitForFences <100ms>                        [0xa7c5450000000023]
+	info:	    Work Queue Time .......................... [586923 ns, 1703 FPS]
+   200:	  	vkResetFences                                  [0xa7c5450000000023]
+   201:	  	vkQueuePresentKHR                              [1]
+	info:	    Full Loop Time ........................... [887503 ns, 1126 FPS]
+________________________________________________________________________________
+ STAGE:	LOOP
+	info:	    IMGUI Build Time ......................... [80969 ns, 12350 FPS]
+   202:	  	vkBeginCommandBuffer                           [0]
+  void: 	vkCmdBeginRenderPass
+  void: 	vkCmdEndRenderPass
+  void: 	vkCmdPipelineBarrier
+   203:	  	vkEndCommandBuffer                             [0]
+   204:	  	vkBeginCommandBuffer                           [1]
+  void: 	vkCmdBeginRenderPass
+  void: 	vkCmdEndRenderPass
+  void: 	vkCmdPipelineBarrier
+   205:	  	vkEndCommandBuffer                             [1]
+	info:	    Command Buffer Build Time ................ [130386 ns, 7669 FPS]
+  void: 	memcpy
+  void: 	vkcombuf_work
+   206:	  	vkQueueSubmit                                  [0x7ffd6274a268]
+   207:	  	vkAcquireNextImageKHR                          [0]
+	info:	    swap_image_index ......................... [0]
+  void: 	vkcombuf_pres
+   208:	  	vkQueueSubmit                                  [0x7ffd627478f0]
+  void: 	vkcombuf_IMGUI
+   209:	  	vkQueueSubmit                                  [0x7ffd62747b60]
+   210:	  	vkWaitForFences <100ms>                        [0xa7c5450000000023]
+	info:	    Work Queue Time .......................... [163635 ns, 6111 FPS]
+   211:	  	vkResetFences                                  [0xa7c5450000000023]
+   212:	  	vkQueuePresentKHR                              [0]
+	info:	    Full Loop Time ........................... [443341 ns, 2255 FPS]
+	info:	    Full Loop Time ........................... [446993 ns, 2237 FPS]
+________________________________________________________________________________
+ STAGE:	LOOP
+	info:	    IMGUI Build Time ......................... [65716 ns, 15216 FPS]
+   213:	  	vkBeginCommandBuffer                           [0]
+  void: 	vkCmdBeginRenderPass
+  void: 	vkCmdEndRenderPass
+  void: 	vkCmdPipelineBarrier
+   214:	  	vkEndCommandBuffer                             [0]
+   215:	  	vkBeginCommandBuffer                           [1]
+  void: 	vkCmdBeginRenderPass
+  void: 	vkCmdEndRenderPass
+  void: 	vkCmdPipelineBarrier
+   216:	  	vkEndCommandBuffer                             [1]
+	info:	    Command Buffer Build Time ................ [90773 ns, 11016 FPS]
+  void: 	memcpy
+  void: 	vkcombuf_work
+   217:	  	vkQueueSubmit                                  [0x7ffd6274a200]
+   218:	  	vkAcquireNextImageKHR                          [1]
+	info:	    swap_image_index ......................... [1]
+  void: 	vkcombuf_pres
+   219:	  	vkQueueSubmit                                  [0x7ffd62747a28]
+  void: 	vkcombuf_IMGUI
+   220:	  	vkQueueSubmit                                  [0x7ffd62747bc8]
+   221:	  	vkWaitForFences <100ms>                        [0xa7c5450000000023]
+	info:	    Work Queue Time .......................... [166394 ns, 6009 FPS]
+   222:	  	vkResetFences                                  [0xa7c5450000000023]
+   223:	  	vkQueuePresentKHR                              [1]
+	info:	    Full Loop Time ........................... [2080046 ns, 480 FPS]
+________________________________________________________________________________
+ STAGE:	LOOP
+	info:	    IMGUI Build Time ......................... [73544 ns, 13597 FPS]
+   224:	  	vkBeginCommandBuffer                           [0]
+  void: 	vkCmdBeginRenderPass
+  void: 	vkCmdEndRenderPass
+  void: 	vkCmdPipelineBarrier
+   225:	  	vkEndCommandBuffer                             [0]
+   226:	  	vkBeginCommandBuffer                           [1]
+  void: 	vkCmdBeginRenderPass
+  void: 	vkCmdEndRenderPass
+  void: 	vkCmdPipelineBarrier
+   227:	  	vkEndCommandBuffer                             [1]
+	info:	    Command Buffer Build Time ................ [97888 ns, 10215 FPS]
+  void: 	memcpy
+  void: 	vkcombuf_work
+   228:	  	vkQueueSubmit                                  [0x7ffd6274a268]
+   229:	  	vkAcquireNextImageKHR                          [0]
+	info:	    swap_image_index ......................... [0]
+  void: 	vkcombuf_pres
+   230:	  	vkQueueSubmit                                  [0x7ffd627478f0]
+  void: 	vkcombuf_IMGUI
+   231:	  	vkQueueSubmit                                  [0x7ffd62747b60]
+   232:	  	vkWaitForFences <100ms>                        [0xa7c5450000000023]
+	info:	    Work Queue Time .......................... [176401 ns, 5668 FPS]
+   233:	  	vkResetFences                                  [0xa7c5450000000023]
+   234:	  	vkQueuePresentKHR                              [0]
+	info:	    Full Loop Time ........................... [417995 ns, 2392 FPS]
+________________________________________________________________________________
+ STAGE:	LOOP
+	info:	    IMGUI Build Time ......................... [68138 ns, 14676 FPS]
+   235:	  	vkBeginCommandBuffer                           [0]
+  void: 	vkCmdBeginRenderPass
+  void: 	vkCmdEndRenderPass
+  void: 	vkCmdPipelineBarrier
+   236:	  	vkEndCommandBuffer                             [0]
+   237:	  	vkBeginCommandBuffer                           [1]
+  void: 	vkCmdBeginRenderPass
+  void: 	vkCmdEndRenderPass
+  void: 	vkCmdPipelineBarrier
+   238:	  	vkEndCommandBuffer                             [1]
+	info:	    Command Buffer Build Time ................ [92239 ns, 10841 FPS]
+  void: 	memcpy
+  void: 	vkcombuf_work
+   239:	  	vkQueueSubmit                                  [0x7ffd6274a200]
+   240:	  	vkAcquireNextImageKHR                          [1]
+	info:	    swap_image_index ......................... [1]
+  void: 	vkcombuf_pres
+   241:	  	vkQueueSubmit                                  [0x7ffd62747a28]
+  void: 	vkcombuf_IMGUI
+   242:	  	vkQueueSubmit                                  [0x7ffd62747bc8]
+   243:	  	vkWaitForFences <100ms>                        [0xa7c5450000000023]
+	info:	    Work Queue Time .......................... [164152 ns, 6091 FPS]
+   244:	  	vkResetFences                                  [0xa7c5450000000023]
+   245:	  	vkQueuePresentKHR                              [1]
+	info:	    Full Loop Time ........................... [392030 ns, 2550 FPS]
+________________________________________________________________________________
+ STAGE:	LOOP
+	info:	    IMGUI Build Time ......................... [66668 ns, 14999 FPS]
+   246:	  	vkBeginCommandBuffer                           [0]
+  void: 	vkCmdBeginRenderPass
+  void: 	vkCmdEndRenderPass
+  void: 	vkCmdPipelineBarrier
+   247:	  	vkEndCommandBuffer                             [0]
+   248:	  	vkBeginCommandBuffer                           [1]
+  void: 	vkCmdBeginRenderPass
+  void: 	vkCmdEndRenderPass
+  void: 	vkCmdPipelineBarrier
+   249:	  	vkEndCommandBuffer                             [1]
+	info:	    Command Buffer Build Time ................ [91770 ns, 10896 FPS]
+  void: 	memcpy
+  void: 	vkcombuf_work
+   250:	  	vkQueueSubmit                                  [0x7ffd6274a268]
+   251:	  	vkAcquireNextImageKHR                          [0]
+	info:	    swap_image_index ......................... [0]
+  void: 	vkcombuf_pres
+   252:	  	vkQueueSubmit                                  [0x7ffd627478f0]
+  void: 	vkcombuf_IMGUI
+   253:	  	vkQueueSubmit                                  [0x7ffd62747b60]
+   254:	  	vkWaitForFences <100ms>                        [0xa7c5450000000023]
+	info:	    Work Queue Time .......................... [164710 ns, 6071 FPS]
+   255:	  	vkResetFences                                  [0xa7c5450000000023]
+   256:	  	vkQueuePresentKHR                              [0]
+	info:	    Full Loop Time ........................... [392220 ns, 2549 FPS]
+________________________________________________________________________________
+ STAGE:	LOOP
+	info:	    IMGUI Build Time ......................... [65770 ns, 15204 FPS]
+   257:	  	vkBeginCommandBuffer                           [0]
+  void: 	vkCmdBeginRenderPass
+  void: 	vkCmdEndRenderPass
+  void: 	vkCmdPipelineBarrier
+   258:	  	vkEndCommandBuffer                             [0]
+   259:	  	vkBeginCommandBuffer                           [1]
+  void: 	vkCmdBeginRenderPass
+  void: 	vkCmdEndRenderPass
+  void: 	vkCmdPipelineBarrier
+   260:	  	vkEndCommandBuffer                             [1]
+	info:	    Command Buffer Build Time ................ [90851 ns, 11007 FPS]
+  void: 	memcpy
+  void: 	vkcombuf_work
+   261:	  	vkQueueSubmit                                  [0x7ffd6274a200]
+   262:	  	vkAcquireNextImageKHR                          [1]
+	info:	    swap_image_index ......................... [1]
+  void: 	vkcombuf_pres
+   263:	  	vkQueueSubmit                                  [0x7ffd62747a28]
+  void: 	vkcombuf_IMGUI
+   264:	  	vkQueueSubmit                                  [0x7ffd62747bc8]
+   265:	  	vkWaitForFences <100ms>                        [0xa7c5450000000023]
+	info:	    Work Queue Time .......................... [163438 ns, 6118 FPS]
+   266:	  	vkResetFences                                  [0xa7c5450000000023]
+   267:	  	vkQueuePresentKHR                              [1]
+	info:	    Full Loop Time ........................... [385491 ns, 2594 FPS]
+________________________________________________________________________________
+ STAGE:	LOOP
+	info:	    IMGUI Build Time ......................... [67044 ns, 14915 FPS]
+   268:	  	vkBeginCommandBuffer                           [0]
+  void: 	vkCmdBeginRenderPass
+  void: 	vkCmdEndRenderPass
+  void: 	vkCmdPipelineBarrier
+   269:	  	vkEndCommandBuffer                             [0]
+   270:	  	vkBeginCommandBuffer                           [1]
+  void: 	vkCmdBeginRenderPass
+  void: 	vkCmdEndRenderPass
+  void: 	vkCmdPipelineBarrier
+   271:	  	vkEndCommandBuffer                             [1]
+	info:	    Command Buffer Build Time ................ [90329 ns, 11070 FPS]
+  void: 	memcpy
+  void: 	vkcombuf_work
+   272:	  	vkQueueSubmit                                  [0x7ffd6274a268]
+   273:	  	vkAcquireNextImageKHR                          [0]
+	info:	    swap_image_index ......................... [0]
+  void: 	vkcombuf_pres
+   274:	  	vkQueueSubmit                                  [0x7ffd627478f0]
+  void: 	vkcombuf_IMGUI
+   275:	  	vkQueueSubmit                                  [0x7ffd62747b60]
+   276:	  	vkWaitForFences <100ms>                        [0xa7c5450000000023]
+	info:	    Work Queue Time .......................... [164906 ns, 6064 FPS]
+   277:	  	vkResetFences                                  [0xa7c5450000000023]
+   278:	  	vkQueuePresentKHR                              [0]
+________________________________________________________________________________
+ STAGE:	LOOP
+	info:	    Full Loop Time ........................... [325088 ns, 3076 FPS]
+	info:	    Full Loop Time ........................... [337593 ns, 2962 FPS]
+	info:	    Full Loop Time ........................... [320615 ns, 3119 FPS]
+	info:	    Full Loop Time ........................... [316337 ns, 3161 FPS]
+	info:	    Full Loop Time ........................... [321248 ns, 3112 FPS]
+	info:	    Full Loop Time ........................... [321871 ns, 3106 FPS]
+	info:	    Full Loop Time ........................... [321236 ns, 3112 FPS]
+	info:	    Full Loop Time ........................... [314444 ns, 3180 FPS]
+	info:	    Full Loop Time ........................... [322716 ns, 3098 FPS]
+	info:	    Full Loop Time ........................... [324884 ns, 3078 FPS]
+	info:	    Full Loop Time ........................... [319233 ns, 3132 FPS]
+	info:	    Full Loop Time ........................... [321402 ns, 3111 FPS]
+	info:	    Full Loop Time ........................... [314348 ns, 3181 FPS]
+	info:	    Full Loop Time ........................... [316216 ns, 3162 FPS]
+	Load PCD256 Data Count: -1 / 175346
+
+LOAD:
+  PatternConfigData_256:
+    3004447363, 2960563374, 1275055524, 831033836, 
+    3349146621, 2101501589, 4106684748, 3334143362, 
+    2904913003, 2899623133, 1336635844, 2629053572, 
+    3192411957, 2185502072, 3417540059, 3218474038, 
+    2054220142, 2978040251, 1991105235, 2700817717, 
+    4166133147, 2086194139, 1593715627, 908289265, 
+    3325806355, 2698046642, 94198304, 789645310, 
+    3969320414, 1745386401, 2951966358, 3610359331, 
+    3084887154, 1840753572, 118413839, 574118257, 
+    811615525, 1597186704, 3096401663, 2652615516, 
+    3226828519, 2934483458, 3589481104, 2471895979, 
+    2886441825, 1241282554, 1964191771, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+
+SAVE:
+  PatternConfigData_256:
+    3004447363, 2994117798, 1275055524, 831295980, 
+    3349146621, 2101501589, 4106684748, 3334143362, 
+    2904913003, 2899623133, 1336635844, 2629119108, 
+    3192411957, 2185502072, 3417540059, 3218474038, 
+    2054220142, 2978040251, 1991105235, 2700817717, 
+    4166133147, 2086194139, 1593715627, 908289265, 
+    3325806355, 2698308754, 94198304, 789645310, 
+    3969320414, 1745386401, 2951966358, 3610359331, 
+    3084887154, 1840753572, 789502479, 607656305, 
+    811615525, 1597186704, 3096401663, 2652615516, 
+    3226828527, 2934483458, 3589481104, 2471895979, 
+    2886441825, 1241282554, 1964060699, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+	info:	    Full Loop Time ........................... [328139 ns, 3047 FPS]
+	Load PCD256 Data Count: -2 / 175347
+
+LOAD:
+  PatternConfigData_256:
+    3004447363, 2960563374, 1275055524, 831033836, 
+    3349146621, 2101501589, 4106684748, 3334143362, 
+    2904913003, 2899623133, 1336635844, 2629053572, 
+    3192411957, 2185502072, 3417540059, 3218474038, 
+    2054220142, 2978040251, 1991105235, 2700817717, 
+    4166133147, 2086194139, 1593715627, 908289265, 
+    3325806355, 2698046642, 94198304, 789645310, 
+    3969320414, 1745386401, 2951966358, 3610359331, 
+    3084887154, 1840753572, 118413839, 574118257, 
+    811615525, 1597186704, 3096401663, 2652615516, 
+    3226828519, 2934483458, 3589481104, 2471895979, 
+    2886441825, 1241282554, 1964191771, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+
+SAVE:
+  PatternConfigData_256:
+    3004447363, 2960563374, 1275055524, 831033836, 
+    3349146621, 2101501589, 4106684748, 3334143362, 
+    2904913003, 2899623133, 1336635844, 2629053572, 
+    3209189173, 2185502076, 3417540059, 3218474038, 
+    2054220142, 2978040251, 1991105235, 4042994997, 
+    2018649499, 2086194139, 1593715627, 908289265, 
+    3325806355, 2698045618, 94198304, 789645310, 
+    3969319390, 1745386401, 2951966358, 3610359331, 
+    3084887154, 1840753572, 118413839, 574118257, 
+    811615525, 1596138128, 3096403711, 2652615644, 
+    3226812135, 2934483458, 3589481104, 2471895979, 
+    2886441825, 167540730, 1964191771, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+	info:	    Full Loop Time ........................... [431954 ns, 2315 FPS]
+	Load PCD256 Data Count: -3 / 175348
+
+LOAD:
+  PatternConfigData_256:
+    3004447363, 2960563374, 1275055524, 831033836, 
+    3349146621, 2101501589, 4106684748, 3334143362, 
+    2904913003, 2899623133, 1336635844, 2629053572, 
+    3192411957, 2185502072, 3417540059, 3218474038, 
+    2054220142, 2978040251, 1991105235, 2700817717, 
+    4166133147, 2086194139, 1593715627, 908289265, 
+    3325806355, 2698046642, 94198304, 789645310, 
+    3969320414, 1745386401, 2951966358, 3610359331, 
+    3084887154, 1840753572, 118413839, 574118257, 
+    811615525, 1597186704, 3096401663, 2652615516, 
+    3226828519, 2934483458, 3589481104, 2471895979, 
+    2886441825, 1241282554, 1964191771, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+
+SAVE:
+  PatternConfigData_256:
+    3004447363, 2960563374, 1342164388, 831033837, 
+    3349146621, 2101501589, 4106684748, 3871014274, 
+    2905961579, 2899623133, 1336635844, 2629053572, 
+    3192411957, 2185502072, 3417540059, 3218474038, 
+    2054220142, 2978040251, 1991105235, 2700817717, 
+    4166133131, 2086161371, 1610492843, 908289265, 
+    3325740819, 2698046642, 94198304, 789645310, 
+    3969320414, 1745386401, 2951966358, 3610359331, 
+    3084887154, 1840753572, 118413839, 572021105, 
+    811615525, 1597186704, 3096139519, 2652615500, 
+    3226828519, 2934483458, 3589497488, 2471895979, 
+    2886441825, 1241282554, 1964191771, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+	Load PCD256 Data Count: -4 / 175349
+
+LOAD:
+  PatternConfigData_256:
+    3004447363, 2960563374, 1275055524, 831033836, 
+    3349146621, 2101501589, 4106684748, 3334143362, 
+    2904913003, 2899623133, 1336635844, 2629053572, 
+    3192411957, 2185502072, 3417540059, 3218474038, 
+    2054220142, 2978040251, 1991105235, 2700817717, 
+    4166133147, 2086194139, 1593715627, 908289265, 
+    3325806355, 2698046642, 94198304, 789645310, 
+    3969320414, 1745386401, 2951966358, 3610359331, 
+    3084887154, 1840753572, 118413839, 574118257, 
+    811615525, 1597186704, 3096401663, 2652615516, 
+    3226828519, 2934483458, 3589481104, 2471895979, 
+    2886441825, 1241282554, 1964191771, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+
+SAVE:
+  PatternConfigData_256:
+    3138697859, 2960563374, 1275055524, 831033836, 
+    3349146621, 2101501589, 4106684748, 3334143362, 
+    2904913003, 2765405405, 1336635844, 2629053572, 
+    3192411957, 2185502072, 3417540059, 3084256310, 
+    2054220142, 2978040251, 1995299539, 2969253173, 
+    4166133147, 2086194139, 1593715627, 908289265, 
+    3325806355, 2698046642, 94329376, 789645310, 
+    3969320414, 1745370017, 2951966358, 3610359331, 
+    3084887154, 3921128356, 118282767, 574118257, 
+    811615525, 1463493264, 3129956095, 2652615516, 
+    3226828519, 2934483458, 3589481360, 2471895979, 
+    2919996257, 1241266168, 1964191771, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+	Load PCD256 Data Count: -5 / 175350
+
+LOAD:
+  PatternConfigData_256:
+    3004447363, 2960563374, 1275055524, 831033836, 
+    3349146621, 2101501589, 4106684748, 3334143362, 
+    2904913003, 2899623133, 1336635844, 2629053572, 
+    3192411957, 2185502072, 3417540059, 3218474038, 
+    2054220142, 2978040251, 1991105235, 2700817717, 
+    4166133147, 2086194139, 1593715627, 908289265, 
+    3325806355, 2698046642, 94198304, 789645310, 
+    3969320414, 1745386401, 2951966358, 3610359331, 
+    3084887154, 1840753572, 118413839, 574118257, 
+    811615525, 1597186704, 3096401663, 2652615516, 
+    3226828519, 2934483458, 3589481104, 2471895979, 
+    2886441825, 1241282554, 1964191771, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+
+SAVE:
+  PatternConfigData_256:
+    3004439171, 2960563374, 1275053476, 831033836, 
+    3353340925, 2101501589, 4106684492, 3334143362, 
+    2904913003, 2899623133, 1336635844, 2629053572, 
+    3192411957, 2185502072, 3417540059, 3218474038, 
+    980478318, 2978040251, 1991105235, 2700817717, 
+    4166133179, 2086194139, 1593715627, 908289265, 
+    3325806355, 2698046642, 94198304, 772868094, 
+    4237755862, 1745386401, 2951966358, 3610621474, 
+    3084887154, 1840753572, 118413831, 574118257, 
+    811615525, 1597186704, 3096401663, 2652615516, 
+    3226828519, 2934483458, 3589481104, 2471895979, 
+    2886441825, 1241282554, 1964191771, 96304546, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+	Load PCD256 Data Count: -6 / 175351
+
+LOAD:
+  PatternConfigData_256:
+    3004447363, 2960563374, 1275055524, 831033836, 
+    3349146621, 2101501589, 4106684748, 3334143362, 
+    2904913003, 2899623133, 1336635844, 2629053572, 
+    3192411957, 2185502072, 3417540059, 3218474038, 
+    2054220142, 2978040251, 1991105235, 2700817717, 
+    4166133147, 2086194139, 1593715627, 908289265, 
+    3325806355, 2698046642, 94198304, 789645310, 
+    3969320414, 1745386401, 2951966358, 3610359331, 
+    3084887154, 1840753572, 118413839, 574118257, 
+    811615525, 1597186704, 3096401663, 2652615516, 
+    3226828519, 2934483458, 3589481104, 2471895979, 
+    2886441825, 1241282554, 1964191771, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+
+SAVE:
+  PatternConfigData_256:
+    3004447363, 2960563374, 1275055524, 831033836, 
+    3349149693, 2101499541, 4106684748, 3334143362, 
+    2904913003, 2899623133, 1336635844, 2629053572, 
+    3192444725, 2185502072, 3417540059, 3210085558, 
+    2054220142, 2978564539, 1991105239, 2700293429, 
+    4166133147, 2119748571, 1593715627, 908289265, 
+    3325806355, 2698046642, 94198304, 789645310, 
+    3969320414, 1745386401, 2884857494, 3610359331, 
+    3084887154, 767011748, 252631567, 574118241, 
+    811615524, 1597203088, 3096401663, 2654712668, 
+    3226828519, 2934483458, 3589481104, 2471895979, 
+    2886441825, 1241282554, 1964191771, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+	Load PCD256 Data Count: -7 / 175352
+
+LOAD:
+  PatternConfigData_256:
+    3004447363, 2960563374, 1275055524, 831033836, 
+    3349146621, 2101501589, 4106684748, 3334143362, 
+    2904913003, 2899623133, 1336635844, 2629053572, 
+    3192411957, 2185502072, 3417540059, 3218474038, 
+    2054220142, 2978040251, 1991105235, 2700817717, 
+    4166133147, 2086194139, 1593715627, 908289265, 
+    3325806355, 2698046642, 94198304, 789645310, 
+    3969320414, 1745386401, 2951966358, 3610359331, 
+    3084887154, 1840753572, 118413839, 574118257, 
+    811615525, 1597186704, 3096401663, 2652615516, 
+    3226828519, 2934483458, 3589481104, 2471895979, 
+    2886441825, 1241282554, 1964191771, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+
+SAVE:
+  PatternConfigData_256:
+    3004463747, 2960563374, 1275055526, 831033836, 
+    3349146621, 2101501589, 4106684748, 3334143362, 
+    757429483, 2899623133, 1336635840, 2629053572, 
+    3192411957, 2185502072, 3417540059, 3210085430, 
+    2054220142, 2978040251, 1991105235, 2700817717, 
+    4166133147, 2086194139, 1593715627, 908289265, 
+    3334457107, 2698046642, 1168071200, 789645310, 
+    3432449502, 3892870049, 2951966358, 3610359331, 
+    3084887154, 1840753572, 118413839, 708335985, 
+    811619621, 1597186704, 3096401663, 2669392724, 
+    3260382951, 2934483458, 3589481104, 2471895979, 
+    2886441825, 1241282554, 1964191995, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+	info:	    Full Loop Time ........................... [387892 ns, 2578 FPS]
+	Load PCD256 Data Count: -8 / 175353
+
+LOAD:
+  PatternConfigData_256:
+    3004447363, 2960563374, 1275055524, 831033836, 
+    3349146621, 2101501589, 4106684748, 3334143362, 
+    2904913003, 2899623133, 1336635844, 2629053572, 
+    3192411957, 2185502072, 3417540059, 3218474038, 
+    2054220142, 2978040251, 1991105235, 2700817717, 
+    4166133147, 2086194139, 1593715627, 908289265, 
+    3325806355, 2698046642, 94198304, 789645310, 
+    3969320414, 1745386401, 2951966358, 3610359331, 
+    3084887154, 1840753572, 118413839, 574118257, 
+    811615525, 1597186704, 3096401663, 2652615516, 
+    3226828519, 2934483458, 3589481104, 2471895979, 
+    2886441825, 1241282554, 1964191771, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+
+SAVE:
+  PatternConfigData_256:
+    3138665091, 2960563374, 1543490980, 831033836, 
+    3349146621, 2101501589, 4107733324, 3334143362, 
+    2837804139, 2899623133, 1336635844, 2494835844, 
+    3192411957, 2185502072, 3417540059, 3218474038, 
+    2054220142, 2978041275, 1991105235, 2700817717, 
+    4166133147, 2086194139, 1325280171, 908289265, 
+    3325806355, 2698308786, 94198304, 789645310, 
+    3969320414, 1745386401, 2951966358, 3610359331, 
+    3219104882, 1840753572, 118413839, 37247345, 
+    811615525, 1597317776, 3096401663, 2652615516, 
+    3226828519, 2934483458, 3589481104, 2471895979, 
+    2819332961, 1241282042, 1964191771, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+	Load PCD256 Data Count: -9 / 175354
+
+LOAD:
+  PatternConfigData_256:
+    3004447363, 2960563374, 1275055524, 831033836, 
+    3349146621, 2101501589, 4106684748, 3334143362, 
+    2904913003, 2899623133, 1336635844, 2629053572, 
+    3192411957, 2185502072, 3417540059, 3218474038, 
+    2054220142, 2978040251, 1991105235, 2700817717, 
+    4166133147, 2086194139, 1593715627, 908289265, 
+    3325806355, 2698046642, 94198304, 789645310, 
+    3969320414, 1745386401, 2951966358, 3610359331, 
+    3084887154, 1840753572, 118413839, 574118257, 
+    811615525, 1597186704, 3096401663, 2652615516, 
+    3226828519, 2934483458, 3589481104, 2471895979, 
+    2886441825, 1241282554, 1964191771, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+
+SAVE:
+  PatternConfigData_256:
+    3006544515, 2960563374, 1275055492, 831033836, 
+    3349146621, 2101501589, 4106684748, 3334143362, 
+    2904913003, 2899623133, 1336635844, 2629053572, 
+    3192411957, 2185502073, 3417540059, 3218474038, 
+    2054220142, 2978040251, 1991105235, 2700817717, 
+    4166133147, 2086194139, 1593715627, 908289265, 
+    3325806355, 2698046642, 94198304, 789647358, 
+    3973514718, 1745386401, 2951966358, 3610359331, 
+    3084887154, 1841277860, 118381071, 574118257, 
+    811615525, 1597186704, 3096401663, 2652615516, 
+    3226828519, 2934483458, 3589481104, 2471895977, 
+    2886441569, 1241282554, 1964191771, 96304558, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+	info:	    Full Loop Time ........................... [320383 ns, 3121 FPS]
+	info:	    Full Loop Time ........................... [415793 ns, 2405 FPS]
+________________________________________________________________________________
+ STAGE:	EXIT APPLICATION
+________________________________________________________________________________
+ STAGE:	CLOSED
+  void: 	glfwDestroyWindow
+  void: 	return
+
+  END   ./app/RunVulkanAutomataGLFW
+
+
+Script done on 2022-02-11 07:49:29-03:00 [COMMAND_EXIT_CODE="0"]

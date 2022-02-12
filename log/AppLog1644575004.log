@@ -1,0 +1,3023 @@
+Script started on 2022-02-11 07:23:24-03:00 [TERM="screen-256color" TTY="/dev/pts/31" COLUMNS="236" LINES="27"]
+[H[J
+  glslc -O ./res/vert/vert_TriQuad.vert -o ./app/vert_TriQuad.spv
+
+  glslc -O ./res/frag/frag_automata0000.frag -o ./app/frag_automata0000.spv
+
+  g++ -g -std=c++17 lib/*.cpp VulkanAutomataGLFW.cpp -fconcepts -lglfw -lvulkan -o ./app/RunVulkanAutomataGLFW
+
+  BEGIN ./app/RunVulkanAutomataGLFW
+
+________________________________________________________________________________
+ STAGE:	USER CONFIG
+________________________________________________________________________________
+ STAGE:	APPLICATION INIT
+	info:	    Application Width ........................ [1024]
+	info:	    Application Height ....................... [512]
+	info:	    ei.load_pattern .......................... [18372]
+	info:	0	Vertex Shaders ....................... [./app/vert_TriQuad.spv]
+	info:	0	Fragment Shaders ..................... [./app/frag_automata0000.spv]
+________________________________________________________________________________
+ STAGE:	GLFW EXTENSIONS
+     0:	1 	glfwInit                                       [GLFW]
+     1:	1 	glfwVulkanSupported                            [GLFW]
+  void: 	glfwGetRequiredInstanceExtensions
+	info:	0	GLFW Extensions ...................... [VK_KHR_surface]
+	info:	1	GLFW Extensions ...................... [VK_KHR_xcb_surface]
+________________________________________________________________________________
+ STAGE:	VULKAN EXTENSIONS
+	info:	0	Instance Extensions .................. [VK_EXT_debug_utils]
+	info:	1	Instance Extensions .................. [VK_KHR_surface]
+	info:	2	Instance Extensions .................. [VK_KHR_xcb_surface]
+	info:	0	Layer Extensions ..................... [VK_LAYER_KHRONOS_validation]
+	info:	0	Logical Device Extensions ............ [VK_KHR_swapchain]
+________________________________________________________________________________
+ STAGE:	VULKAN INIT
+     2:	-13 	init                                           [INIT]
+     3:	  	vkCreateInstance                               [0x56131de310d0]
+________________________________________________________________________________
+ STAGE:	DEBUG UTILS
+  void: 	vkGetInstanceProcAddr
+     4:	  	vkCreateDebugUtilsMessengerEXT                 [0xfd5b260000000001]
+________________________________________________________________________________
+ STAGE:	PHYSICAL DEVICE
+MESA-INTEL: warning: Performance support disabled, consider sysctl dev.i915.perf_stream_paranoid=0
+
+     5:	  	vkEnumeratePhysicalDevices                     [2]
+     6:	  	vkEnumeratePhysicalDevices                     [0x7ffc3f7f87d0]
+  void: 	vkGetPhysicalDeviceProperties
+	info:	0	Physical Devices ..................... [0x56131e4c5690]
+	info:	0	apiVersion ........................... [4202682]
+	info:	0	driverVersion ........................ [2076901376]
+	info:	0	deviceType ........................... [2]
+	info:	0	deviceName ........................... [NVIDIA GeForce RTX 3080 Ti]
+	info:	0	maxImageDimension2D .................. [32768]
+	info:	0	maxPushConstantsSize ................. [256]
+	info:	0	maxBoundDescriptorSets ............... [32]
+	info:	0	maxFragmentInputComponents ........... [128]
+	info:	0	maxFragmentOutputAttachments ......... [8]
+	info:	0	maxComputeSharedMemorySize ........... [49152]
+	info:	0	maxComputeWorkGroupInvocations ....... [1024]
+	info:	0	maxViewports ......................... [16]
+	info:	0	minMemoryMapAlignment ................ [64]
+	info:	0	minUniformBufferOffsetAlignment ...... [64]
+	info:	0	minTexelOffset ....................... [-8]
+	info:	0	maxTexelOffset ....................... [7]
+	info:	0	minTexelGatherOffset ................. [-32]
+	info:	0	maxTexelGatherOffset ................. [31]
+	info:	0	maxFramebufferWidth .................. [32768]
+	info:	0	maxFramebufferHeight ................. [32768]
+	info:	0	maxFramebufferLayers ................. [2048]
+	info:	0	maxColorAttachments .................. [8]
+  void: 	vkGetPhysicalDeviceFeatures
+  void: 	vkGetPhysicalDeviceProperties
+	info:	1	Physical Devices ..................... [0x56131e4c5600]
+	info:	1	apiVersion ........................... [4202678]
+	info:	1	driverVersion ........................ [88088581]
+	info:	1	deviceType ........................... [1]
+	info:	1	deviceName ........................... [Intel(R) UHD Graphics 630 (CML GT2)]
+	info:	1	maxImageDimension2D .................. [16384]
+	info:	1	maxPushConstantsSize ................. [128]
+	info:	1	maxBoundDescriptorSets ............... [8]
+	info:	1	maxFragmentInputComponents ........... [116]
+	info:	1	maxFragmentOutputAttachments ......... [8]
+	info:	1	maxComputeSharedMemorySize ........... [65536]
+	info:	1	maxComputeWorkGroupInvocations ....... [1792]
+	info:	1	maxViewports ......................... [16]
+	info:	1	minMemoryMapAlignment ................ [4096]
+	info:	1	minUniformBufferOffsetAlignment ...... [64]
+	info:	1	minTexelOffset ....................... [-8]
+	info:	1	maxTexelOffset ....................... [7]
+	info:	1	minTexelGatherOffset ................. [-32]
+	info:	1	maxTexelGatherOffset ................. [31]
+	info:	1	maxFramebufferWidth .................. [16384]
+	info:	1	maxFramebufferHeight ................. [16384]
+	info:	1	maxFramebufferLayers ................. [2048]
+	info:	1	maxColorAttachments .................. [8]
+  void: 	vkGetPhysicalDeviceFeatures
+	info:	    PDev_Index ............................... [0]
+	info:	    PDev_Index deviceType .................... [2]
+  void: 	vkGetPhysicalDeviceMemoryProperties
+	info:	    memoryTypeCount .......................... [11]
+	info:	0	propertyFlags ........................ [0]
+	info:	0	heapIndex ............................ [1]
+	info:	1	propertyFlags ........................ [0]
+	info:	1	heapIndex ............................ [1]
+	info:	2	propertyFlags ........................ [0]
+	info:	2	heapIndex ............................ [1]
+	info:	3	propertyFlags ........................ [0]
+	info:	3	heapIndex ............................ [1]
+	info:	4	propertyFlags ........................ [0]
+	info:	4	heapIndex ............................ [1]
+	info:	5	propertyFlags ........................ [0]
+	info:	5	heapIndex ............................ [1]
+	info:	6	propertyFlags ........................ [0]
+	info:	6	heapIndex ............................ [1]
+	info:	7	propertyFlags ........................ [1]
+	info:	7	heapIndex ............................ [0]
+	info:	8	propertyFlags ........................ [6]
+	info:	8	heapIndex ............................ [1]
+	info:	9	propertyFlags ........................ [14]
+	info:	9	heapIndex ............................ [1]
+	info:	10	propertyFlags ........................ [7]
+	info:	10	heapIndex ............................ [0]
+	info:	    memoryHeapCount .......................... [2]
+	info:	0	size ................................. [12884901888]
+	info:	0	flags ................................ [1]
+	info:	1	size ................................. [12434721792]
+	info:	1	flags ................................ [0]
+________________________________________________________________________________
+ STAGE:	QUEUES
+  void: 	vkGetPhysicalDeviceQueueFamilyProperties
+	info:	    PDev Queue Family Props .................. [3]
+  void: 	vkGetPhysicalDeviceQueueFamilyProperties
+	info:	0	queueFlags ........................... [15]
+	info:	0	queueCount ........................... [16]
+	info:	1	queueFlags ........................... [12]
+	info:	1	queueCount ........................... [2]
+	info:	2	queueFlags ........................... [14]
+	info:	2	queueCount ........................... [8]
+	info:	    PDev_QFP_Index ........................... [0]
+	info:	    PDev_QFP_Index queueFlags ................ [15]
+	info:	    PDev_QFP_Index queueCount ................ [16]
+________________________________________________________________________________
+ STAGE:	GLFW VULKAN SURFACE
+	info:	    glfwCreateWindow ......................... [0]
+     7:	1 	glfwGetPhysicalDevicePresentationSupport       [GLFW]
+     8:	  	glfwCreateWindowSurface                        [GLFW]
+     9:	  	vkGetPhysicalDeviceSurfaceCapabilitiesKHR      [ARRAY]
+	info:	    minImageCount ............................ [2]
+	info:	    maxImageCount ............................ [8]
+	info:	    currentExtent.width ...................... [1024]
+	info:	    currentExtent.height ..................... [512]
+	info:	    maxImageArrayLayers ...................... [1]
+	info:	    supportedCompositeAlpha .................. [1]
+	info:	    supportedUsageFlags ...................... [159]
+    10:	  	vkGetPhysicalDeviceSurfaceFormatsKHR           [2]
+    11:	  	vkGetPhysicalDeviceSurfaceFormatsKHR           [ARRAY]
+	info:	0	vk_surface_format.format ............. [44]
+	info:	0	vk_surface_format.colorSpace ......... [0]
+	info:	1	vk_surface_format.format ............. [50]
+	info:	1	vk_surface_format.colorSpace ......... [0]
+    12:	  	vkGetPhysicalDeviceSurfaceSupportKHR           [0]
+	info:	    Surface Supported ........................ [TRUE]
+________________________________________________________________________________
+ STAGE:	LOGICAL DEVICE
+    13:	  	vkCreateDevice                                 [0x56131e6995b0]
+	info:	    VkDevice ................................. [0x56131e6995b0]
+________________________________________________________________________________
+ STAGE:	SWAPCHAIN
+    14:	  	vkCreateSwapchainKHR                           [0xfa21a40000000003]
+    15:	  	vkGetSwapchainImagesKHR                        [2]
+    16:	  	vkGetSwapchainImagesKHR                        [ARRAY]
+	info:	0	Swapchain Image ...................... [0xf56c9b0000000004]
+	info:	1	Swapchain Image ...................... [0xe7f79a0000000005]
+________________________________________________________________________________
+ STAGE:	WORK LAYER IMAGES
+    17:	  	vkCreateImage                                  [0xf443490000000006]
+  void: 	vkGetImageMemoryRequirements
+	info:	0	vk_mem_reqs size ..................... [4194304]
+	info:	0	vk_mem_reqs alignment ................ [1024]
+	info:	0	vk_mem_reqs memoryTypeBits ........... [130]
+	info:	0	memoryTypeIndex ...................... [7]
+    18:	  	vkAllocateMemory                               [0xcb3ee80000000007]
+    19:	  	vkBindImageMemory                              [0xf443490000000006]
+    20:	  	vkCreateImage                                  [0xead9370000000008]
+  void: 	vkGetImageMemoryRequirements
+	info:	1	vk_mem_reqs size ..................... [4194304]
+	info:	1	vk_mem_reqs alignment ................ [1024]
+	info:	1	vk_mem_reqs memoryTypeBits ........... [130]
+	info:	1	memoryTypeIndex ...................... [7]
+    21:	  	vkAllocateMemory                               [0xee647e0000000009]
+    22:	  	vkBindImageMemory                              [0xead9370000000008]
+________________________________________________________________________________
+ STAGE:	BLIT EXPORT IMAGE
+    23:	  	vkCreateImage                                  [0xcfef35000000000a]
+  void: 	vkGetImageMemoryRequirements
+	info:	    vk_mem_reqs size ......................... [2097152]
+	info:	    vk_mem_reqs alignment .................... [1024]
+	info:	    vk_mem_reqs memoryTypeBits ............... [130]
+	info:	    memoryTypeIndex .......................... [7]
+    24:	  	vkAllocateMemory                               [0xec4bec000000000b]
+    25:	  	vkBindImageMemory                              [0xcfef35000000000a]
+________________________________________________________________________________
+ STAGE:	BLIT EXPORT BUFFER
+    26:	  	vkCreateBuffer                                 [0xe88693000000000c]
+  void: 	vkGetBufferMemoryRequirements
+	info:	    blit2buff size ........................... [2097152]
+	info:	    blit2buff alignment ...................... [256]
+	info:	    blit2buff memoryTypeBits ................. [1921]
+	info:	    memoryTypeIndex .......................... [9]
+    27:	  	vkAllocateMemory                               [0xcad092000000000d]
+    28:	  	vkBindBufferMemory                             [0xe88693000000000c]
+    29:	  	vkMapMemory                                    [0x7f276170a000]
+________________________________________________________________________________
+ STAGE:	SHADER DATA
+  void: 	getShaderCodeInfo
+  void: 	getShaderCodeInfo
+	info:	0	Vert shaderFilename .................. [./app/vert_TriQuad.spv]
+	info:	0	Vert shaderBytes ..................... [876]
+	info:	0	Vert shaderBytesValid ................ [TRUE]
+	info:	1	Vert shaderFilename .................. [./app/frag_automata0000.spv]
+	info:	1	Vert shaderBytes ..................... [76608]
+	info:	1	Vert shaderBytesValid ................ [TRUE]
+    30:	  	vkCreateShaderModule                           [0x967dd1000000000e]
+    31:	  	vkCreateShaderModule                           [0xe7e6d0000000000f]
+________________________________________________________________________________
+ STAGE:	RENDERPASS INFO
+    32:	  	vkCreateSampler                                [0xd5b26f0000000010]
+________________________________________________________________________________
+ STAGE:	PIPELINE INFO
+________________________________________________________________________________
+ STAGE:	COMMAND BUFFERS
+    33:	  	vkCreateCommandPool                            [0x980f360000000011]
+    34:	  	vkAllocateCommandBuffers                       [0x56131fa57b80]
+    35:	  	vkCreateCommandPool                            [0xdcc8fd0000000012]
+    36:	  	vkAllocateCommandBuffers                       [0x56131fc5f6d0]
+    37:	  	vkCreateCommandPool                            [0xd175b40000000013]
+    38:	  	vkAllocateCommandBuffers                       [0x56131fc42ce0]
+    39:	  	vkCreateCommandPool                            [0x9fde6b0000000014]
+    40:	  	vkAllocateCommandBuffers                       [0x56131fc43d70]
+    41:	  	vkCreateCommandPool                            [0xdd3a8a0000000015]
+    42:	  	vkAllocateCommandBuffers                       [0x56131fc3d970]
+    43:	  	vkCreateCommandPool                            [0xd897d90000000016]
+    44:	  	vkAllocateCommandBuffers                       [0x56131fc3ea00]
+    45:	  	vkCreateCommandPool                            [0x84c0580000000017]
+    46:	  	vkAllocateCommandBuffers                       [0x56131fc82060]
+    47:	  	vkCreateCommandPool                            [0xd10d270000000018]
+    48:	  	vkAllocateCommandBuffers                       [0x56131fc3b5f0]
+    49:	  	vkCreateCommandPool                            [0x27d60e0000000019]
+    50:	  	vkAllocateCommandBuffers                       [0x56131fc90d90]
+    51:	  	vkCreateCommandPool                            [0x95a125000000001a]
+    52:	  	vkAllocateCommandBuffers                       [0x56131fc85e20]
+    53:	  	vkCreateCommandPool                            [0xcb1c7c000000001b]
+    54:	  	vkAllocateCommandBuffers                       [0x56131fa68930]
+    55:	  	vkCreateCommandPool                            [0x2cfba2000000001c]
+    56:	  	vkAllocateCommandBuffers                       [0x56131fc568a0]
+    57:	  	vkCreateCommandPool                            [0x908683000000001d]
+    58:	  	vkAllocateCommandBuffers                       [0x56131fc5a9b0]
+    59:	  	vkCreateCommandPool                            [0xcfcda0000000001e]
+    60:	  	vkAllocateCommandBuffers                       [0x56131fa7e100]
+    61:	  	vkCreateCommandPool                            [0x2e2941000000001f]
+    62:	  	vkAllocateCommandBuffers                       [0x56131fa80ce0]
+    63:	  	vkCreateCommandPool                            [0xab64de0000000020]
+    64:	  	vkAllocateCommandBuffers                       [0x56131fa84190]
+    65:	  	vkCreateCommandPool                            [0xc4f3070000000021]
+    66:	  	vkAllocateCommandBuffers                       [0x56131fc70b80]
+    67:	  	vkCreateCommandPool                            [0x301e6c0000000022]
+    68:	  	vkAllocateCommandBuffers                       [0x56131fc74600]
+________________________________________________________________________________
+ STAGE:	QUEUE SYNC
+  void: 	vkGetDeviceQueue
+    69:	  	vkCreateFence                                  [0xa7c5450000000023]
+________________________________________________________________________________
+ STAGE:	SWAPCHAIN SYNC
+    70:	  	vkCreateSemaphore                              [0xb991fa0000000024]
+    71:	  	vkCreateSemaphore                              [0x3a6cbb0000000025]
+    72:	  	vkCreateSemaphore                              [0xa2eb680000000026]
+  void: 	vkGetDeviceQueue
+  void: 	vkGetDeviceQueue
+________________________________________________________________________________
+ STAGE:	WORK IMAGE VIEWS
+    73:	  	vkCreateImageView                              [0xb097c90000000027]
+    74:	  	vkCreateImageView                              [0x3fbcd60000000028]
+________________________________________________________________________________
+ STAGE:	RECORD WORK_INIT
+    75:	  	vkBeginCommandBuffer                           [0]
+  void: 	vkCmdPipelineBarrier
+    76:	  	vkEndCommandBuffer                             [0]
+    77:	  	vkBeginCommandBuffer                           [1]
+  void: 	vkCmdPipelineBarrier
+    78:	  	vkEndCommandBuffer                             [1]
+________________________________________________________________________________
+ STAGE:	SUBMIT WORK_INIT
+  void: 	vkcombuf_work_init
+    79:	  	vkQueueSubmit                                  [0]
+  void: 	vkcombuf_work_init
+    80:	  	vkQueueSubmit                                  [1]
+________________________________________________________________________________
+ STAGE:	WORK DESCRIPTOR SETS
+	info:	    pool_info.maxSets ........................ [4]
+    81:	  	vkCreateDescriptorSetLayout                    [0xb9181f0000000029]
+    82:	  	vkCreateDescriptorPool                         [0xba7514000000002a]
+    83:	  	vkAllocateDescriptorSets                       [0x2e2cd000000002b]
+    84:	  	vkAllocateDescriptorSets                       [0xb12fb2000000002c]
+________________________________________________________________________________
+ STAGE:	WORK SAMPLER
+________________________________________________________________________________
+ STAGE:	WORK UNIFORM BUFFER
+	info:	    UB32_64 size ............................. [256]
+    85:	  	vkCreateBuffer                                 [0xa43473000000002d]
+________________________________________________________________________________
+ STAGE:	WORK DESCRIPTOR MEMORY
+  void: 	vkGetBufferMemoryRequirements
+	info:	    memreq size .............................. [256]
+	info:	    memreq alignment ......................... [256]
+	info:	    memreq memoryTypeBits .................... [1921]
+	info:	    memoryTypeIndex .......................... [8]
+    86:	  	vkAllocateMemory                               [0x980b0000000002e]
+    87:	  	vkBindBufferMemory                             [0xa43473000000002d]
+  void: 	vkUpdateDescriptorSets
+  void: 	vkUpdateDescriptorSets
+  void: 	vkUpdateDescriptorSets
+  void: 	vkUpdateDescriptorSets
+    88:	  	vkMapMemory                                    [0x7f2761679e00]
+________________________________________________________________________________
+ STAGE:	WORK RENDER PASS
+    89:	  	vkCreateRenderPass                             [0x4b7df1000000002f]
+________________________________________________________________________________
+ STAGE:	WORK FRAMEBUFFER
+    90:	  	vkCreateFramebuffer                            [0xa21a4e0000000030]
+    91:	  	vkCreateFramebuffer                            [0xea7170000000031]
+________________________________________________________________________________
+ STAGE:	WORK PIPELINE
+    92:	  	vkCreatePipelineLayout                         [0x4fac1c0000000032]
+    93:	  	vkCreateGraphicsPipelines                      [0xa808d50000000033]
+________________________________________________________________________________
+ STAGE:	RECORD WORK LOOP
+    94:	  	vkBeginCommandBuffer                           [0]
+  void: 	vkCmdBeginRenderPass
+  void: 	vkCmdBindPipeline
+  void: 	vkCmdBindDescriptorSets
+  void: 	vkCmdDraw
+  void: 	vkCmdEndRenderPass
+    95:	  	vkEndCommandBuffer                             [0]
+    96:	  	vkBeginCommandBuffer                           [1]
+  void: 	vkCmdBeginRenderPass
+  void: 	vkCmdBindPipeline
+  void: 	vkCmdBindDescriptorSets
+  void: 	vkCmdDraw
+  void: 	vkCmdEndRenderPass
+    97:	  	vkEndCommandBuffer                             [1]
+________________________________________________________________________________
+ STAGE:	IMGUI RENDER PASS
+    98:	  	vkCreateRenderPass                             [0x2b424a0000000034]
+________________________________________________________________________________
+ STAGE:	IMGUI FRAMEBUFFER
+    99:	  	vkCreateImageView                              [0x4295ab0000000035]
+   100:	  	vkCreateImageView                              [0x9638f80000000036]
+   101:	  	vkCreateFramebuffer                            [0x2723ba0000000037]
+   102:	  	vkCreateFramebuffer                            [0x59f7450000000038]
+________________________________________________________________________________
+ STAGE:	BARRIERS
+________________________________________________________________________________
+ STAGE:	RECORD IMAGEDATA INIT
+   103:	  	vkBeginCommandBuffer                           [0]
+  void: 	vkCmdPipelineBarrier
+   104:	  	vkEndCommandBuffer                             [0]
+________________________________________________________________________________
+ STAGE:	SUBMIT IMAGEDATA INIT
+  void: 	vkcombuf_work_init
+   105:	  	vkQueueSubmit                                  [0]
+________________________________________________________________________________
+ STAGE:	RECORD IMAGEDATA OUT
+   106:	  	vkBeginCommandBuffer                           [0]
+  void: 	vkCmdPipelineBarrier
+  void: 	vkCmdBlitImage
+  void: 	vkCmdPipelineBarrier
+   107:	  	vkEndCommandBuffer                             [0]
+   108:	  	vkBeginCommandBuffer                           [1]
+  void: 	vkCmdPipelineBarrier
+  void: 	vkCmdBlitImage
+  void: 	vkCmdPipelineBarrier
+   109:	  	vkEndCommandBuffer                             [1]
+________________________________________________________________________________
+ STAGE:	RECORD BLIT IMGUI OUT
+   110:	  	vkBeginCommandBuffer                           [0]
+  void: 	vkCmdPipelineBarrier
+  void: 	vkCmdBlitImage
+  void: 	vkCmdPipelineBarrier
+   111:	  	vkEndCommandBuffer                             [0]
+   112:	  	vkBeginCommandBuffer                           [1]
+  void: 	vkCmdPipelineBarrier
+  void: 	vkCmdBlitImage
+  void: 	vkCmdPipelineBarrier
+   113:	  	vkEndCommandBuffer                             [1]
+________________________________________________________________________________
+ STAGE:	RECORD BLIT2BUFF
+   114:	  	vkBeginCommandBuffer                           [0]
+  void: 	vkCmdPipelineBarrier
+  void: 	vkCmdCopyImageToBuffer
+  void: 	vkCmdPipelineBarrier
+   115:	  	vkEndCommandBuffer                             [0]
+________________________________________________________________________________
+ STAGE:	RECORD PRES INIT
+   116:	  	vkBeginCommandBuffer                           [0]
+  void: 	vkCmdPipelineBarrier
+   117:	  	vkEndCommandBuffer                             [0]
+   118:	  	vkBeginCommandBuffer                           [1]
+  void: 	vkCmdPipelineBarrier
+   119:	  	vkEndCommandBuffer                             [1]
+________________________________________________________________________________
+ STAGE:	SUBMIT PRES INIT
+  void: 	vkcombuf_pres_init
+   120:	  	vkQueueSubmit                                  [0]
+  void: 	vkcombuf_pres_init
+   121:	  	vkQueueSubmit                                  [1]
+________________________________________________________________________________
+ STAGE:	RECORD PRES LOOP
+   122:	  	vkBeginCommandBuffer                           [0]
+  void: 	vkCmdPipelineBarrier
+  void: 	vkCmdPipelineBarrier
+  void: 	vkCmdBlitImage
+  void: 	vkCmdPipelineBarrier
+  void: 	vkCmdPipelineBarrier
+   123:	  	vkEndCommandBuffer                             [0]
+   124:	  	vkBeginCommandBuffer                           [1]
+  void: 	vkCmdPipelineBarrier
+  void: 	vkCmdPipelineBarrier
+  void: 	vkCmdBlitImage
+  void: 	vkCmdPipelineBarrier
+  void: 	vkCmdPipelineBarrier
+   125:	  	vkEndCommandBuffer                             [1]
+   126:	  	vkBeginCommandBuffer                           [2]
+  void: 	vkCmdPipelineBarrier
+  void: 	vkCmdPipelineBarrier
+  void: 	vkCmdBlitImage
+  void: 	vkCmdPipelineBarrier
+  void: 	vkCmdPipelineBarrier
+   127:	  	vkEndCommandBuffer                             [2]
+   128:	  	vkBeginCommandBuffer                           [3]
+  void: 	vkCmdPipelineBarrier
+  void: 	vkCmdPipelineBarrier
+  void: 	vkCmdBlitImage
+  void: 	vkCmdPipelineBarrier
+  void: 	vkCmdPipelineBarrier
+   129:	  	vkEndCommandBuffer                             [3]
+________________________________________________________________________________
+ STAGE:	SWAPCHAIN PRESENT INFO
+________________________________________________________________________________
+ STAGE:	DEAR IMGUI
+	info:	    IMGUI Version ............................ [1]
+  void: 	ImGui::CreateContext
+  void: 	ImGui::StyleColorsDark
+  void: 	ImGui::GetIO
+  void: 	ImGui_ImplGlfw_InitForVulkan
+   130:	  	vkCreateDescriptorPool                         [0x944a2c0000000039]
+  void: 	ImGui_ImplVulkan_Init
+   131:	  	vkCreateCommandPool                            [0x6612e40000000041]
+   132:	  	vkAllocateCommandBuffers                       [0x56131fe5a4f0]
+   133:	  	vkBeginCommandBuffer                           [0x56131fe5a4f0]
+  void: 	ImGui_ImplVulkan_CreateFontsTexture
+   134:	  	vkEndCommandBuffer                             [0x56131fe5a4f0]
+  void: 	combuf_imgui
+   135:	  	vkQueueSubmit                                  [0]
+________________________________________________________________________________
+ STAGE:	MAIN LOOP INIT
+Welcome!
+________________________________________________________________________________
+ STAGE:	MAIN LOOP
+	Load PCD256 Data Count: -1 / 10845
+
+LOAD:
+  PatternConfigData_256:
+    3004447363, 2960563374, 1275055524, 831033836, 
+    3349146621, 2101501589, 4106684748, 3334143362, 
+    2904913003, 2899623133, 1336635844, 2629053572, 
+    3192411957, 2185502072, 3417540059, 3218474038, 
+    2054220142, 2978040251, 1991105235, 2700817717, 
+    4166133147, 2086194139, 1593715627, 908289265, 
+    3325806355, 2698046642, 94198304, 789645310, 
+    3969320414, 1745386401, 2951966358, 3610359331, 
+    3084887154, 1840753572, 118413839, 574118257, 
+    811615525, 1597186704, 3096401663, 2652615516, 
+    3226828519, 2934483458, 3589481104, 2471895979, 
+    2886441825, 1241282554, 1964191771, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+
+SAVE:
+  PatternConfigData_256:
+    3004447363, 2960563374, 1275055524, 831033836, 
+    3349146621, 2101501589, 4106684748, 3334143362, 
+    2904913003, 2899623133, 1336635844, 2629053572, 
+    3192411957, 2185502072, 3417540059, 3218474038, 
+    2054220142, 2978040251, 1991105235, 2700817717, 
+    4166133147, 2086194139, 1593715627, 908289265, 
+    3325806355, 2698046642, 94198304, 789645310, 
+    3969320414, 1745386401, 2951966358, 3610359331, 
+    3084887154, 1840753572, 118413839, 574118257, 
+    811615525, 1597186704, 3096401663, 2652615516, 
+    3226828519, 2934483458, 3589481104, 2471895979, 
+    2886441825, 1241282554, 1964191771, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+	info:	    IMGUI Build Time ......................... [163740 ns, 6107 FPS]
+   136:	  	vkBeginCommandBuffer                           [0]
+  void: 	vkCmdBeginRenderPass
+  void: 	vkCmdEndRenderPass
+  void: 	vkCmdPipelineBarrier
+   137:	  	vkEndCommandBuffer                             [0]
+   138:	  	vkBeginCommandBuffer                           [1]
+  void: 	vkCmdBeginRenderPass
+  void: 	vkCmdEndRenderPass
+  void: 	vkCmdPipelineBarrier
+   139:	  	vkEndCommandBuffer                             [1]
+	info:	    Command Buffer Build Time ................ [219163 ns, 4562 FPS]
+  void: 	memcpy
+  void: 	vkcombuf_work
+   140:	  	vkQueueSubmit                                  [0x7ffc3f7fa158]
+   141:	  	vkAcquireNextImageKHR                          [0]
+	info:	    swap_image_index ......................... [0]
+  void: 	vkcombuf_pres
+   142:	  	vkQueueSubmit                                  [0x7ffc3f7f77e0]
+  void: 	vkcombuf_IMGUI
+   143:	  	vkQueueSubmit                                  [0x7ffc3f7f7a50]
+   144:	  	vkWaitForFences <100ms>                        [0xa7c5450000000023]
+	info:	    Work Queue Time .......................... [28788654 ns, 34 FPS]
+   145:	  	vkResetFences                                  [0xa7c5450000000023]
+   146:	  	vkQueuePresentKHR                              [0]
+	info:	    Full Loop Time ........................... [30465026 ns, 32 FPS]
+________________________________________________________________________________
+ STAGE:	LOOP
+	info:	    IMGUI Build Time ......................... [612653 ns, 1632 FPS]
+   147:	  	vkBeginCommandBuffer                           [0]
+  void: 	vkCmdBeginRenderPass
+  void: 	vkCmdEndRenderPass
+  void: 	vkCmdPipelineBarrier
+   148:	  	vkEndCommandBuffer                             [0]
+   149:	  	vkBeginCommandBuffer                           [1]
+  void: 	vkCmdBeginRenderPass
+  void: 	vkCmdEndRenderPass
+  void: 	vkCmdPipelineBarrier
+   150:	  	vkEndCommandBuffer                             [1]
+	info:	    Command Buffer Build Time ................ [364068 ns, 2746 FPS]
+  void: 	memcpy
+  void: 	vkcombuf_work
+   151:	  	vkQueueSubmit                                  [0x7ffc3f7fa0f0]
+   152:	  	vkAcquireNextImageKHR                          [1]
+	info:	    swap_image_index ......................... [1]
+  void: 	vkcombuf_pres
+   153:	  	vkQueueSubmit                                  [0x7ffc3f7f7918]
+  void: 	vkcombuf_IMGUI
+   154:	  	vkQueueSubmit                                  [0x7ffc3f7f7ab8]
+   155:	  	vkWaitForFences <100ms>                        [0xa7c5450000000023]
+	info:	    Work Queue Time .......................... [312792 ns, 3197 FPS]
+   156:	  	vkResetFences                                  [0xa7c5450000000023]
+   157:	  	vkQueuePresentKHR                              [1]
+	info:	    Full Loop Time ........................... [1369446 ns, 730 FPS]
+________________________________________________________________________________
+ STAGE:	LOOP
+	info:	    IMGUI Build Time ......................... [136973 ns, 7300 FPS]
+   158:	  	vkBeginCommandBuffer                           [0]
+  void: 	vkCmdBeginRenderPass
+  void: 	vkCmdEndRenderPass
+  void: 	vkCmdPipelineBarrier
+   159:	  	vkEndCommandBuffer                             [0]
+   160:	  	vkBeginCommandBuffer                           [1]
+  void: 	vkCmdBeginRenderPass
+  void: 	vkCmdEndRenderPass
+  void: 	vkCmdPipelineBarrier
+   161:	  	vkEndCommandBuffer                             [1]
+	info:	    Command Buffer Build Time ................ [103457 ns, 9665 FPS]
+  void: 	memcpy
+  void: 	vkcombuf_work
+   162:	  	vkQueueSubmit                                  [0x7ffc3f7fa158]
+   163:	  	vkAcquireNextImageKHR                          [0]
+	info:	    swap_image_index ......................... [0]
+  void: 	vkcombuf_pres
+   164:	  	vkQueueSubmit                                  [0x7ffc3f7f77e0]
+  void: 	vkcombuf_IMGUI
+   165:	  	vkQueueSubmit                                  [0x7ffc3f7f7a50]
+   166:	  	vkWaitForFences <100ms>                        [0xa7c5450000000023]
+	info:	    Work Queue Time .......................... [198597 ns, 5035 FPS]
+   167:	  	vkResetFences                                  [0xa7c5450000000023]
+   168:	  	vkQueuePresentKHR                              [0]
+	info:	    Full Loop Time ........................... [512435 ns, 1951 FPS]
+________________________________________________________________________________
+ STAGE:	LOOP
+	info:	    IMGUI Build Time ......................... [87870 ns, 11380 FPS]
+   169:	  	vkBeginCommandBuffer                           [0]
+  void: 	vkCmdBeginRenderPass
+  void: 	vkCmdEndRenderPass
+  void: 	vkCmdPipelineBarrier
+   170:	  	vkEndCommandBuffer                             [0]
+   171:	  	vkBeginCommandBuffer                           [1]
+  void: 	vkCmdBeginRenderPass
+  void: 	vkCmdEndRenderPass
+  void: 	vkCmdPipelineBarrier
+   172:	  	vkEndCommandBuffer                             [1]
+	info:	    Command Buffer Build Time ................ [104538 ns, 9565 FPS]
+  void: 	memcpy
+  void: 	vkcombuf_work
+   173:	  	vkQueueSubmit                                  [0x7ffc3f7fa0f0]
+   174:	  	vkAcquireNextImageKHR                          [1]
+	info:	    swap_image_index ......................... [1]
+  void: 	vkcombuf_pres
+   175:	  	vkQueueSubmit                                  [0x7ffc3f7f7918]
+  void: 	vkcombuf_IMGUI
+   176:	  	vkQueueSubmit                                  [0x7ffc3f7f7ab8]
+   177:	  	vkWaitForFences <100ms>                        [0xa7c5450000000023]
+	info:	    Work Queue Time .......................... [164818 ns, 6067 FPS]
+   178:	  	vkResetFences                                  [0xa7c5450000000023]
+   179:	  	vkQueuePresentKHR                              [1]
+	info:	    Full Loop Time ........................... [426244 ns, 2346 FPS]
+________________________________________________________________________________
+ STAGE:	LOOP
+	info:	    IMGUI Build Time ......................... [85045 ns, 11758 FPS]
+   180:	  	vkBeginCommandBuffer                           [0]
+  void: 	vkCmdBeginRenderPass
+  void: 	vkCmdEndRenderPass
+  void: 	vkCmdPipelineBarrier
+   181:	  	vkEndCommandBuffer                             [0]
+   182:	  	vkBeginCommandBuffer                           [1]
+  void: 	vkCmdBeginRenderPass
+  void: 	vkCmdEndRenderPass
+  void: 	vkCmdPipelineBarrier
+   183:	  	vkEndCommandBuffer                             [1]
+	info:	    Command Buffer Build Time ................ [163761 ns, 6106 FPS]
+  void: 	memcpy
+  void: 	vkcombuf_work
+   184:	  	vkQueueSubmit                                  [0x7ffc3f7fa158]
+   185:	  	vkAcquireNextImageKHR                          [0]
+	info:	    swap_image_index ......................... [0]
+  void: 	vkcombuf_pres
+   186:	  	vkQueueSubmit                                  [0x7ffc3f7f77e0]
+  void: 	vkcombuf_IMGUI
+   187:	  	vkQueueSubmit                                  [0x7ffc3f7f7a50]
+   188:	  	vkWaitForFences <100ms>                        [0xa7c5450000000023]
+	info:	    Work Queue Time .......................... [164880 ns, 6065 FPS]
+   189:	  	vkResetFences                                  [0xa7c5450000000023]
+   190:	  	vkQueuePresentKHR                              [0]
+	info:	    Full Loop Time ........................... [523754 ns, 1909 FPS]
+________________________________________________________________________________
+ STAGE:	LOOP
+	info:	    IMGUI Build Time ......................... [134319 ns, 7444 FPS]
+   191:	  	vkBeginCommandBuffer                           [0]
+  void: 	vkCmdBeginRenderPass
+  void: 	vkCmdEndRenderPass
+  void: 	vkCmdPipelineBarrier
+   192:	  	vkEndCommandBuffer                             [0]
+   193:	  	vkBeginCommandBuffer                           [1]
+  void: 	vkCmdBeginRenderPass
+  void: 	vkCmdEndRenderPass
+  void: 	vkCmdPipelineBarrier
+   194:	  	vkEndCommandBuffer                             [1]
+	info:	    Command Buffer Build Time ................ [123935 ns, 8068 FPS]
+  void: 	memcpy
+  void: 	vkcombuf_work
+   195:	  	vkQueueSubmit                                  [0x7ffc3f7fa0f0]
+   196:	  	vkAcquireNextImageKHR                          [1]
+	info:	    swap_image_index ......................... [1]
+  void: 	vkcombuf_pres
+   197:	  	vkQueueSubmit                                  [0x7ffc3f7f7918]
+  void: 	vkcombuf_IMGUI
+   198:	  	vkQueueSubmit                                  [0x7ffc3f7f7ab8]
+   199:	  	vkWaitForFences <100ms>                        [0xa7c5450000000023]
+	info:	    Work Queue Time .......................... [197098 ns, 5073 FPS]
+   200:	  	vkResetFences                                  [0xa7c5450000000023]
+   201:	  	vkQueuePresentKHR                              [1]
+	info:	    Full Loop Time ........................... [561449 ns, 1781 FPS]
+________________________________________________________________________________
+ STAGE:	LOOP
+	info:	    IMGUI Build Time ......................... [140152 ns, 7135 FPS]
+   202:	  	vkBeginCommandBuffer                           [0]
+  void: 	vkCmdBeginRenderPass
+  void: 	vkCmdEndRenderPass
+  void: 	vkCmdPipelineBarrier
+   203:	  	vkEndCommandBuffer                             [0]
+   204:	  	vkBeginCommandBuffer                           [1]
+  void: 	vkCmdBeginRenderPass
+  void: 	vkCmdEndRenderPass
+  void: 	vkCmdPipelineBarrier
+   205:	  	vkEndCommandBuffer                             [1]
+	info:	    Command Buffer Build Time ................ [136092 ns, 7347 FPS]
+  void: 	memcpy
+  void: 	vkcombuf_work
+   206:	  	vkQueueSubmit                                  [0x7ffc3f7fa158]
+   207:	  	vkAcquireNextImageKHR                          [0]
+	info:	    swap_image_index ......................... [0]
+  void: 	vkcombuf_pres
+   208:	  	vkQueueSubmit                                  [0x7ffc3f7f77e0]
+  void: 	vkcombuf_IMGUI
+   209:	  	vkQueueSubmit                                  [0x7ffc3f7f7a50]
+   210:	  	vkWaitForFences <100ms>                        [0xa7c5450000000023]
+	info:	    Work Queue Time .......................... [364016 ns, 2747 FPS]
+   211:	  	vkResetFences                                  [0xa7c5450000000023]
+   212:	  	vkQueuePresentKHR                              [0]
+	info:	    Full Loop Time ........................... [750438 ns, 1332 FPS]
+________________________________________________________________________________
+ STAGE:	LOOP
+	info:	    IMGUI Build Time ......................... [121542 ns, 8227 FPS]
+   213:	  	vkBeginCommandBuffer                           [0]
+  void: 	vkCmdBeginRenderPass
+  void: 	vkCmdEndRenderPass
+  void: 	vkCmdPipelineBarrier
+   214:	  	vkEndCommandBuffer                             [0]
+   215:	  	vkBeginCommandBuffer                           [1]
+  void: 	vkCmdBeginRenderPass
+  void: 	vkCmdEndRenderPass
+  void: 	vkCmdPipelineBarrier
+   216:	  	vkEndCommandBuffer                             [1]
+	info:	    Command Buffer Build Time ................ [157398 ns, 6353 FPS]
+  void: 	memcpy
+  void: 	vkcombuf_work
+   217:	  	vkQueueSubmit                                  [0x7ffc3f7fa0f0]
+   218:	  	vkAcquireNextImageKHR                          [1]
+	info:	    swap_image_index ......................... [1]
+  void: 	vkcombuf_pres
+   219:	  	vkQueueSubmit                                  [0x7ffc3f7f7918]
+  void: 	vkcombuf_IMGUI
+   220:	  	vkQueueSubmit                                  [0x7ffc3f7f7ab8]
+   221:	  	vkWaitForFences <100ms>                        [0xa7c5450000000023]
+	info:	    Work Queue Time .......................... [410577 ns, 2435 FPS]
+   222:	  	vkResetFences                                  [0xa7c5450000000023]
+   223:	  	vkQueuePresentKHR                              [1]
+	info:	    Full Loop Time ........................... [2303475 ns, 434 FPS]
+________________________________________________________________________________
+ STAGE:	LOOP
+	info:	    IMGUI Build Time ......................... [83533 ns, 11971 FPS]
+   224:	  	vkBeginCommandBuffer                           [0]
+  void: 	vkCmdBeginRenderPass
+  void: 	vkCmdEndRenderPass
+  void: 	vkCmdPipelineBarrier
+   225:	  	vkEndCommandBuffer                             [0]
+   226:	  	vkBeginCommandBuffer                           [1]
+  void: 	vkCmdBeginRenderPass
+  void: 	vkCmdEndRenderPass
+  void: 	vkCmdPipelineBarrier
+   227:	  	vkEndCommandBuffer                             [1]
+	info:	    Command Buffer Build Time ................ [114017 ns, 8770 FPS]
+  void: 	memcpy
+  void: 	vkcombuf_work
+   228:	  	vkQueueSubmit                                  [0x7ffc3f7fa158]
+   229:	  	vkAcquireNextImageKHR                          [0]
+	info:	    swap_image_index ......................... [0]
+  void: 	vkcombuf_pres
+   230:	  	vkQueueSubmit                                  [0x7ffc3f7f77e0]
+  void: 	vkcombuf_IMGUI
+   231:	  	vkQueueSubmit                                  [0x7ffc3f7f7a50]
+   232:	  	vkWaitForFences <100ms>                        [0xa7c5450000000023]
+	info:	    Work Queue Time .......................... [174101 ns, 5743 FPS]
+   233:	  	vkResetFences                                  [0xa7c5450000000023]
+   234:	  	vkQueuePresentKHR                              [0]
+	info:	    Full Loop Time ........................... [450156 ns, 2221 FPS]
+________________________________________________________________________________
+ STAGE:	LOOP
+	info:	    IMGUI Build Time ......................... [77922 ns, 12833 FPS]
+   235:	  	vkBeginCommandBuffer                           [0]
+  void: 	vkCmdBeginRenderPass
+  void: 	vkCmdEndRenderPass
+  void: 	vkCmdPipelineBarrier
+   236:	  	vkEndCommandBuffer                             [0]
+   237:	  	vkBeginCommandBuffer                           [1]
+  void: 	vkCmdBeginRenderPass
+  void: 	vkCmdEndRenderPass
+  void: 	vkCmdPipelineBarrier
+   238:	  	vkEndCommandBuffer                             [1]
+	info:	    Command Buffer Build Time ................ [105287 ns, 9497 FPS]
+  void: 	memcpy
+  void: 	vkcombuf_work
+   239:	  	vkQueueSubmit                                  [0x7ffc3f7fa0f0]
+   240:	  	vkAcquireNextImageKHR                          [1]
+	info:	    swap_image_index ......................... [1]
+  void: 	vkcombuf_pres
+   241:	  	vkQueueSubmit                                  [0x7ffc3f7f7918]
+  void: 	vkcombuf_IMGUI
+   242:	  	vkQueueSubmit                                  [0x7ffc3f7f7ab8]
+   243:	  	vkWaitForFences <100ms>                        [0xa7c5450000000023]
+	info:	    Work Queue Time .......................... [165392 ns, 6046 FPS]
+   244:	  	vkResetFences                                  [0xa7c5450000000023]
+   245:	  	vkQueuePresentKHR                              [1]
+	info:	    Full Loop Time ........................... [418666 ns, 2388 FPS]
+________________________________________________________________________________
+ STAGE:	LOOP
+	info:	    IMGUI Build Time ......................... [78691 ns, 12707 FPS]
+   246:	  	vkBeginCommandBuffer                           [0]
+  void: 	vkCmdBeginRenderPass
+  void: 	vkCmdEndRenderPass
+  void: 	vkCmdPipelineBarrier
+   247:	  	vkEndCommandBuffer                             [0]
+   248:	  	vkBeginCommandBuffer                           [1]
+  void: 	vkCmdBeginRenderPass
+  void: 	vkCmdEndRenderPass
+  void: 	vkCmdPipelineBarrier
+   249:	  	vkEndCommandBuffer                             [1]
+	info:	    Command Buffer Build Time ................ [94993 ns, 10527 FPS]
+  void: 	memcpy
+  void: 	vkcombuf_work
+   250:	  	vkQueueSubmit                                  [0x7ffc3f7fa158]
+   251:	  	vkAcquireNextImageKHR                          [0]
+	info:	    swap_image_index ......................... [0]
+  void: 	vkcombuf_pres
+   252:	  	vkQueueSubmit                                  [0x7ffc3f7f77e0]
+  void: 	vkcombuf_IMGUI
+   253:	  	vkQueueSubmit                                  [0x7ffc3f7f7a50]
+   254:	  	vkWaitForFences <100ms>                        [0xa7c5450000000023]
+	info:	    Work Queue Time .......................... [165226 ns, 6052 FPS]
+   255:	  	vkResetFences                                  [0xa7c5450000000023]
+   256:	  	vkQueuePresentKHR                              [0]
+	info:	    Full Loop Time ........................... [406469 ns, 2460 FPS]
+________________________________________________________________________________
+ STAGE:	LOOP
+	info:	    IMGUI Build Time ......................... [76165 ns, 13129 FPS]
+   257:	  	vkBeginCommandBuffer                           [0]
+  void: 	vkCmdBeginRenderPass
+  void: 	vkCmdEndRenderPass
+  void: 	vkCmdPipelineBarrier
+   258:	  	vkEndCommandBuffer                             [0]
+   259:	  	vkBeginCommandBuffer                           [1]
+  void: 	vkCmdBeginRenderPass
+  void: 	vkCmdEndRenderPass
+  void: 	vkCmdPipelineBarrier
+   260:	  	vkEndCommandBuffer                             [1]
+	info:	    Command Buffer Build Time ................ [94588 ns, 10572 FPS]
+  void: 	memcpy
+  void: 	vkcombuf_work
+   261:	  	vkQueueSubmit                                  [0x7ffc3f7fa0f0]
+   262:	  	vkAcquireNextImageKHR                          [1]
+	info:	    swap_image_index ......................... [1]
+  void: 	vkcombuf_pres
+   263:	  	vkQueueSubmit                                  [0x7ffc3f7f7918]
+  void: 	vkcombuf_IMGUI
+   264:	  	vkQueueSubmit                                  [0x7ffc3f7f7ab8]
+   265:	  	vkWaitForFences <100ms>                        [0xa7c5450000000023]
+	info:	    Work Queue Time .......................... [165054 ns, 6058 FPS]
+   266:	  	vkResetFences                                  [0xa7c5450000000023]
+   267:	  	vkQueuePresentKHR                              [1]
+	info:	    Full Loop Time ........................... [405145 ns, 2468 FPS]
+________________________________________________________________________________
+ STAGE:	LOOP
+	info:	    IMGUI Build Time ......................... [81733 ns, 12234 FPS]
+   268:	  	vkBeginCommandBuffer                           [0]
+  void: 	vkCmdBeginRenderPass
+  void: 	vkCmdEndRenderPass
+  void: 	vkCmdPipelineBarrier
+   269:	  	vkEndCommandBuffer                             [0]
+   270:	  	vkBeginCommandBuffer                           [1]
+  void: 	vkCmdBeginRenderPass
+  void: 	vkCmdEndRenderPass
+  void: 	vkCmdPipelineBarrier
+   271:	  	vkEndCommandBuffer                             [1]
+	info:	    Command Buffer Build Time ................ [102233 ns, 9781 FPS]
+  void: 	memcpy
+  void: 	vkcombuf_work
+   272:	  	vkQueueSubmit                                  [0x7ffc3f7fa158]
+   273:	  	vkAcquireNextImageKHR                          [0]
+	info:	    swap_image_index ......................... [0]
+  void: 	vkcombuf_pres
+   274:	  	vkQueueSubmit                                  [0x7ffc3f7f77e0]
+  void: 	vkcombuf_IMGUI
+   275:	  	vkQueueSubmit                                  [0x7ffc3f7f7a50]
+   276:	  	vkWaitForFences <100ms>                        [0xa7c5450000000023]
+	info:	    Work Queue Time .......................... [166357 ns, 6011 FPS]
+   277:	  	vkResetFences                                  [0xa7c5450000000023]
+   278:	  	vkQueuePresentKHR                              [0]
+________________________________________________________________________________
+ STAGE:	LOOP
+	info:	    Full Loop Time ........................... [351984 ns, 2841 FPS]
+	info:	    Full Loop Time ........................... [320671 ns, 3118 FPS]
+	info:	    Full Loop Time ........................... [338194 ns, 2956 FPS]
+	info:	    Full Loop Time ........................... [313278 ns, 3192 FPS]
+	info:	    Full Loop Time ........................... [317564 ns, 3148 FPS]
+	info:	    Full Loop Time ........................... [311777 ns, 3207 FPS]
+	info:	    Full Loop Time ........................... [318681 ns, 3137 FPS]
+	info:	    Full Loop Time ........................... [313538 ns, 3189 FPS]
+	info:	    Full Loop Time ........................... [317348 ns, 3151 FPS]
+	info:	    Full Loop Time ........................... [350723 ns, 2851 FPS]
+	info:	    Full Loop Time ........................... [358013 ns, 2793 FPS]
+	info:	    Full Loop Time ........................... [361429 ns, 2766 FPS]
+	info:	    Full Loop Time ........................... [430285 ns, 2324 FPS]
+	info:	    Full Loop Time ........................... [366773 ns, 2726 FPS]
+	info:	    Full Loop Time ........................... [309961 ns, 3226 FPS]
+	info:	    Full Loop Time ........................... [338341 ns, 2955 FPS]
+	Load PCD256 Data Count: -1 / 175269
+
+LOAD:
+  PatternConfigData_256:
+    3004447363, 2960563374, 1275055524, 831033836, 
+    3349146621, 2101501589, 4106684748, 3334143362, 
+    2904913003, 2899623133, 1336635844, 2629053572, 
+    3192411957, 2185502072, 3417540059, 3218474038, 
+    2054220142, 2978040251, 1991105235, 2700817717, 
+    4166133147, 2086194139, 1593715627, 908289265, 
+    3325806355, 2698046642, 94198304, 789645310, 
+    3969320414, 1745386401, 2951966358, 3610359331, 
+    3084887154, 1840753572, 118413839, 574118257, 
+    811615525, 1597186704, 3096401663, 2652615516, 
+    3226828519, 2934483458, 3589481104, 2471895979, 
+    2886441825, 1241282554, 1964191771, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+
+SAVE:
+  PatternConfigData_256:
+    3004480195, 2960563374, 1275055524, 831033836, 
+    3349146621, 2101501589, 4106684748, 3334143362, 
+    2904913003, 2899623165, 1336635846, 2639539332, 
+    3192414005, 2185502072, 3417540059, 3218474038, 
+    2054220142, 2978040251, 1991105235, 2700817717, 
+    4166133147, 2086194139, 1593715631, 908289265, 
+    3325806355, 2731601074, 94198304, 252774398, 
+    3969320414, 1745377697, 2951966358, 3610359331, 
+    3084887154, 1840753572, 118413839, 574118257, 
+    811615525, 1597186704, 3096401663, 2669392732, 
+    3226828519, 2934483458, 3589481104, 2606113195, 
+    2886441825, 1241282554, 1964191771, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+	info:	    Full Loop Time ........................... [325458 ns, 3072 FPS]
+	Load PCD256 Data Count: -2 / 175270
+
+LOAD:
+  PatternConfigData_256:
+    3004447363, 2960563374, 1275055524, 831033836, 
+    3349146621, 2101501589, 4106684748, 3334143362, 
+    2904913003, 2899623133, 1336635844, 2629053572, 
+    3192411957, 2185502072, 3417540059, 3218474038, 
+    2054220142, 2978040251, 1991105235, 2700817717, 
+    4166133147, 2086194139, 1593715627, 908289265, 
+    3325806355, 2698046642, 94198304, 789645310, 
+    3969320414, 1745386401, 2951966358, 3610359331, 
+    3084887154, 1840753572, 118413839, 574118257, 
+    811615525, 1597186704, 3096401663, 2652615516, 
+    3226828519, 2934483458, 3589481104, 2471895979, 
+    2886441825, 1241282554, 1964191771, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+
+SAVE:
+  PatternConfigData_256:
+    3004447363, 2960563390, 1275055524, 831035884, 
+    3349146621, 2101501589, 4106684748, 3334143362, 
+    3173348459, 2899623133, 1336570309, 2629053572, 
+    3192411957, 2185502072, 3417540059, 3218474038, 
+    2054220142, 2978040251, 1991105235, 2700817717, 
+    4166133147, 2086194139, 1593453483, 908289265, 
+    3325806355, 2698046643, 93936160, 789645310, 
+    3969320414, 1745386401, 2952523414, 3610359331, 
+    3084887154, 1840769956, 51304975, 574118257, 
+    807421221, 1597186576, 3096401663, 2652615516, 
+    3226828519, 2934483458, 3589481104, 2471928747, 
+    2886441825, 1241274362, 1964191771, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+	Load PCD256 Data Count: -3 / 175271
+
+LOAD:
+  PatternConfigData_256:
+    3004447363, 2960563374, 1275055524, 831033836, 
+    3349146621, 2101501589, 4106684748, 3334143362, 
+    2904913003, 2899623133, 1336635844, 2629053572, 
+    3192411957, 2185502072, 3417540059, 3218474038, 
+    2054220142, 2978040251, 1991105235, 2700817717, 
+    4166133147, 2086194139, 1593715627, 908289265, 
+    3325806355, 2698046642, 94198304, 789645310, 
+    3969320414, 1745386401, 2951966358, 3610359331, 
+    3084887154, 1840753572, 118413839, 574118257, 
+    811615525, 1597186704, 3096401663, 2652615516, 
+    3226828519, 2934483458, 3589481104, 2471895979, 
+    2886441825, 1241282554, 1964191771, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+
+SAVE:
+  PatternConfigData_256:
+    4078185091, 3094781102, 1275055524, 831033836, 
+    1201662973, 2101499541, 4106684748, 3334143362, 
+    2904913003, 2899623133, 1336635844, 2629053572, 
+    4266153781, 2185502072, 2343798235, 3218474038, 
+    2054220142, 2978040235, 1957551827, 2767926581, 
+    4166133147, 2086194139, 1593715627, 908289265, 
+    3325806355, 2698030258, 94198304, 789678078, 
+    3969320414, 1745382305, 2951966358, 3610359331, 
+    3084889202, 1840754596, 118413839, 574118257, 
+    811615525, 1597186704, 3096401663, 2652615508, 
+    3226828519, 2934483458, 1441997456, 2539004715, 
+    2886441825, 1240299514, 1964191771, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+	info:	    Full Loop Time ........................... [311205 ns, 3213 FPS]
+	info:	    Full Loop Time ........................... [337690 ns, 2961 FPS]
+	info:	    Full Loop Time ........................... [308741 ns, 3238 FPS]
+	info:	    Full Loop Time ........................... [316453 ns, 3160 FPS]
+	info:	    Full Loop Time ........................... [312578 ns, 3199 FPS]
+	info:	    Full Loop Time ........................... [397836 ns, 2513 FPS]
+	info:	    Full Loop Time ........................... [314434 ns, 3180 FPS]
+	info:	    Full Loop Time ........................... [332688 ns, 3005 FPS]
+	info:	    Full Loop Time ........................... [390206 ns, 2562 FPS]
+	info:	    Full Loop Time ........................... [310363 ns, 3222 FPS]
+	info:	    Full Loop Time ........................... [312913 ns, 3195 FPS]
+Scale randomized
+Zoom reset to zero
+
+SAVE:
+  PatternConfigData_256:
+    1145803107, 680911319, 1314022437, 1246681823, 
+    892521726, 512408598, 695305639, 1898982679, 
+    260069244, 1873042486, 1163107513, 921703385, 
+    1263109164, 1778592868, 972459561, 2146689040, 
+    703541967, 767274592, 1316611391, 761812871, 
+    514525707, 1109391324, 829428942, 1289923064, 
+    992693697, 1825478658, 771420862, 652371845, 
+    2003578059, 1080664140, 1584889150, 1001897518, 
+    1761575460, 751427940, 101095693, 506613538, 
+    1263836538, 796401332, 258112570, 1523905782, 
+    521960170, 1421220083, 298125520, 1785069335, 
+    1052329303, 1270585081, 1784274727, 1755871270, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+	info:	    Full Loop Time ........................... [1668602 ns, 599 FPS]
+Scale randomized
+Zoom reset to zero
+
+SAVE:
+  PatternConfigData_256:
+    953402471, 370200494, 404901733, 2062793795, 
+    1199629436, 1694824797, 908003844, 877624446, 
+    318762011, 1560375689, 733718857, 1399426152, 
+    997781191, 1735616375, 1013517964, 1749209131, 
+    1836712069, 1520131502, 865562021, 485629753, 
+    1778244072, 241984156, 1007589924, 1051980507, 
+    540109676, 645175611, 2104309811, 1810694757, 
+    281966690, 1712697433, 1701070782, 1235369161, 
+    2082897927, 2105972515, 1150679308, 1135043715, 
+    1653313665, 2058683152, 2012668162, 1972075676, 
+    1471575193, 598903371, 1224018180, 321872737, 
+    187036099, 90052496, 2071081868, 2023748168, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 1125842944, 0, 
+
+	info:	    Full Loop Time ........................... [374771 ns, 2668 FPS]
+Scale randomized
+Zoom reset to zero
+
+SAVE:
+  PatternConfigData_256:
+    789160242, 361894273, 1240944423, 1031144398, 
+    1369484197, 145441283, 1571254074, 2014659808, 
+    102267446, 1234465183, 149142851, 1814964879, 
+    788052317, 1384512012, 1750379159, 746541185, 
+    387707673, 737939226, 252371202, 298907177, 
+    603123740, 76963230, 1770482371, 1202027112, 
+    1300981411, 2092355108, 1389063211, 1391033907, 
+    2015953328, 1265327731, 853734258, 657629922, 
+    1627222004, 2094678682, 1688774320, 849222554, 
+    92636317, 1112544746, 716398714, 194903763, 
+    199526281, 865541565, 2009868642, 987578599, 
+    102569930, 1612764153, 1734119784, 490277603, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 1123418112, 0, 
+
+Scale randomized
+Zoom reset to zero
+
+SAVE:
+  PatternConfigData_256:
+    1986490986, 789184780, 806343472, 2063454216, 
+    412183503, 2008370584, 1216951979, 357054963, 
+    1249950147, 460502239, 225524644, 367794230, 
+    1314236497, 883154566, 1995016235, 1261431531, 
+    424445239, 696755141, 1354067848, 1536989985, 
+    1413153855, 1548971611, 1736516267, 131211773, 
+    1411356606, 576611218, 233781703, 876637111, 
+    163247354, 724059306, 1079856843, 2254692, 
+    1513244086, 1886200316, 2065708908, 1925427590, 
+    1747087252, 1135177240, 134998905, 849553752, 
+    1595679479, 360523549, 1217347982, 762432328, 
+    1243678116, 1064880569, 2023863860, 1668123355, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 1122282155, 0, 
+
+Scale randomized
+Zoom reset to zero
+
+SAVE:
+  PatternConfigData_256:
+    1230448060, 1057629692, 1027305918, 631936024, 
+    646662311, 1158517691, 2043292630, 1223273529, 
+    1392299394, 772446093, 1386520883, 2116358700, 
+    1852302937, 1388775575, 1482119138, 1591019605, 
+    1307000836, 1260063080, 1190623209, 294694428, 
+    1395061986, 2040176961, 1890373907, 1755585535, 
+    1110041296, 505322587, 851780003, 27438217, 
+    381702799, 372419710, 1789073928, 1612150860, 
+    1430049403, 668896198, 96603236, 2076711714, 
+    1827413889, 2139895866, 1152501596, 1072229635, 
+    764858311, 391538831, 1041104687, 469677600, 
+    1780314407, 375740177, 2060697205, 939831595, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 1120403456, 0, 
+
+Scale randomized
+Zoom reset to zero
+
+SAVE:
+  PatternConfigData_256:
+    1103836767, 1234526023, 883381596, 996530080, 
+    977416282, 491483483, 2106571376, 1482738869, 
+    1343263487, 2134009594, 1864441669, 1715683197, 
+    1775599874, 1329108881, 998248952, 297012424, 
+    1425712117, 927477019, 2124426313, 1418124335, 
+    2079978615, 1049172300, 35498998, 324033798, 
+    2090276987, 505176599, 2104348205, 318533516, 
+    418390156, 896696152, 1954336774, 1522226923, 
+    2131222175, 690234722, 371273356, 961154809, 
+    1181718206, 330361084, 296410031, 377498045, 
+    316887030, 13368052, 2093181242, 2092486904, 
+    1342476933, 943946547, 242015680, 620705402, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 1124554070, 0, 
+
+Scale randomized
+Zoom reset to zero
+
+SAVE:
+  PatternConfigData_256:
+    218958345, 2038829737, 1803918533, 1268130645, 
+    2074328735, 2127952331, 1210923984, 432021686, 
+    2084816889, 1529457501, 850411843, 834029393, 
+    1336310627, 225155118, 817767921, 2026545350, 
+    596428474, 1778922730, 1060779908, 926789559, 
+    2075332761, 1438277953, 1243676589, 2088700813, 
+    1383975547, 1188679846, 1283694098, 180438446, 
+    1430695526, 1904399500, 2051862012, 1649653872, 
+    1795745589, 1708296897, 770300869, 1722590677, 
+    1688765581, 1981224854, 7128715, 1626098822, 
+    1363198707, 857540558, 312644567, 552025686, 
+    1082695677, 1130412488, 431087388, 1679124151, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 1111665323, 0, 
+
+	info:	    Full Loop Time ........................... [432424 ns, 2312 FPS]
+Scale randomized
+Zoom reset to zero
+
+SAVE:
+  PatternConfigData_256:
+    1491867296, 458430062, 689700684, 782661601, 
+    1702106652, 630917850, 19153501, 743302850, 
+    1914611948, 199591947, 26514728, 1671527801, 
+    103970312, 1676168600, 1319789742, 1812267209, 
+    298985822, 894896771, 1353549142, 132727028, 
+    902025487, 832164316, 1495925735, 1759566045, 
+    1144808884, 2047951421, 694778074, 127737724, 
+    331555162, 226418578, 889589295, 1823422458, 
+    684848640, 1579289980, 458600412, 239471644, 
+    62724182, 477753913, 982774494, 1977336130, 
+    677345860, 1009289223, 1501380283, 781316172, 
+    537974175, 673686378, 446099734, 836959997, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 1107820544, 0, 
+
+Scale randomized
+Zoom reset to zero
+
+SAVE:
+  PatternConfigData_256:
+    1799648876, 969687025, 323124988, 484329545, 
+    318129112, 2082691034, 1629138429, 218596886, 
+    629985460, 1756876153, 550152048, 856404038, 
+    498981801, 226090858, 1541252679, 2078271781, 
+    684691270, 1780724323, 2140995963, 1162445183, 
+    616015170, 1970848445, 1839791044, 1625304393, 
+    1324745081, 473623568, 15794920, 1998431459, 
+    919723302, 852754918, 1419530960, 571888531, 
+    1822441943, 1742655949, 1056218076, 2140571056, 
+    1677863335, 537872857, 211684294, 160365147, 
+    147265362, 761836342, 1016769186, 646247163, 
+    987927200, 410538217, 577035296, 1672618471, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 1116165462, 0, 
+
+Scale randomized
+Zoom reset to zero
+
+SAVE:
+  PatternConfigData_256:
+    570547611, 687580006, 659794062, 393912409, 
+    379887402, 137614807, 1718657490, 853510971, 
+    153409728, 1569605301, 1773234273, 1006164646, 
+    841652613, 197639156, 681122941, 436824914, 
+    1253857232, 674210349, 2114688249, 1791730089, 
+    885894643, 127569749, 1938995452, 1647730985, 
+    1144338935, 437758967, 488174538, 1554877152, 
+    1014794264, 13309361, 1598656044, 1585341875, 
+    700889367, 110966459, 1979254284, 1080776770, 
+    248581266, 1550428126, 1934287741, 401990994, 
+    972549779, 1560038366, 1408155640, 1814202393, 
+    1757677523, 2089278582, 103543659, 864051107, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 1126978901, 0, 
+
+Scale randomized
+Zoom reset to zero
+
+SAVE:
+  PatternConfigData_256:
+    70748261, 508297549, 1501899927, 198318010, 
+    299809353, 1002147264, 1342656945, 737568320, 
+    1490321802, 750050449, 1752362584, 1503631163, 
+    201222845, 1190220812, 57036883, 312189304, 
+    1021991448, 1137813653, 560770571, 424935927, 
+    924617746, 962761565, 1397485706, 337172464, 
+    223433558, 1064204451, 2094849987, 165228492, 
+    1167748111, 811417447, 781233775, 1238496372, 
+    1319714996, 135650054, 1436814382, 1619524349, 
+    1137797319, 631987679, 209609021, 480635473, 
+    1382038128, 1961971606, 1984266637, 1583260973, 
+    1004708770, 2041303520, 1895450278, 2026700218, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 1122850133, 0, 
+
+Scale randomized
+Zoom reset to zero
+
+SAVE:
+  PatternConfigData_256:
+    308737201, 304152497, 1956251271, 1271498766, 
+    1701638204, 145940087, 1494932324, 618359007, 
+    93306427, 1660160816, 1786107118, 904723874, 
+    293910944, 877119842, 76955222, 429560998, 
+    166450576, 1696479571, 1567358317, 798438255, 
+    1906088592, 2047993791, 32992735, 1720576550, 
+    1884776780, 1616253709, 577801672, 1778596652, 
+    1364220339, 457018243, 662746529, 1672957540, 
+    761170740, 471514152, 796972658, 315325296, 
+    617454239, 144421335, 933684304, 710760666, 
+    1804582151, 572307774, 1615484540, 2098493095, 
+    1449427617, 1692439762, 380570446, 1615878193, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 1115247957, 0, 
+
+	info:	    Full Loop Time ........................... [363643 ns, 2749 FPS]
+Scale randomized
+Zoom reset to zero
+
+SAVE:
+  PatternConfigData_256:
+    1947928763, 266832801, 1000040630, 1848438906, 
+    299825536, 573133532, 1585732038, 1916079245, 
+    1150935205, 1216845042, 1132815936, 1607953448, 
+    1879591571, 658289828, 221640540, 203622075, 
+    1455262487, 536965837, 821076315, 1599683822, 
+    1470650141, 1531836981, 1256782325, 2042957915, 
+    999837874, 1207791773, 1344901884, 544793988, 
+    1588362219, 813296430, 1786229674, 1388807334, 
+    1080129231, 638786656, 1089762593, 1379954767, 
+    1211920188, 528010983, 1148550365, 215371745, 
+    1744856026, 133882653, 1823325193, 1476963949, 
+    792172482, 2044965734, 1680586025, 99951321, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 1111228416, 0, 
+
+Scale randomized
+Zoom reset to zero
+
+SAVE:
+  PatternConfigData_256:
+    354178692, 1699635143, 1905098064, 1886015673, 
+    808933820, 1800572331, 738369899, 2016725593, 
+    997990568, 1283163888, 1457604164, 1811286998, 
+    921909914, 698927851, 743932581, 1560696570, 
+    1788690444, 2123887348, 625133110, 169217779, 
+    1124954065, 840504856, 1914073805, 1258836719, 
+    516346401, 1243554107, 2051009201, 413828487, 
+    776656484, 3476874, 848276410, 1130835176, 
+    1703112017, 605890826, 869367201, 364562189, 
+    258979510, 1607737101, 233804135, 1256970078, 
+    743417341, 1691408299, 920773428, 1665327255, 
+    242852502, 1664706009, 1078540177, 2031542946, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 1101179562, 0, 
+
+	info:	    Full Loop Time ........................... [376021 ns, 2659 FPS]
+	info:	    Full Loop Time ........................... [352971 ns, 2833 FPS]
+	info:	    Full Loop Time ........................... [312842 ns, 3196 FPS]
+	info:	    Full Loop Time ........................... [358420 ns, 2790 FPS]
+	Load PCD256 Data Count: 929 / 10845
+
+LOAD:
+  PatternConfigData_256:
+    131072, 4185407677, 3815723136, 4293761098, 
+    2150367616, 219976706, 67108980, 1210340171, 
+    2747242174, 1602893082, 1775624865, 1048576, 
+    1026532565, 804452960, 78417915, 2541243716, 
+    873129225, 1853961731, 1164563092, 1360146378, 
+    1247499634, 2138949872, 1718549704, 1075217408, 
+    1512870023, 2138304, 1140850789, 4112, 
+    1633027541, 16640, 3801853395, 1210891784, 
+    1403268264, 234883137, 0, 32, 
+    2727152519, 3919412364, 4052909324, 640618809, 
+    3675906142, 3378574001, 3625042587, 4014924369, 
+    4220477129, 0, 8216, 3791477543, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 1, 
+    0, 1048599435, 1136816174, 0, 
+
+	Load PCD256 Data Count: 10547 / 10845
+
+LOAD:
+  PatternConfigData_256:
+    1143266422, 3535282289, 442368, 2800388429, 
+    175865506, 1387618034, 949154852, 1838889939, 
+    3838743594, 285213184, 1814001060, 2149428156, 
+    699072126, 4289396587, 1647555141, 71436354, 
+    897672181, 1644691712, 589954, 1895829384, 
+    4239301627, 953401450, 2911098735, 355516954, 
+    8652962, 366275865, 2145503522, 1528056910, 
+    2708922853, 1102577301, 1363660958, 163888169, 
+    3296611557, 1391692957, 2266118953, 1311944338, 
+    554718572, 2852515748, 1745668813, 3735483125, 
+    3812208658, 1680490087, 41036, 3489458360, 
+    65708, 329683236, 1995221408, 1667967018, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 1, 
+    0, 1064305090, 1124541342, 0, 
+
+	info:	    Full Loop Time ........................... [313635 ns, 3188 FPS]
+	Load PCD256 Data Count: 6438 / 10845
+
+LOAD:
+  PatternConfigData_256:
+    1041424881, 2915306030, 4281851414, 2128057249, 
+    3099206965, 1069021230, 4291195820, 2447929634, 
+    3532429106, 2816811030, 1494957235, 972797721, 
+    2507037322, 2749694367, 1549449398, 1040875378, 
+    2986055938, 306112628, 2012331252, 784639089, 
+    679116796, 3056137830, 707180976, 1710756607, 
+    1657525202, 485832645, 677992494, 1679526477, 
+    2083165585, 2751250536, 3969375758, 3358134853, 
+    2020462004, 2273827950, 2244186386, 1752948427, 
+    467803231, 2624252271, 3293872104, 566920281, 
+    1912030293, 941478175, 2736535880, 1804286190, 
+    3117475356, 230085521, 2488067425, 1839234813, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 1, 
+    0, 1058827775, 1100829048, 0, 
+
+	Load PCD256 Data Count: 3017 / 10845
+
+LOAD:
+  PatternConfigData_256:
+    3539952354, 132966070, 2298046995, 1032346454, 
+    1937570249, 2545908831, 1635330131, 1550971615, 
+    2768839047, 4285141919, 518290382, 88571122, 
+    2516742075, 3437479982, 3410890068, 65215615, 
+    2716945056, 164804249, 4015981860, 2088648380, 
+    2918155055, 1933560801, 1110965622, 2391755972, 
+    2411773286, 46722137, 1530157313, 167505377, 
+    898825964, 3709250440, 2931454992, 1154347829, 
+    3947277864, 1613453854, 3082771367, 926584668, 
+    1314947320, 4290153954, 1818545456, 668341689, 
+    1565603844, 186251423, 518965912, 4213554142, 
+    2312140779, 2308471751, 3690795523, 24087840, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1072763090, 1130336611, 0, 
+
+	info:	    Full Loop Time ........................... [384328 ns, 2601 FPS]
+	Load PCD256 Data Count: 6085 / 10845
+
+LOAD:
+  PatternConfigData_256:
+    1567781355, 1392783988, 318164807, 234078583, 
+    1895467038, 1908723825, 1950649145, 652701012, 
+    473974707, 2844275844, 256983787, 1893563850, 
+    1017267580, 2769325162, 1837032888, 838168875, 
+    4208613753, 1726875701, 476802819, 1313257564, 
+    3724482372, 629561630, 4293739165, 757287618, 
+    981631408, 1146474288, 1636851406, 1679024753, 
+    1363336353, 585778979, 3347751758, 800403337, 
+    1444936277, 1582396054, 896070977, 1724321939, 
+    1078356435, 829260978, 195979239, 1481011596, 
+    1408874930, 452965075, 1317515086, 64609567, 
+    4279304000, 2082936089, 2035488839, 2046491050, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1060571153, 1120611703, 0, 
+
+	info:	    Full Loop Time ........................... [317016 ns, 3154 FPS]
+	Load PCD256 Data Count: 2813 / 10845
+
+LOAD:
+  PatternConfigData_256:
+    3554632352, 3488414742, 2394546707, 1066044358, 
+    1937537921, 3720051740, 1701849174, 1572074202, 
+    2752062407, 2608665405, 484965166, 2231467250, 
+    2952933274, 3168960558, 3377352020, 1130584146, 
+    2748629664, 156414617, 3957287464, 2103353068, 
+    2934735661, 1662766029, 1252453580, 2654880976, 
+    2160366950, 646741087, 1496602880, 1241247201, 
+    565411560, 3709254298, 2897932306, 3838702101, 
+    3947275800, 1613453854, 2813811331, 926654300, 
+    3471876264, 3681160675, 207931696, 668931465, 
+    1565592069, 458876943, 486459976, 4213549788, 
+    2169535400, 159932381, 3725957639, 90613112, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 1, 
+    0, 1072763090, 1132215598, 0, 
+
+	Load PCD256 Data Count: 6361 / 10845
+
+LOAD:
+  PatternConfigData_256:
+    1044916442, 1738083706, 57146492, 1992786196, 
+    2837055345, 1643609131, 2008983462, 2617200019, 
+    303865712, 927289166, 1494444658, 1895787176, 
+    2678840050, 2885616682, 1213249718, 478216058, 
+    2915686656, 842820916, 1977943668, 700563537, 
+    444241852, 907170630, 785300464, 637015026, 
+    585358288, 2648774597, 1785763852, 1343868009, 
+    1840077112, 3884250994, 4237466926, 3664450389, 
+    1080553470, 2749421542, 2411706115, 3430143595, 
+    455390295, 3189316719, 1716813806, 1640923244, 
+    1436767826, 618398499, 3810005997, 178284719, 
+    4181763819, 2621232017, 2500193699, 1804724911, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 1, 
+    0, 1058827775, 1118803263, 0, 
+
+	info:	    Full Loop Time ........................... [342846 ns, 2916 FPS]
+	info:	    Full Loop Time ........................... [338810 ns, 2951 FPS]
+	info:	    Full Loop Time ........................... [310084 ns, 3224 FPS]
+	info:	    Full Loop Time ........................... [317510 ns, 3149 FPS]
+	info:	    Full Loop Time ........................... [316360 ns, 3160 FPS]
+	Load PCD256 Data Count: -18 / 175286
+
+LOAD:
+  PatternConfigData_256:
+    3004447363, 2960563374, 1275055524, 831033836, 
+    3349146621, 2101501589, 4106684748, 3334143362, 
+    2904913003, 2899623133, 1336635844, 2629053572, 
+    3192411957, 2185502072, 3417540059, 3218474038, 
+    2054220142, 2978040251, 1991105235, 2700817717, 
+    4166133147, 2086194139, 1593715627, 908289265, 
+    3325806355, 2698046642, 94198304, 789645310, 
+    3969320414, 1745386401, 2951966358, 3610359331, 
+    3084887154, 1840753572, 118413839, 574118257, 
+    811615525, 1597186704, 3096401663, 2652615516, 
+    3226828519, 2934483458, 3589481104, 2471895979, 
+    2886441825, 1241282554, 1964191771, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+
+SAVE:
+  PatternConfigData_256:
+    3004447363, 2960563374, 1275055524, 831033836, 
+    3349015293, 2101501589, 4106684748, 3334143362, 
+    2904913003, 2895428829, 1336635844, 2629053572, 
+    3192395573, 2185502072, 3283322331, 3218474038, 
+    2054482286, 2978040251, 1991105235, 2700817719, 
+    4166133147, 2086194139, 1593715627, 908272881, 
+    3325806355, 2698046642, 94198304, 798033918, 
+    3969320414, 1745386401, 2951966358, 3610359331, 
+    3084878962, 1840753572, 118413839, 574118257, 
+    811615525, 1597186704, 3096401663, 2652615516, 
+    3226828519, 2934483458, 3589481104, 2471895979, 
+    2886441825, 1241282554, 1964191771, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+	info:	    Full Loop Time ........................... [313607 ns, 3188 FPS]
+	Load PCD256 Data Count: -19 / 175287
+
+LOAD:
+  PatternConfigData_256:
+    3004447363, 2960563374, 1275055524, 831033836, 
+    3349146621, 2101501589, 4106684748, 3334143362, 
+    2904913003, 2899623133, 1336635844, 2629053572, 
+    3192411957, 2185502072, 3417540059, 3218474038, 
+    2054220142, 2978040251, 1991105235, 2700817717, 
+    4166133147, 2086194139, 1593715627, 908289265, 
+    3325806355, 2698046642, 94198304, 789645310, 
+    3969320414, 1745386401, 2951966358, 3610359331, 
+    3084887154, 1840753572, 118413839, 574118257, 
+    811615525, 1597186704, 3096401663, 2652615516, 
+    3226828519, 2934483458, 3589481104, 2471895979, 
+    2886441825, 1241282554, 1964191771, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+
+SAVE:
+  PatternConfigData_256:
+    3004447363, 2960563374, 1275055524, 831033836, 
+    3353340925, 2101501589, 4106684748, 3334143362, 
+    2904913003, 2900147421, 1336635844, 2629053572, 
+    3192411957, 2185502072, 3417540059, 3218474038, 
+    2054220142, 2978040251, 1991105235, 2700817717, 
+    4031980955, 2086194139, 1593715627, 908289265, 
+    3325808411, 2698046642, 94198304, 789645182, 
+    3969320414, 1745386401, 2951966614, 3610359331, 
+    3084887154, 1840753572, 118413839, 574118257, 
+    811615525, 1597186704, 3096401663, 2652615516, 
+    3226828519, 2934483458, 3589481104, 2471895979, 
+    2886327105, 1241282554, 1964208187, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+	Load PCD256 Data Count: -20 / 175288
+
+LOAD:
+  PatternConfigData_256:
+    3004447363, 2960563374, 1275055524, 831033836, 
+    3349146621, 2101501589, 4106684748, 3334143362, 
+    2904913003, 2899623133, 1336635844, 2629053572, 
+    3192411957, 2185502072, 3417540059, 3218474038, 
+    2054220142, 2978040251, 1991105235, 2700817717, 
+    4166133147, 2086194139, 1593715627, 908289265, 
+    3325806355, 2698046642, 94198304, 789645310, 
+    3969320414, 1745386401, 2951966358, 3610359331, 
+    3084887154, 1840753572, 118413839, 574118257, 
+    811615525, 1597186704, 3096401663, 2652615516, 
+    3226828519, 2934483458, 3589481104, 2471895979, 
+    2886441825, 1241282554, 1964191771, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+
+SAVE:
+  PatternConfigData_256:
+    3004447363, 2423692462, 1275055524, 831033836, 
+    3349146621, 2101501589, 4106684748, 3334143362, 
+    2904913003, 2899623133, 1336635844, 2629053572, 
+    3192411957, 2185502072, 3417540059, 3218473014, 
+    2054220142, 2978040251, 1991105107, 2700819765, 
+    4166133147, 2086194139, 1593715627, 874734833, 
+    3325806355, 2689658034, 94198304, 2870020030, 
+    3969320414, 1745386401, 2951966358, 3610359331, 
+    3084887154, 1840753572, 118413839, 574118257, 
+    811615525, 1597186704, 3096401663, 2652631900, 
+    3226861287, 2867374594, 3589481104, 2471895979, 
+    2886441825, 1241020410, 1964191770, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+	Load PCD256 Data Count: -21 / 175289
+
+LOAD:
+  PatternConfigData_256:
+    3004447363, 2960563374, 1275055524, 831033836, 
+    3349146621, 2101501589, 4106684748, 3334143362, 
+    2904913003, 2899623133, 1336635844, 2629053572, 
+    3192411957, 2185502072, 3417540059, 3218474038, 
+    2054220142, 2978040251, 1991105235, 2700817717, 
+    4166133147, 2086194139, 1593715627, 908289265, 
+    3325806355, 2698046642, 94198304, 789645310, 
+    3969320414, 1745386401, 2951966358, 3610359331, 
+    3084887154, 1840753572, 118413839, 574118257, 
+    811615525, 1597186704, 3096401663, 2652615516, 
+    3226828519, 2934483458, 3589481104, 2471895979, 
+    2886441825, 1241282554, 1964191771, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+
+SAVE:
+  PatternConfigData_256:
+    3004447363, 2994117806, 1275055524, 833130988, 
+    3349146621, 2101501589, 4106684748, 3334143362, 
+    2904913003, 2899623133, 1336635845, 2629053572, 
+    3192411957, 2185502072, 3417540059, 3218474038, 
+    2054220142, 2978040251, 1991105235, 2698655029, 
+    4166133147, 2086194139, 1593715627, 908289265, 
+    3325806355, 2698038454, 94198304, 655427582, 
+    3969058270, 1745386401, 2951966358, 3610752547, 
+    3084887410, 1840753572, 118413837, 574118193, 
+    811615527, 1530077840, 3096401663, 2652615516, 
+    3226828519, 2934483458, 3589481104, 2471895979, 
+    2886441825, 1241282554, 1964191771, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+	info:	    Full Loop Time ........................... [320452 ns, 3120 FPS]
+	Load PCD256 Data Count: -22 / 175290
+
+LOAD:
+  PatternConfigData_256:
+    3004447363, 2960563374, 1275055524, 831033836, 
+    3349146621, 2101501589, 4106684748, 3334143362, 
+    2904913003, 2899623133, 1336635844, 2629053572, 
+    3192411957, 2185502072, 3417540059, 3218474038, 
+    2054220142, 2978040251, 1991105235, 2700817717, 
+    4166133147, 2086194139, 1593715627, 908289265, 
+    3325806355, 2698046642, 94198304, 789645310, 
+    3969320414, 1745386401, 2951966358, 3610359331, 
+    3084887154, 1840753572, 118413839, 574118257, 
+    811615525, 1597186704, 3096401663, 2652615516, 
+    3226828519, 2934483458, 3589481104, 2471895979, 
+    2886441825, 1241282554, 1964191771, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+
+SAVE:
+  PatternConfigData_256:
+    3012835971, 2960563390, 1274006948, 831033836, 
+    3349146621, 2101501845, 4106684877, 3334143362, 
+    2904911979, 2899623133, 1336635876, 2629053572, 
+    3192411957, 2185535352, 3417540059, 3218474038, 
+    2054220142, 2978040251, 1991105235, 2700817717, 
+    4166133147, 2086194139, 1593715627, 908289264, 
+    3325806355, 2698046642, 93936160, 789645310, 
+    3969320414, 1745386401, 3220401814, 3610359331, 
+    3084887154, 1840753572, 118413839, 574118257, 
+    811615525, 1597186704, 3088013055, 2652615516, 
+    3226828519, 2934483458, 3589481104, 2471895979, 
+    2886441825, 1241282554, 1964191771, 96305066, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+	Load PCD256 Data Count: -23 / 175291
+
+LOAD:
+  PatternConfigData_256:
+    3004447363, 2960563374, 1275055524, 831033836, 
+    3349146621, 2101501589, 4106684748, 3334143362, 
+    2904913003, 2899623133, 1336635844, 2629053572, 
+    3192411957, 2185502072, 3417540059, 3218474038, 
+    2054220142, 2978040251, 1991105235, 2700817717, 
+    4166133147, 2086194139, 1593715627, 908289265, 
+    3325806355, 2698046642, 94198304, 789645310, 
+    3969320414, 1745386401, 2951966358, 3610359331, 
+    3084887154, 1840753572, 118413839, 574118257, 
+    811615525, 1597186704, 3096401663, 2652615516, 
+    3226828519, 2934483458, 3589481104, 2471895979, 
+    2886441825, 1241282554, 1964191771, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+
+SAVE:
+  PatternConfigData_256:
+    3004447363, 2960563438, 1275055524, 831033836, 
+    3349146621, 2101501589, 4106684748, 3334143362, 
+    2904913003, 2899623133, 1336635844, 2629053572, 
+    3192411957, 2185502072, 3417540571, 3218539574, 
+    1517349230, 2978040251, 1991105235, 2700817717, 
+    4195558799, 2086194139, 1593715627, 908289265, 
+    3325808403, 2698046642, 94198304, 789645182, 
+    3969320414, 1745370017, 2951966358, 3610900003, 
+    3084891250, 1840753572, 118413839, 574118257, 
+    811615525, 523444880, 948918015, 2652615548, 
+    3226828519, 2934483458, 3589481104, 2471895979, 
+    2819332961, 1241315322, 1964191771, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+	Load PCD256 Data Count: -24 / 175292
+
+LOAD:
+  PatternConfigData_256:
+    3004447363, 2960563374, 1275055524, 831033836, 
+    3349146621, 2101501589, 4106684748, 3334143362, 
+    2904913003, 2899623133, 1336635844, 2629053572, 
+    3192411957, 2185502072, 3417540059, 3218474038, 
+    2054220142, 2978040251, 1991105235, 2700817717, 
+    4166133147, 2086194139, 1593715627, 908289265, 
+    3325806355, 2698046642, 94198304, 789645310, 
+    3969320414, 1745386401, 2951966358, 3610359331, 
+    3084887154, 1840753572, 118413839, 574118257, 
+    811615525, 1597186704, 3096401663, 2652615516, 
+    3226828519, 2934483458, 3589481104, 2471895979, 
+    2886441825, 1241282554, 1964191771, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+
+SAVE:
+  PatternConfigData_256:
+    3004447363, 2960563374, 1275055524, 2978517480, 
+    3349146621, 2101501589, 4106684748, 3334143362, 
+    2904913003, 2765405405, 1336635844, 2629053580, 
+    3192411957, 2185502072, 2343798235, 3218474038, 
+    2054220142, 2978040251, 1991105235, 2700817717, 
+    4166133147, 2119748571, 1589521323, 908289265, 
+    3258697495, 2698046642, 94198432, 789645310, 
+    3969320414, 1745386401, 2951999126, 3610359331, 
+    3084887154, 1840753060, 118413839, 574118257, 
+    811615525, 1597186688, 2827966207, 2652615516, 
+    3226828519, 2934483458, 3589481104, 2471895947, 
+    2886441825, 3455866874, 1964224539, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+	Load PCD256 Data Count: -25 / 175293
+
+LOAD:
+  PatternConfigData_256:
+    3004447363, 2960563374, 1275055524, 831033836, 
+    3349146621, 2101501589, 4106684748, 3334143362, 
+    2904913003, 2899623133, 1336635844, 2629053572, 
+    3192411957, 2185502072, 3417540059, 3218474038, 
+    2054220142, 2978040251, 1991105235, 2700817717, 
+    4166133147, 2086194139, 1593715627, 908289265, 
+    3325806355, 2698046642, 94198304, 789645310, 
+    3969320414, 1745386401, 2951966358, 3610359331, 
+    3084887154, 1840753572, 118413839, 574118257, 
+    811615525, 1597186704, 3096401663, 2652615516, 
+    3226828519, 2934483458, 3589481104, 2471895979, 
+    2886441825, 1241282554, 1964191771, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+
+SAVE:
+  PatternConfigData_256:
+    3007593091, 2960563374, 1275055524, 831033836, 
+    3349146621, 2109890197, 4106685772, 3334143362, 
+    2904913003, 2899623133, 1336635844, 2629053572, 
+    3192411957, 2185502072, 3417540059, 3218474038, 
+    2054220142, 2978040251, 1991105235, 2700817717, 
+    4166133147, 2086194139, 1593715627, 908289265, 
+    3325740819, 2698046642, 94198304, 789645310, 
+    3969320414, 1745386401, 2951970454, 3610359331, 
+    3084887154, 1840745380, 118413839, 574118257, 
+    811615525, 1597186704, 948917999, 2652615516, 
+    3226828519, 2934483458, 3522241168, 2471895979, 
+    2886442848, 1241282554, 1964191771, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+	Load PCD256 Data Count: -26 / 175294
+
+LOAD:
+  PatternConfigData_256:
+    3004447363, 2960563374, 1275055524, 831033836, 
+    3349146621, 2101501589, 4106684748, 3334143362, 
+    2904913003, 2899623133, 1336635844, 2629053572, 
+    3192411957, 2185502072, 3417540059, 3218474038, 
+    2054220142, 2978040251, 1991105235, 2700817717, 
+    4166133147, 2086194139, 1593715627, 908289265, 
+    3325806355, 2698046642, 94198304, 789645310, 
+    3969320414, 1745386401, 2951966358, 3610359331, 
+    3084887154, 1840753572, 118413839, 574118257, 
+    811615525, 1597186704, 3096401663, 2652615516, 
+    3226828519, 2934483458, 3589481104, 2471895979, 
+    2886441825, 1241282554, 1964191771, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+
+SAVE:
+  PatternConfigData_256:
+    3004447363, 2960563374, 1275055524, 831033836, 
+    3349146620, 2101501589, 4106684748, 3334143362, 
+    2904913003, 2899623133, 1337684420, 2629053572, 
+    3192411957, 2185502072, 3484648923, 3218474038, 
+    2054220142, 2978040251, 1991105235, 2700817717, 
+    4268893595, 2019085279, 2130586539, 908289265, 
+    3325806355, 2698046643, 94198304, 796460542, 
+    3969320414, 1812495265, 2951966358, 3610355235, 
+    3084891250, 1840753572, 118381071, 574118257, 
+    811615521, 1597186704, 3096401663, 2652616540, 
+    3226828519, 2934483458, 3589480464, 2471895979, 
+    2886441569, 1241282554, 1964191771, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+	info:	    Full Loop Time ........................... [311286 ns, 3212 FPS]
+	Load PCD256 Data Count: -27 / 175295
+
+LOAD:
+  PatternConfigData_256:
+    3004447363, 2960563374, 1275055524, 831033836, 
+    3349146621, 2101501589, 4106684748, 3334143362, 
+    2904913003, 2899623133, 1336635844, 2629053572, 
+    3192411957, 2185502072, 3417540059, 3218474038, 
+    2054220142, 2978040251, 1991105235, 2700817717, 
+    4166133147, 2086194139, 1593715627, 908289265, 
+    3325806355, 2698046642, 94198304, 789645310, 
+    3969320414, 1745386401, 2951966358, 3610359331, 
+    3084887154, 1840753572, 118413839, 574118257, 
+    811615525, 1597186704, 3096401663, 2652615516, 
+    3226828519, 2934483458, 3589481104, 2471895979, 
+    2886441825, 1241282554, 1964191771, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+
+SAVE:
+  PatternConfigData_256:
+    3004479875, 2958466222, 1275053476, 831033836, 
+    3349146621, 2101501589, 4106684748, 3334143362, 
+    2904896619, 2899623133, 1336635844, 2629053572, 
+    3192411957, 2185502072, 3417540059, 3218474038, 
+    2054220142, 2978041275, 1991105171, 2700817717, 
+    4166133147, 2086194139, 1593453483, 908289201, 
+    3325806355, 2698046642, 94198560, 789645310, 
+    3969320350, 1745386401, 2951835286, 3610359331, 
+    3084887154, 1840753572, 118413839, 842553713, 
+    811616037, 1597186704, 3096401663, 2652615516, 
+    3226828519, 2934548994, 3589481104, 2471895979, 
+    2886441825, 1241282554, 1964192283, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+	Load PCD256 Data Count: -28 / 175296
+
+LOAD:
+  PatternConfigData_256:
+    3004447363, 2960563374, 1275055524, 831033836, 
+    3349146621, 2101501589, 4106684748, 3334143362, 
+    2904913003, 2899623133, 1336635844, 2629053572, 
+    3192411957, 2185502072, 3417540059, 3218474038, 
+    2054220142, 2978040251, 1991105235, 2700817717, 
+    4166133147, 2086194139, 1593715627, 908289265, 
+    3325806355, 2698046642, 94198304, 789645310, 
+    3969320414, 1745386401, 2951966358, 3610359331, 
+    3084887154, 1840753572, 118413839, 574118257, 
+    811615525, 1597186704, 3096401663, 2652615516, 
+    3226828519, 2934483458, 3589481104, 2471895979, 
+    2886441825, 1241282554, 1964191771, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+
+SAVE:
+  PatternConfigData_256:
+    3004447363, 2960563374, 1275055524, 831033836, 
+    3349146621, 2101501589, 4240902492, 3334143362, 
+    2904913003, 2899623133, 1336635844, 2629053572, 
+    3192543029, 2185502072, 3417540059, 3218474038, 
+    2054220142, 2978040251, 1991105235, 2700817717, 
+    4166251931, 2086194139, 1593748395, 908289265, 
+    3325806355, 2698046642, 85809696, 789645310, 
+    3969320414, 1745386401, 2947772054, 3610359331, 
+    3084887154, 1773644196, 118409743, 574118001, 
+    811615525, 1597186704, 3096401663, 2652615516, 
+    3226828519, 2934483458, 3589481104, 2471895979, 
+    2886441793, 1241282488, 1964191771, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+	Load PCD256 Data Count: -29 / 175297
+
+LOAD:
+  PatternConfigData_256:
+    3004447363, 2960563374, 1275055524, 831033836, 
+    3349146621, 2101501589, 4106684748, 3334143362, 
+    2904913003, 2899623133, 1336635844, 2629053572, 
+    3192411957, 2185502072, 3417540059, 3218474038, 
+    2054220142, 2978040251, 1991105235, 2700817717, 
+    4166133147, 2086194139, 1593715627, 908289265, 
+    3325806355, 2698046642, 94198304, 789645310, 
+    3969320414, 1745386401, 2951966358, 3610359331, 
+    3084887154, 1840753572, 118413839, 574118257, 
+    811615525, 1597186704, 3096401663, 2652615516, 
+    3226828519, 2934483458, 3589481104, 2471895979, 
+    2886441825, 1241282554, 1964191771, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+
+SAVE:
+  PatternConfigData_256:
+    3004447363, 2968951982, 1275055524, 831033836, 
+    3332369149, 2101499541, 4106684748, 2260401538, 
+    2904913003, 2899623125, 1336635844, 2629053572, 
+    3192411957, 2185502072, 3417540059, 3218342966, 
+    2054220142, 2978040251, 1991105235, 2700817717, 
+    4166133147, 2086194139, 1593715627, 908289265, 
+    3325806355, 2698046642, 93674018, 789645310, 
+    3969320415, 1745386401, 2951966358, 3610359331, 
+    3084887154, 1840753572, 118413839, 1647860081, 
+    811615525, 1597186736, 3096401663, 2652615516, 
+    3226828519, 2934483458, 4126352000, 2471961515, 
+    2886441313, 1241282554, 1964191771, 96305066, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+	Load PCD256 Data Count: -30 / 175298
+
+LOAD:
+  PatternConfigData_256:
+    3004447363, 2960563374, 1275055524, 831033836, 
+    3349146621, 2101501589, 4106684748, 3334143362, 
+    2904913003, 2899623133, 1336635844, 2629053572, 
+    3192411957, 2185502072, 3417540059, 3218474038, 
+    2054220142, 2978040251, 1991105235, 2700817717, 
+    4166133147, 2086194139, 1593715627, 908289265, 
+    3325806355, 2698046642, 94198304, 789645310, 
+    3969320414, 1745386401, 2951966358, 3610359331, 
+    3084887154, 1840753572, 118413839, 574118257, 
+    811615525, 1597186704, 3096401663, 2652615516, 
+    3226828519, 2934483458, 3589481104, 2471895979, 
+    2886441825, 1241282554, 1964191771, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+
+SAVE:
+  PatternConfigData_256:
+    3004480139, 2423692463, 1275055525, 831033828, 
+    3349146621, 2101501589, 1959201100, 3871014274, 
+    2837541995, 2900147421, 1336635844, 481569924, 
+    3192411957, 2185502072, 3417540059, 3218474038, 
+    2054220142, 2978073019, 1991105235, 2700817717, 
+    4166124955, 2086192091, 1593715627, 1982031089, 
+    3325806355, 2698046642, 94198304, 789678078, 
+    3969320414, 1745386401, 2951966358, 3610359331, 
+    3076498546, 1840753572, 118413839, 574118257, 
+    945833253, 1462968976, 3096385279, 2652615516, 
+    3222633703, 2934483458, 3589481104, 2471895979, 
+    2886441825, 1241278458, 1997746203, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+	Load PCD256 Data Count: -31 / 175299
+
+LOAD:
+  PatternConfigData_256:
+    3004447363, 2960563374, 1275055524, 831033836, 
+    3349146621, 2101501589, 4106684748, 3334143362, 
+    2904913003, 2899623133, 1336635844, 2629053572, 
+    3192411957, 2185502072, 3417540059, 3218474038, 
+    2054220142, 2978040251, 1991105235, 2700817717, 
+    4166133147, 2086194139, 1593715627, 908289265, 
+    3325806355, 2698046642, 94198304, 789645310, 
+    3969320414, 1745386401, 2951966358, 3610359331, 
+    3084887154, 1840753572, 118413839, 574118257, 
+    811615525, 1597186704, 3096401663, 2652615516, 
+    3226828519, 2934483458, 3589481104, 2471895979, 
+    2886441825, 1241282554, 1964191771, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+
+SAVE:
+  PatternConfigData_256:
+    3004447363, 2960563374, 1275055524, 831033836, 
+    3349146605, 2101501589, 4106684748, 3334143362, 
+    2904913003, 2899623133, 1336635844, 2629053572, 
+    3192411957, 2185502072, 3417540059, 3218474038, 
+    2054220142, 2978040251, 1991105235, 2700817717, 
+    4166133147, 2086194139, 1593715627, 908289265, 
+    3325806355, 2698046642, 228416032, 789645310, 
+    3969320446, 1745386401, 2951966358, 3610359459, 
+    3084887154, 1840753572, 118413839, 574118257, 
+    811615525, 1597186704, 3096401663, 2652615516, 
+    3226828519, 2934483462, 3589481104, 2471895979, 
+    2886441825, 1241282554, 1964193819, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+	Load PCD256 Data Count: -32 / 175300
+
+LOAD:
+  PatternConfigData_256:
+    3004447363, 2960563374, 1275055524, 831033836, 
+    3349146621, 2101501589, 4106684748, 3334143362, 
+    2904913003, 2899623133, 1336635844, 2629053572, 
+    3192411957, 2185502072, 3417540059, 3218474038, 
+    2054220142, 2978040251, 1991105235, 2700817717, 
+    4166133147, 2086194139, 1593715627, 908289265, 
+    3325806355, 2698046642, 94198304, 789645310, 
+    3969320414, 1745386401, 2951966358, 3610359331, 
+    3084887154, 1840753572, 118413839, 574118257, 
+    811615525, 1597186704, 3096401663, 2652615516, 
+    3226828519, 2934483458, 3589481104, 2471895979, 
+    2886441825, 1241282554, 1964191771, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+
+SAVE:
+  PatternConfigData_256:
+    3004185219, 2960563374, 1275055524, 831033836, 
+    3349146621, 2101501589, 4106684748, 3334143362, 
+    2904913003, 2899623645, 1336635844, 2629053572, 
+    3125434165, 2185502584, 3417802203, 3218474046, 
+    2054220142, 2978040251, 1990580947, 2835035445, 
+    4166133147, 2086194139, 1593715627, 909337841, 
+    3325806355, 2698046898, 94198304, 252774398, 
+    3969320414, 3892870049, 2951966358, 3610375715, 
+    3084887154, 1840458660, 118413839, 574118257, 
+    811615525, 1597186704, 3113178879, 2652615516, 
+    3226828519, 2934483458, 3589481106, 2470847403, 
+    2886441829, 1241282554, 1966288987, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+	info:	    Full Loop Time ........................... [312234 ns, 3202 FPS]
+	info:	    Full Loop Time ........................... [356507 ns, 2804 FPS]
+	info:	    Full Loop Time ........................... [402919 ns, 2481 FPS]
+	info:	    Full Loop Time ........................... [320437 ns, 3120 FPS]
+	info:	    Full Loop Time ........................... [325823 ns, 3069 FPS]
+	info:	    Full Loop Time ........................... [312323 ns, 3201 FPS]
+	info:	    Full Loop Time ........................... [632249 ns, 1581 FPS]
+	Load PCD256 Data Count: -33 / 175301
+
+LOAD:
+  PatternConfigData_256:
+    3004447363, 2960563374, 1275055524, 831033836, 
+    3349146621, 2101501589, 4106684748, 3334143362, 
+    2904913003, 2899623133, 1336635844, 2629053572, 
+    3192411957, 2185502072, 3417540059, 3218474038, 
+    2054220142, 2978040251, 1991105235, 2700817717, 
+    4166133147, 2086194139, 1593715627, 908289265, 
+    3325806355, 2698046642, 94198304, 789645310, 
+    3969320414, 1745386401, 2951966358, 3610359331, 
+    3084887154, 1840753572, 118413839, 574118257, 
+    811615525, 1597186704, 3096401663, 2652615516, 
+    3226828519, 2934483458, 3589481104, 2471895979, 
+    2886441825, 1241282554, 1964191771, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+	info:	    Full Loop Time ........................... [315340 ns, 3171 FPS]
+	info:	    Full Loop Time ........................... [419148 ns, 2385 FPS]
+	Load PCD256 Data Count: -33 / 175301
+
+LOAD:
+  PatternConfigData_256:
+    3004447363, 2960563374, 1275055524, 831033836, 
+    3349146621, 2101501589, 4106684748, 3334143362, 
+    2904913003, 2899623133, 1336635844, 2629053572, 
+    3192411957, 2185502072, 3417540059, 3218474038, 
+    2054220142, 2978040251, 1991105235, 2700817717, 
+    4166133147, 2086194139, 1593715627, 908289265, 
+    3325806355, 2698046642, 94198304, 789645310, 
+    3969320414, 1745386401, 2951966358, 3610359331, 
+    3084887154, 1840753572, 118413839, 574118257, 
+    811615525, 1597186704, 3096401663, 2652615516, 
+    3226828519, 2934483458, 3589481104, 2471895979, 
+    2886441825, 1241282554, 1964191771, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+	info:	    Full Loop Time ........................... [378785 ns, 2640 FPS]
+	info:	    Full Loop Time ........................... [397954 ns, 2512 FPS]
+	info:	    Full Loop Time ........................... [342850 ns, 2916 FPS]
+	info:	    Full Loop Time ........................... [313317 ns, 3191 FPS]
+	info:	    Full Loop Time ........................... [312300 ns, 3202 FPS]
+	info:	    Full Loop Time ........................... [312733 ns, 3197 FPS]
+	info:	    Full Loop Time ........................... [315161 ns, 3172 FPS]
+	info:	    Full Loop Time ........................... [332522 ns, 3007 FPS]
+	info:	    Full Loop Time ........................... [330739 ns, 3023 FPS]
+	info:	    Full Loop Time ........................... [312305 ns, 3201 FPS]
+	info:	    Full Loop Time ........................... [314345 ns, 3181 FPS]
+	info:	    Full Loop Time ........................... [316455 ns, 3160 FPS]
+	info:	    Full Loop Time ........................... [313579 ns, 3188 FPS]
+	info:	    Full Loop Time ........................... [314105 ns, 3183 FPS]
+	info:	    Full Loop Time ........................... [381259 ns, 2622 FPS]
+	info:	    Full Loop Time ........................... [311014 ns, 3215 FPS]
+	info:	    Full Loop Time ........................... [341174 ns, 2931 FPS]
+	info:	    Full Loop Time ........................... [336680 ns, 2970 FPS]
+	info:	    Full Loop Time ........................... [313637 ns, 3188 FPS]
+	info:	    Full Loop Time ........................... [367246 ns, 2722 FPS]
+	info:	    Full Loop Time ........................... [341719 ns, 2926 FPS]
+	info:	    Full Loop Time ........................... [313401 ns, 3190 FPS]
+	info:	    Full Loop Time ........................... [375534 ns, 2662 FPS]
+	info:	    Full Loop Time ........................... [317527 ns, 3149 FPS]
+	info:	    Full Loop Time ........................... [348052 ns, 2873 FPS]
+	info:	    Full Loop Time ........................... [312326 ns, 3201 FPS]
+	info:	    Full Loop Time ........................... [309014 ns, 3236 FPS]
+	info:	    Full Loop Time ........................... [315304 ns, 3171 FPS]
+	info:	    Full Loop Time ........................... [323989 ns, 3086 FPS]
+	info:	    Full Loop Time ........................... [313499 ns, 3189 FPS]
+	info:	    Full Loop Time ........................... [318413 ns, 3140 FPS]
+	info:	    Full Loop Time ........................... [315967 ns, 3164 FPS]
+	info:	    Full Loop Time ........................... [313648 ns, 3188 FPS]
+	info:	    Full Loop Time ........................... [310189 ns, 3223 FPS]
+	info:	    Full Loop Time ........................... [347440 ns, 2878 FPS]
+Target Updated
+Scale & Zoom Confirmed
+
+SAVE:
+  PatternConfigData_256:
+    3004447363, 2960563374, 1275055524, 831033836, 
+    3349146621, 2101501589, 4106684748, 3334143362, 
+    2904913003, 2899623133, 1336635844, 2629053572, 
+    3192411957, 2185502072, 3417540059, 3218474038, 
+    2054220142, 2978040251, 1991105235, 2700817717, 
+    4166133147, 2086194139, 1593715627, 908289265, 
+    3325806355, 2698046642, 94198304, 789645310, 
+    3969320414, 1745386401, 2951966358, 3610359331, 
+    3084887154, 1840753572, 118413839, 574118257, 
+    811615525, 1597186704, 3096401663, 2652615516, 
+    3226828519, 2934483458, 3589481104, 2471895979, 
+    2886441825, 1241282554, 1964191771, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+	Load PCD256 Data Count: -1 / 175302
+
+LOAD:
+  PatternConfigData_256:
+    3004447363, 2960563374, 1275055524, 831033836, 
+    3349146621, 2101501589, 4106684748, 3334143362, 
+    2904913003, 2899623133, 1336635844, 2629053572, 
+    3192411957, 2185502072, 3417540059, 3218474038, 
+    2054220142, 2978040251, 1991105235, 2700817717, 
+    4166133147, 2086194139, 1593715627, 908289265, 
+    3325806355, 2698046642, 94198304, 789645310, 
+    3969320414, 1745386401, 2951966358, 3610359331, 
+    3084887154, 1840753572, 118413839, 574118257, 
+    811615525, 1597186704, 3096401663, 2652615516, 
+    3226828519, 2934483458, 3589481104, 2471895979, 
+    2886441825, 1241282554, 1964191771, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+	info:	    Full Loop Time ........................... [370650 ns, 2697 FPS]
+	info:	    Full Loop Time ........................... [319639 ns, 3128 FPS]
+Target Updated
+Scale & Zoom Confirmed
+
+SAVE:
+  PatternConfigData_256:
+    3004447363, 2960563374, 1275055524, 831033836, 
+    3349146621, 2101501589, 4106684748, 3334143362, 
+    2904913003, 2899623133, 1336635844, 2629053572, 
+    3192411957, 2185502072, 3417540059, 3218474038, 
+    2054220142, 2978040251, 1991105235, 2700817717, 
+    4166133147, 2086194139, 1593715627, 908289265, 
+    3325806355, 2698046642, 94198304, 789645310, 
+    3969320414, 1745386401, 2951966358, 3610359331, 
+    3084887154, 1840753572, 118413839, 574118257, 
+    811615525, 1597186704, 3096401663, 2652615516, 
+    3226828519, 2934483458, 3589481104, 2471895979, 
+    2886441825, 1241282554, 1964191771, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+	Load PCD256 Data Count: -1 / 175303
+
+LOAD:
+  PatternConfigData_256:
+    3004447363, 2960563374, 1275055524, 831033836, 
+    3349146621, 2101501589, 4106684748, 3334143362, 
+    2904913003, 2899623133, 1336635844, 2629053572, 
+    3192411957, 2185502072, 3417540059, 3218474038, 
+    2054220142, 2978040251, 1991105235, 2700817717, 
+    4166133147, 2086194139, 1593715627, 908289265, 
+    3325806355, 2698046642, 94198304, 789645310, 
+    3969320414, 1745386401, 2951966358, 3610359331, 
+    3084887154, 1840753572, 118413839, 574118257, 
+    811615525, 1597186704, 3096401663, 2652615516, 
+    3226828519, 2934483458, 3589481104, 2471895979, 
+    2886441825, 1241282554, 1964191771, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+	info:	    Full Loop Time ........................... [345033 ns, 2898 FPS]
+Target Updated
+Scale & Zoom Confirmed
+
+SAVE:
+  PatternConfigData_256:
+    3004447363, 2960563374, 1275055524, 831033836, 
+    3349146621, 2101501589, 4106684748, 3334143362, 
+    2904913003, 2899623133, 1336635844, 2629053572, 
+    3192411957, 2185502072, 3417540059, 3218474038, 
+    2054220142, 2978040251, 1991105235, 2700817717, 
+    4166133147, 2086194139, 1593715627, 908289265, 
+    3325806355, 2698046642, 94198304, 789645310, 
+    3969320414, 1745386401, 2951966358, 3610359331, 
+    3084887154, 1840753572, 118413839, 574118257, 
+    811615525, 1597186704, 3096401663, 2652615516, 
+    3226828519, 2934483458, 3589481104, 2471895979, 
+    2886441825, 1241282554, 1964191771, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+	Load PCD256 Data Count: -1 / 175304
+
+LOAD:
+  PatternConfigData_256:
+    3004447363, 2960563374, 1275055524, 831033836, 
+    3349146621, 2101501589, 4106684748, 3334143362, 
+    2904913003, 2899623133, 1336635844, 2629053572, 
+    3192411957, 2185502072, 3417540059, 3218474038, 
+    2054220142, 2978040251, 1991105235, 2700817717, 
+    4166133147, 2086194139, 1593715627, 908289265, 
+    3325806355, 2698046642, 94198304, 789645310, 
+    3969320414, 1745386401, 2951966358, 3610359331, 
+    3084887154, 1840753572, 118413839, 574118257, 
+    811615525, 1597186704, 3096401663, 2652615516, 
+    3226828519, 2934483458, 3589481104, 2471895979, 
+    2886441825, 1241282554, 1964191771, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+	info:	    Full Loop Time ........................... [315936 ns, 3165 FPS]
+	info:	    Full Loop Time ........................... [326268 ns, 3064 FPS]
+	info:	    Full Loop Time ........................... [313344 ns, 3191 FPS]
+	info:	    Full Loop Time ........................... [314799 ns, 3176 FPS]
+	info:	    Full Loop Time ........................... [362920 ns, 2755 FPS]
+	info:	    Full Loop Time ........................... [309799 ns, 3227 FPS]
+	info:	    Full Loop Time ........................... [315637 ns, 3168 FPS]
+	info:	    Full Loop Time ........................... [438492 ns, 2280 FPS]
+	info:	    Full Loop Time ........................... [327887 ns, 3049 FPS]
+	info:	    Full Loop Time ........................... [322307 ns, 3102 FPS]
+	info:	    Full Loop Time ........................... [322625 ns, 3099 FPS]
+	info:	    Full Loop Time ........................... [413016 ns, 2421 FPS]
+Target Updated
+Scale & Zoom Confirmed
+
+SAVE:
+  PatternConfigData_256:
+    3004447363, 2960563374, 1275055524, 831033836, 
+    3349146621, 2101501589, 4106684748, 3334143362, 
+    2904913003, 2899623133, 1336635844, 2629053572, 
+    3192411957, 2185502072, 3417540059, 3218474038, 
+    2054220142, 2978040251, 1991105235, 2700817717, 
+    4166133147, 2086194139, 1593715627, 908289265, 
+    3325806355, 2698046642, 94198304, 789645310, 
+    3969320414, 1745386401, 2951966358, 3610359331, 
+    3084887154, 1840753572, 118413839, 574118257, 
+    811615525, 1597186704, 3096401663, 2652615516, 
+    3226828519, 2934483458, 3589481104, 2471895979, 
+    2886441825, 1241282554, 1964191771, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+	Load PCD256 Data Count: -1 / 175305
+
+LOAD:
+  PatternConfigData_256:
+    3004447363, 2960563374, 1275055524, 831033836, 
+    3349146621, 2101501589, 4106684748, 3334143362, 
+    2904913003, 2899623133, 1336635844, 2629053572, 
+    3192411957, 2185502072, 3417540059, 3218474038, 
+    2054220142, 2978040251, 1991105235, 2700817717, 
+    4166133147, 2086194139, 1593715627, 908289265, 
+    3325806355, 2698046642, 94198304, 789645310, 
+    3969320414, 1745386401, 2951966358, 3610359331, 
+    3084887154, 1840753572, 118413839, 574118257, 
+    811615525, 1597186704, 3096401663, 2652615516, 
+    3226828519, 2934483458, 3589481104, 2471895979, 
+    2886441825, 1241282554, 1964191771, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+	info:	    Full Loop Time ........................... [422134 ns, 2368 FPS]
+Target Updated
+Scale & Zoom Confirmed
+
+SAVE:
+  PatternConfigData_256:
+    3004447363, 2960563374, 1275055524, 831033836, 
+    3349146621, 2101501589, 4106684748, 3334143362, 
+    2904913003, 2899623133, 1336635844, 2629053572, 
+    3192411957, 2185502072, 3417540059, 3218474038, 
+    2054220142, 2978040251, 1991105235, 2700817717, 
+    4166133147, 2086194139, 1593715627, 908289265, 
+    3325806355, 2698046642, 94198304, 789645310, 
+    3969320414, 1745386401, 2951966358, 3610359331, 
+    3084887154, 1840753572, 118413839, 574118257, 
+    811615525, 1597186704, 3096401663, 2652615516, 
+    3226828519, 2934483458, 3589481104, 2471895979, 
+    2886441825, 1241282554, 1964191771, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+	Load PCD256 Data Count: -1 / 175306
+
+LOAD:
+  PatternConfigData_256:
+    3004447363, 2960563374, 1275055524, 831033836, 
+    3349146621, 2101501589, 4106684748, 3334143362, 
+    2904913003, 2899623133, 1336635844, 2629053572, 
+    3192411957, 2185502072, 3417540059, 3218474038, 
+    2054220142, 2978040251, 1991105235, 2700817717, 
+    4166133147, 2086194139, 1593715627, 908289265, 
+    3325806355, 2698046642, 94198304, 789645310, 
+    3969320414, 1745386401, 2951966358, 3610359331, 
+    3084887154, 1840753572, 118413839, 574118257, 
+    811615525, 1597186704, 3096401663, 2652615516, 
+    3226828519, 2934483458, 3589481104, 2471895979, 
+    2886441825, 1241282554, 1964191771, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+	info:	    Full Loop Time ........................... [319366 ns, 3131 FPS]
+Target Updated
+Scale & Zoom Confirmed
+
+SAVE:
+  PatternConfigData_256:
+    3004447363, 2960563374, 1275055524, 831033836, 
+    3349146621, 2101501589, 4106684748, 3334143362, 
+    2904913003, 2899623133, 1336635844, 2629053572, 
+    3192411957, 2185502072, 3417540059, 3218474038, 
+    2054220142, 2978040251, 1991105235, 2700817717, 
+    4166133147, 2086194139, 1593715627, 908289265, 
+    3325806355, 2698046642, 94198304, 789645310, 
+    3969320414, 1745386401, 2951966358, 3610359331, 
+    3084887154, 1840753572, 118413839, 574118257, 
+    811615525, 1597186704, 3096401663, 2652615516, 
+    3226828519, 2934483458, 3589481104, 2471895979, 
+    2886441825, 1241282554, 1964191771, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+	Load PCD256 Data Count: -1 / 175307
+
+LOAD:
+  PatternConfigData_256:
+    3004447363, 2960563374, 1275055524, 831033836, 
+    3349146621, 2101501589, 4106684748, 3334143362, 
+    2904913003, 2899623133, 1336635844, 2629053572, 
+    3192411957, 2185502072, 3417540059, 3218474038, 
+    2054220142, 2978040251, 1991105235, 2700817717, 
+    4166133147, 2086194139, 1593715627, 908289265, 
+    3325806355, 2698046642, 94198304, 789645310, 
+    3969320414, 1745386401, 2951966358, 3610359331, 
+    3084887154, 1840753572, 118413839, 574118257, 
+    811615525, 1597186704, 3096401663, 2652615516, 
+    3226828519, 2934483458, 3589481104, 2471895979, 
+    2886441825, 1241282554, 1964191771, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+
+SAVE:
+  PatternConfigData_256:
+    3004447363, 2960563374, 1275055524, 831033836, 
+    3349146621, 2101501589, 4106684748, 3334143362, 
+    2904913003, 2899623133, 1336635844, 2629053572, 
+    3192411957, 2185502072, 3417540059, 3218474038, 
+    2054220142, 2978040251, 1991105235, 2700817717, 
+    4166133147, 2086194139, 1593715627, 908289265, 
+    3325806355, 2698046642, 94198304, 789645310, 
+    3969320414, 1745386401, 2951966358, 3610359331, 
+    3084887154, 1840753572, 118413839, 574118257, 
+    811615525, 1597186704, 3096401663, 2652615516, 
+    3226828519, 2934483458, 3589481104, 2471895979, 
+    2886441825, 1241282554, 1964191771, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+Saved to Archive (PCD256)
+	info:	    Full Loop Time ........................... [430526 ns, 2322 FPS]
+	info:	    Full Loop Time ........................... [327625 ns, 3052 FPS]
+	info:	    Full Loop Time ........................... [310547 ns, 3220 FPS]
+Target Updated
+Scale & Zoom Confirmed
+
+SAVE:
+  PatternConfigData_256:
+    3004447363, 2960563374, 1275055524, 831033836, 
+    3349146621, 2101501589, 4106684748, 3334143362, 
+    2904913003, 2899623133, 1336635844, 2629053572, 
+    3192411957, 2185502072, 3417540059, 3218474038, 
+    2054220142, 2978040251, 1991105235, 2700817717, 
+    4166133147, 2086194139, 1593715627, 908289265, 
+    3325806355, 2698046642, 94198304, 789645310, 
+    3969320414, 1745386401, 2951966358, 3610359331, 
+    3084887154, 1840753572, 118413839, 574118257, 
+    811615525, 1597186704, 3096401663, 2652615516, 
+    3226828519, 2934483458, 3589481104, 2471895979, 
+    2886441825, 1241282554, 1964191771, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+	Load PCD256 Data Count: -1 / 175308
+
+LOAD:
+  PatternConfigData_256:
+    3004447363, 2960563374, 1275055524, 831033836, 
+    3349146621, 2101501589, 4106684748, 3334143362, 
+    2904913003, 2899623133, 1336635844, 2629053572, 
+    3192411957, 2185502072, 3417540059, 3218474038, 
+    2054220142, 2978040251, 1991105235, 2700817717, 
+    4166133147, 2086194139, 1593715627, 908289265, 
+    3325806355, 2698046642, 94198304, 789645310, 
+    3969320414, 1745386401, 2951966358, 3610359331, 
+    3084887154, 1840753572, 118413839, 574118257, 
+    811615525, 1597186704, 3096401663, 2652615516, 
+    3226828519, 2934483458, 3589481104, 2471895979, 
+    2886441825, 1241282554, 1964191771, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+	info:	    Full Loop Time ........................... [409192 ns, 2443 FPS]
+Target Updated
+Scale & Zoom Confirmed
+
+SAVE:
+  PatternConfigData_256:
+    3004447363, 2960563374, 1275055524, 831033836, 
+    3349146621, 2101501589, 4106684748, 3334143362, 
+    2904913003, 2899623133, 1336635844, 2629053572, 
+    3192411957, 2185502072, 3417540059, 3218474038, 
+    2054220142, 2978040251, 1991105235, 2700817717, 
+    4166133147, 2086194139, 1593715627, 908289265, 
+    3325806355, 2698046642, 94198304, 789645310, 
+    3969320414, 1745386401, 2951966358, 3610359331, 
+    3084887154, 1840753572, 118413839, 574118257, 
+    811615525, 1597186704, 3096401663, 2652615516, 
+    3226828519, 2934483458, 3589481104, 2471895979, 
+    2886441825, 1241282554, 1964191771, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+	Load PCD256 Data Count: -1 / 175309
+
+LOAD:
+  PatternConfigData_256:
+    3004447363, 2960563374, 1275055524, 831033836, 
+    3349146621, 2101501589, 4106684748, 3334143362, 
+    2904913003, 2899623133, 1336635844, 2629053572, 
+    3192411957, 2185502072, 3417540059, 3218474038, 
+    2054220142, 2978040251, 1991105235, 2700817717, 
+    4166133147, 2086194139, 1593715627, 908289265, 
+    3325806355, 2698046642, 94198304, 789645310, 
+    3969320414, 1745386401, 2951966358, 3610359331, 
+    3084887154, 1840753572, 118413839, 574118257, 
+    811615525, 1597186704, 3096401663, 2652615516, 
+    3226828519, 2934483458, 3589481104, 2471895979, 
+    2886441825, 1241282554, 1964191771, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+	info:	    Full Loop Time ........................... [346873 ns, 2882 FPS]
+	info:	    Full Loop Time ........................... [324626 ns, 3080 FPS]
+Target Updated
+Scale & Zoom Confirmed
+
+SAVE:
+  PatternConfigData_256:
+    3004447363, 2960563374, 1275055524, 831033836, 
+    3349146621, 2101501589, 4106684748, 3334143362, 
+    2904913003, 2899623133, 1336635844, 2629053572, 
+    3192411957, 2185502072, 3417540059, 3218474038, 
+    2054220142, 2978040251, 1991105235, 2700817717, 
+    4166133147, 2086194139, 1593715627, 908289265, 
+    3325806355, 2698046642, 94198304, 789645310, 
+    3969320414, 1745386401, 2951966358, 3610359331, 
+    3084887154, 1840753572, 118413839, 574118257, 
+    811615525, 1597186704, 3096401663, 2652615516, 
+    3226828519, 2934483458, 3589481104, 2471895979, 
+    2886441825, 1241282554, 1964191771, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+	Load PCD256 Data Count: -1 / 175310
+
+LOAD:
+  PatternConfigData_256:
+    3004447363, 2960563374, 1275055524, 831033836, 
+    3349146621, 2101501589, 4106684748, 3334143362, 
+    2904913003, 2899623133, 1336635844, 2629053572, 
+    3192411957, 2185502072, 3417540059, 3218474038, 
+    2054220142, 2978040251, 1991105235, 2700817717, 
+    4166133147, 2086194139, 1593715627, 908289265, 
+    3325806355, 2698046642, 94198304, 789645310, 
+    3969320414, 1745386401, 2951966358, 3610359331, 
+    3084887154, 1840753572, 118413839, 574118257, 
+    811615525, 1597186704, 3096401663, 2652615516, 
+    3226828519, 2934483458, 3589481104, 2471895979, 
+    2886441825, 1241282554, 1964191771, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+
+SAVE:
+  PatternConfigData_256:
+    3004447363, 2960563374, 1275055524, 831033836, 
+    3349146621, 2101501589, 4106684748, 3334143362, 
+    2904913003, 2899623133, 1336635844, 2629053572, 
+    3192411957, 2185502072, 3417540059, 3218474038, 
+    2054220142, 2978040251, 1991105235, 2700817717, 
+    4166133147, 2086194139, 1593715627, 908289265, 
+    3325806355, 2698046642, 94198304, 789645310, 
+    3969320414, 1745386401, 2951966358, 3610359331, 
+    3084887154, 1840753572, 118413839, 574118257, 
+    811615525, 1597186704, 3096401663, 2652615516, 
+    3226828519, 2934483458, 3589481104, 2471895979, 
+    2886441825, 1241282554, 1964191771, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+Saved to Archive (PCD256)
+	info:	    Full Loop Time ........................... [371240 ns, 2693 FPS]
+	info:	    Full Loop Time ........................... [327448 ns, 3053 FPS]
+	info:	    Full Loop Time ........................... [319870 ns, 3126 FPS]
+	info:	    Full Loop Time ........................... [322050 ns, 3105 FPS]
+	info:	    Full Loop Time ........................... [315496 ns, 3169 FPS]
+	info:	    Full Loop Time ........................... [313154 ns, 3193 FPS]
+	info:	    Full Loop Time ........................... [313553 ns, 3189 FPS]
+Target Updated
+Scale & Zoom Confirmed
+
+SAVE:
+  PatternConfigData_256:
+    3004447363, 2960563374, 1275055524, 831033836, 
+    3349146621, 2101501589, 4106684748, 3334143362, 
+    2904913003, 2899623133, 1336635844, 2629053572, 
+    3192411957, 2185502072, 3417540059, 3218474038, 
+    2054220142, 2978040251, 1991105235, 2700817717, 
+    4166133147, 2086194139, 1593715627, 908289265, 
+    3325806355, 2698046642, 94198304, 789645310, 
+    3969320414, 1745386401, 2951966358, 3610359331, 
+    3084887154, 1840753572, 118413839, 574118257, 
+    811615525, 1597186704, 3096401663, 2652615516, 
+    3226828519, 2934483458, 3589481104, 2471895979, 
+    2886441825, 1241282554, 1964191771, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+	Load PCD256 Data Count: -1 / 175311
+
+LOAD:
+  PatternConfigData_256:
+    3004447363, 2960563374, 1275055524, 831033836, 
+    3349146621, 2101501589, 4106684748, 3334143362, 
+    2904913003, 2899623133, 1336635844, 2629053572, 
+    3192411957, 2185502072, 3417540059, 3218474038, 
+    2054220142, 2978040251, 1991105235, 2700817717, 
+    4166133147, 2086194139, 1593715627, 908289265, 
+    3325806355, 2698046642, 94198304, 789645310, 
+    3969320414, 1745386401, 2951966358, 3610359331, 
+    3084887154, 1840753572, 118413839, 574118257, 
+    811615525, 1597186704, 3096401663, 2652615516, 
+    3226828519, 2934483458, 3589481104, 2471895979, 
+    2886441825, 1241282554, 1964191771, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+
+SAVE:
+  PatternConfigData_256:
+    3004447363, 2960563374, 1275055524, 831033836, 
+    3349146621, 2101501589, 4106684748, 3334143362, 
+    2904913003, 2899623133, 1336635844, 2629053572, 
+    3192411957, 2185502072, 3417540059, 3218474038, 
+    2054220142, 2978040251, 1991105235, 2700817717, 
+    4166133147, 2086194139, 1593715627, 908289265, 
+    3325806355, 2698046642, 94198304, 789645310, 
+    3969320414, 1745386401, 2951966358, 3610359331, 
+    3084887154, 1840753572, 118413839, 574118257, 
+    811615525, 1597186704, 3096401663, 2652615516, 
+    3226828519, 2934483458, 3589481104, 2471895979, 
+    2886441825, 1241282554, 1964191771, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+Saved to Archive (PCD256)
+	info:	    Full Loop Time ........................... [437757 ns, 2284 FPS]
+	info:	    Full Loop Time ........................... [403654 ns, 2477 FPS]
+	info:	    Full Loop Time ........................... [340440 ns, 2937 FPS]
+	info:	    Full Loop Time ........................... [418452 ns, 2389 FPS]
+	info:	    Full Loop Time ........................... [316232 ns, 3162 FPS]
+	info:	    Full Loop Time ........................... [323310 ns, 3093 FPS]
+	info:	    Full Loop Time ........................... [319639 ns, 3128 FPS]
+	info:	    Full Loop Time ........................... [349428 ns, 2861 FPS]
+	info:	    Full Loop Time ........................... [324216 ns, 3084 FPS]
+	info:	    Full Loop Time ........................... [371468 ns, 2692 FPS]
+	info:	    Full Loop Time ........................... [314222 ns, 3182 FPS]
+	info:	    Full Loop Time ........................... [313675 ns, 3188 FPS]
+	info:	    Full Loop Time ........................... [416649 ns, 2400 FPS]
+	info:	    Full Loop Time ........................... [339476 ns, 2945 FPS]
+	info:	    Full Loop Time ........................... [320095 ns, 3124 FPS]
+	info:	    Full Loop Time ........................... [359194 ns, 2784 FPS]
+	info:	    Full Loop Time ........................... [348509 ns, 2869 FPS]
+	info:	    Full Loop Time ........................... [320409 ns, 3121 FPS]
+	info:	    Full Loop Time ........................... [317740 ns, 3147 FPS]
+	info:	    Full Loop Time ........................... [360641 ns, 2772 FPS]
+	info:	    Full Loop Time ........................... [327058 ns, 3057 FPS]
+	info:	    Full Loop Time ........................... [327379 ns, 3054 FPS]
+	info:	    Full Loop Time ........................... [314249 ns, 3182 FPS]
+	info:	    Full Loop Time ........................... [337042 ns, 2966 FPS]
+	info:	    Full Loop Time ........................... [450719 ns, 2218 FPS]
+	info:	    Full Loop Time ........................... [421567 ns, 2372 FPS]
+	info:	    Full Loop Time ........................... [444112 ns, 2251 FPS]
+	info:	    Full Loop Time ........................... [353357 ns, 2829 FPS]
+	info:	    Full Loop Time ........................... [332179 ns, 3010 FPS]
+	info:	    Full Loop Time ........................... [371876 ns, 2689 FPS]
+	info:	    Full Loop Time ........................... [350406 ns, 2853 FPS]
+	info:	    Full Loop Time ........................... [334201 ns, 2992 FPS]
+	info:	    Full Loop Time ........................... [338160 ns, 2957 FPS]
+	info:	    Full Loop Time ........................... [342256 ns, 2921 FPS]
+	info:	    Full Loop Time ........................... [340542 ns, 2936 FPS]
+	info:	    Full Loop Time ........................... [348005 ns, 2873 FPS]
+	info:	    Full Loop Time ........................... [339635 ns, 2944 FPS]
+	info:	    Full Loop Time ........................... [330717 ns, 3023 FPS]
+	info:	    Full Loop Time ........................... [553601 ns, 1806 FPS]
+	info:	    Full Loop Time ........................... [345423 ns, 2895 FPS]
+	info:	    Full Loop Time ........................... [330392 ns, 3026 FPS]
+	info:	    Full Loop Time ........................... [367687 ns, 2719 FPS]
+	info:	    Full Loop Time ........................... [409429 ns, 2442 FPS]
+	info:	    Full Loop Time ........................... [335158 ns, 2983 FPS]
+	info:	    Full Loop Time ........................... [356928 ns, 2801 FPS]
+	info:	    Full Loop Time ........................... [335127 ns, 2983 FPS]
+	info:	    Full Loop Time ........................... [339098 ns, 2948 FPS]
+	info:	    Full Loop Time ........................... [367665 ns, 2719 FPS]
+	info:	    Full Loop Time ........................... [376974 ns, 2652 FPS]
+	info:	    Full Loop Time ........................... [344311 ns, 2904 FPS]
+	info:	    Full Loop Time ........................... [384940 ns, 2597 FPS]
+	info:	    Full Loop Time ........................... [383446 ns, 2607 FPS]
+	info:	    Full Loop Time ........................... [334846 ns, 2986 FPS]
+	info:	    Full Loop Time ........................... [336093 ns, 2975 FPS]
+	info:	    Full Loop Time ........................... [358640 ns, 2788 FPS]
+Linear Parameter Map
+Linear Parameter Map
+Circular Parameter Map
+Circular Parameter Map
+	info:	    Full Loop Time ........................... [347378 ns, 2878 FPS]
+	info:	    Full Loop Time ........................... [347916 ns, 2874 FPS]
+	Load PCD256 Data Count: -1 / 175311
+
+LOAD:
+  PatternConfigData_256:
+    3004447363, 2960563374, 1275055524, 831033836, 
+    3349146621, 2101501589, 4106684748, 3334143362, 
+    2904913003, 2899623133, 1336635844, 2629053572, 
+    3192411957, 2185502072, 3417540059, 3218474038, 
+    2054220142, 2978040251, 1991105235, 2700817717, 
+    4166133147, 2086194139, 1593715627, 908289265, 
+    3325806355, 2698046642, 94198304, 789645310, 
+    3969320414, 1745386401, 2951966358, 3610359331, 
+    3084887154, 1840753572, 118413839, 574118257, 
+    811615525, 1597186704, 3096401663, 2652615516, 
+    3226828519, 2934483458, 3589481104, 2471895979, 
+    2886441825, 1241282554, 1964191771, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+
+SAVE:
+  PatternConfigData_256:
+    3004447361, 2960563374, 1275055524, 831033836, 
+    3349007357, 2101501589, 4106684748, 3300588930, 
+    2904913003, 2899590365, 1336635844, 2629053572, 
+    3192411957, 2185502072, 3417540059, 3218474038, 
+    2054220142, 2978040763, 1991105235, 2700817717, 
+    4166133147, 2086194123, 1593715627, 908289265, 
+    3325806339, 818998418, 94198304, 789645310, 
+    3969320414, 1745386401, 2951966358, 3610359331, 
+    3080692850, 1840753572, 118413837, 574118257, 
+    811615525, 1597186704, 3096401663, 2652484444, 
+    3226828519, 2934483586, 3589481104, 2471895979, 
+    2886441825, 1241282554, 1964191771, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+	info:	    Full Loop Time ........................... [364247 ns, 2745 FPS]
+	info:	    Full Loop Time ........................... [336492 ns, 2971 FPS]
+	info:	    Full Loop Time ........................... [341902 ns, 2924 FPS]
+	info:	    Full Loop Time ........................... [342587 ns, 2918 FPS]
+	Load PCD256 Data Count: -2 / 175312
+
+LOAD:
+  PatternConfigData_256:
+    3004447363, 2960563374, 1275055524, 831033836, 
+    3349146621, 2101501589, 4106684748, 3334143362, 
+    2904913003, 2899623133, 1336635844, 2629053572, 
+    3192411957, 2185502072, 3417540059, 3218474038, 
+    2054220142, 2978040251, 1991105235, 2700817717, 
+    4166133147, 2086194139, 1593715627, 908289265, 
+    3325806355, 2698046642, 94198304, 789645310, 
+    3969320414, 1745386401, 2951966358, 3610359331, 
+    3084887154, 1840753572, 118413839, 574118257, 
+    811615525, 1597186704, 3096401663, 2652615516, 
+    3226828519, 2934483458, 3589481104, 2471895979, 
+    2886441825, 1241282554, 1964191771, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+
+SAVE:
+  PatternConfigData_256:
+    3004447363, 2960563630, 1266666916, 831033836, 
+    3349146621, 2101501589, 4106684748, 3334143362, 
+    2904913003, 2899623133, 1336635845, 2629053572, 
+    3192411957, 2185502072, 3417408987, 3217425462, 
+    2054220142, 3011598777, 1991105235, 2700817717, 
+    4166133147, 2086194139, 1593715627, 908289777, 
+    3325806355, 2698046642, 94198304, 789645310, 
+    3969320414, 1745386401, 2951966358, 3610359331, 
+    3084887154, 1840753572, 118413839, 574118257, 
+    811615525, 1597188752, 3096401663, 2652615516, 
+    3226828519, 2867374594, 3589481104, 2606136235, 
+    2886441825, 1240233978, 1966288923, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+	info:	    Full Loop Time ........................... [337832 ns, 2960 FPS]
+	Load PCD256 Data Count: -3 / 175313
+
+LOAD:
+  PatternConfigData_256:
+    3004447363, 2960563374, 1275055524, 831033836, 
+    3349146621, 2101501589, 4106684748, 3334143362, 
+    2904913003, 2899623133, 1336635844, 2629053572, 
+    3192411957, 2185502072, 3417540059, 3218474038, 
+    2054220142, 2978040251, 1991105235, 2700817717, 
+    4166133147, 2086194139, 1593715627, 908289265, 
+    3325806355, 2698046642, 94198304, 789645310, 
+    3969320414, 1745386401, 2951966358, 3610359331, 
+    3084887154, 1840753572, 118413839, 574118257, 
+    811615525, 1597186704, 3096401663, 2652615516, 
+    3226828519, 2934483458, 3589481104, 2471895979, 
+    2886441825, 1241282554, 1964191771, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+
+SAVE:
+  PatternConfigData_256:
+    3004447363, 2960563374, 1258278308, 831033836, 
+    3349130205, 2101501589, 4106684748, 3334143362, 
+    2904913003, 2899623133, 1336504772, 2645822596, 
+    3192411957, 2185502072, 3415451099, 3218474038, 
+    2054220142, 2978040251, 1991101139, 2700817717, 
+    4166133147, 2086194139, 1593715627, 908289265, 
+    3325806355, 2698046642, 631069216, 789645310, 
+    3969320414, 2013821857, 2951999127, 3610359331, 
+    3084887154, 1840753572, 118282767, 574118257, 
+    811615525, 1597186704, 3096385279, 2652615516, 
+    3226828519, 2930289154, 3585286800, 2471895979, 
+    3960184673, 1241282554, 1964191771, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+	info:	    Full Loop Time ........................... [367209 ns, 2723 FPS]
+	Load PCD256 Data Count: -4 / 175314
+
+LOAD:
+  PatternConfigData_256:
+    3004447363, 2960563374, 1275055524, 831033836, 
+    3349146621, 2101501589, 4106684748, 3334143362, 
+    2904913003, 2899623133, 1336635844, 2629053572, 
+    3192411957, 2185502072, 3417540059, 3218474038, 
+    2054220142, 2978040251, 1991105235, 2700817717, 
+    4166133147, 2086194139, 1593715627, 908289265, 
+    3325806355, 2698046642, 94198304, 789645310, 
+    3969320414, 1745386401, 2951966358, 3610359331, 
+    3084887154, 1840753572, 118413839, 574118257, 
+    811615525, 1597186704, 3096401663, 2652615516, 
+    3226828519, 2934483458, 3589481104, 2471895979, 
+    2886441825, 1241282554, 1964191771, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+
+SAVE:
+  PatternConfigData_256:
+    3004447363, 2960563374, 1275055524, 831033836, 
+    3349146621, 2101501589, 4106684748, 3334143362, 
+    2913301611, 2899621085, 1336635844, 2629053572, 
+    3192411957, 2185502072, 3417540059, 3218474038, 
+    2054220142, 2978040251, 1991104723, 2700817717, 
+    4166133147, 2086194139, 1593715627, 908289265, 
+    3325789971, 2698046642, 94198304, 789645310, 
+    3969320414, 1745386405, 2951966358, 3610359331, 
+    3084887154, 1874308004, 118413839, 574118257, 
+    845169957, 1597186704, 3096401663, 2669392732, 
+    3226828519, 2934483458, 3589481104, 2471764907, 
+    2886441825, 1241282554, 1964191771, 96304426, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+	info:	    Full Loop Time ........................... [387181 ns, 2582 FPS]
+	info:	    Full Loop Time ........................... [343367 ns, 2912 FPS]
+	info:	    Full Loop Time ........................... [342120 ns, 2922 FPS]
+	info:	    Full Loop Time ........................... [344280 ns, 2904 FPS]
+	info:	    Full Loop Time ........................... [352894 ns, 2833 FPS]
+	info:	    Full Loop Time ........................... [372457 ns, 2684 FPS]
+	Load PCD256 Data Count: -5 / 175315
+
+LOAD:
+  PatternConfigData_256:
+    3004447363, 2960563374, 1275055524, 831033836, 
+    3349146621, 2101501589, 4106684748, 3334143362, 
+    2904913003, 2899623133, 1336635844, 2629053572, 
+    3192411957, 2185502072, 3417540059, 3218474038, 
+    2054220142, 2978040251, 1991105235, 2700817717, 
+    4166133147, 2086194139, 1593715627, 908289265, 
+    3325806355, 2698046642, 94198304, 789645310, 
+    3969320414, 1745386401, 2951966358, 3610359331, 
+    3084887154, 1840753572, 118413839, 574118257, 
+    811615525, 1597186704, 3096401663, 2652615516, 
+    3226828519, 2934483458, 3589481104, 2471895979, 
+    2886441825, 1241282554, 1964191771, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+
+SAVE:
+  PatternConfigData_256:
+    3004447435, 2960563374, 1275055524, 831033580, 
+    3349146621, 2101501589, 4106685260, 3334143362, 
+    3173348451, 2933176541, 1336635844, 2629086212, 
+    3192444725, 2185502072, 3417540059, 3218474038, 
+    2054220142, 2978040251, 1991105235, 2700817717, 
+    3092391323, 2086194139, 1593715627, 908289265, 
+    3325806355, 2698050738, 94199328, 793838542, 
+    3969320414, 1745386401, 2951966358, 3610359331, 
+    3084887154, 1840753572, 118413839, 574118257, 
+    811615493, 1597186704, 3096401663, 2652615004, 
+    3226828519, 2934483458, 3589481104, 2471895979, 
+    3960183617, 1241282554, 1964191771, 96304554, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 0, 0, 0, 
+    0, 1040469373, 1121802382, 0, 
+
+	info:	    Full Loop Time ........................... [342245 ns, 2921 FPS]
+	info:	    Full Loop Time ........................... [359576 ns, 2781 FPS]
+	info:	    Full Loop Time ........................... [357063 ns, 2800 FPS]
+	info:	    Full Loop Time ........................... [451002 ns, 2217 FPS]
+	info:	    Full Loop Time ........................... [352676 ns, 2835 FPS]
+	info:	    Full Loop Time ........................... [436368 ns, 2291 FPS]
+	info:	    Full Loop Time ........................... [362115 ns, 2761 FPS]
+	info:	    Full Loop Time ........................... [353202 ns, 2831 FPS]
+	info:	    Full Loop Time ........................... [373019 ns, 2680 FPS]
+	info:	    Full Loop Time ........................... [541166 ns, 1847 FPS]
+	info:	    Full Loop Time ........................... [362728 ns, 2756 FPS]
+	info:	    Full Loop Time ........................... [394816 ns, 2532 FPS]
+________________________________________________________________________________
+ STAGE:	EXIT APPLICATION
+________________________________________________________________________________
+ STAGE:	CLOSED
+  void: 	glfwDestroyWindow
+  void: 	return
+
+  END   ./app/RunVulkanAutomataGLFW
+
+
+Script done on 2022-02-11 07:26:53-03:00 [COMMAND_EXIT_CODE="0"]
