@@ -87,108 +87,7 @@ vec4  gdv( ivec2 of, sampler2D tx ) {
 	of[0] 	= (of[0] + textureSize(tx,0)[0]) & (textureSize(tx,0)[0]-1);
 	of[1] 	= (of[1] + textureSize(tx,0)[1]) & (textureSize(tx,0)[1]-1);
 	return 	texelFetch( tx, of, 0); }
-/*
-ConvData ring( float r ) {
-	float rx 	= floor(r);
-	float jmax 	= round( sqrt( r*r - rx*rx ) ) + 1.0;
-	float tot = 0.0;
-	vec4  val = vec4(0.0,0.0,0.0,0.0);
-//	for(float j = 1.0; j < jmax; j++) {
-//		tot += 4.0;
-//		val += gdv(ivec2( r, j), txdata); val += gdv(ivec2( j,-r), txdata);
-//		val += gdv(ivec2(-r,-j), txdata); val += gdv(ivec2(-j, r), txdata); }
-	for(float i = 1.0; i < round(r) + 1.0; i++) {
-		vec2 jlims = sqrt( vec2( (r-1.0)*(r-1.0) - i*i, r*r - i*i ) );
-//		for(float j = (jlims[0]) + 1.0; j < (jlims[1]) + 0.0; j++) {
-		for(float j = (i+1.0); j < round(jlims[1])+1.0; j++) {
-			tot += 1.0;
-			val += gdv(ivec2( i, j), txdata);
-			/*val += gdv(ivec2( i,-j), txdata);
-			val += gdv(ivec2(-i,-j), txdata);
-			val += gdv(ivec2(-i, j), txdata);
-			val += gdv(ivec2( j, i), txdata);
-			val += gdv(ivec2( j,-i), txdata);
-			val += gdv(ivec2(-j,-i), txdata);
-			val += gdv(ivec2(-j, i), txdata);*//*
-		}
-	}
-	return ConvData( val, tot ); }*/
 
-/*ConvData ring( float r ) {
-	float sq2	= sqrt(2.0);
-	float imax 	= sq2 / ( 2.0 / (r - 0.0) );
-	float tot = 0.0;
-	vec4  val = vec4(0.0,0.0,0.0,0.0);
-	for(float i = 1.0; i < imax; i++) {
-		float jmax = sqrt( (r+0.5)*(r+0.5) - (i-0.0)*(i-0.0) );
-		float jmin = sqrt( (r+0.5)*(r+0.5) - (i-0.0)*(i-0.0) );
-		for(float j = jmin; j < jmax + 1.0; j++) {
-			//if(i<j/1.1) {
-				tot += 8.0;
-				val += gdv(ivec2( i, j), txdata);
-				val += gdv(ivec2( i,-j), txdata);
-				val += gdv(ivec2(-i,-j), txdata);
-				val += gdv(ivec2(-i, j), txdata);
-				val += gdv(ivec2( j, i), txdata);
-				val += gdv(ivec2( j,-i), txdata);
-				val += gdv(ivec2(-j,-i), txdata);
-				val += gdv(ivec2(-j, i), txdata);// }
-		}
-	}
-
-	tot += 4.0;
-	val += gdv(ivec2( r, 0), txdata);
-	val += gdv(ivec2( 0,-r), txdata);
-	val += gdv(ivec2(-r,-0), txdata);
-	val += gdv(ivec2(-0, r), txdata);
-
-	return ConvData( val, tot ); }*/
-
-/*ConvData ring( float r ) {
-	float tot = 0.0;
-	vec4  val = vec4(0.0,0.0,0.0,0.0);
-
-	float sq2	= sqrt(2.0);
-
-	float i_dst = ( sq2 * (r + 0.5) ) / 2.0;
-	float i_dia = i_dst - ( i_dst - (floor(i_dst) + 0.5) );
-	float i_max = floor(i_dst) + floor(i_dia)*1.0;
-
-//	float j_dst = ( sq2 * (r - 0.5) ) / 2.0;
-//	float j_dia = j_dst + floor( j_dst - ( floor(j_dst) + 1.0 ) );
-
-	for(float i = 1.0; i < i_max + 1.0; i++) {
-
-		float j_max = floor( sqrt( (r-0.5)*(r-0.5) - i*i ) );
-		float j_off = ( floor(i_dst) + 2.0 ) - j_max;
-		float j_min = j_max - j_off*0.0;
-
-		for(float j = j_min; j < j_max + 1.0; j++) {
-			tot += 8.0;
-			val += gdv(ivec2( i, j), txdata);
-			val += gdv(ivec2( i,-j), txdata);
-			val += gdv(ivec2(-i,-j), txdata);
-			//val += gdv(ivec2(-i, j), txdata);
-			//val += gdv(ivec2( j, i), txdata);
-			val += gdv(ivec2( j,-i), txdata);
-			val += gdv(ivec2(-j,-i), txdata);
-			val += gdv(ivec2(-j, i), txdata); }	}
-
-//	Orthagonal
-//	tot += 4.0;
-//	val += gdv(ivec2( r, 0), txdata);
-//	val += gdv(ivec2( 0,-r), txdata);
-//	val += gdv(ivec2(-r,-0), txdata);
-//	val += gdv(ivec2(-0, r), txdata);
-
-//	Diagonal
-//	tot += 4.0;
-//	val += gdv(ivec2( r, 0), txdata);
-//	val += gdv(ivec2( 0,-r), txdata);
-//	val += gdv(ivec2(-r,-0), txdata);
-//	val += gdv(ivec2(-0, r), txdata);
-
-	return ConvData( val, tot ); }*/
 
 ConvData ring( float r ) {
 
@@ -444,6 +343,15 @@ vec4 blendseed(vec4 col, uint seed, float str) {
 
 	return 	col; }
 
+float tent_map(float x, float m, float a) {
+	
+	float result = 0.0;
+	// if (x < a) { result = clamp(m*x/a, 0.0, 1.0); }  
+	// if (x >= a) { result = clamp(m*(1.0-x)/(1.0-a), 0.0, 1.0); }
+	result = (x < a) ? clamp(m*x/a, 0.0, 1.0) : clamp(m*(1.0-x)/(1.0-a), 0.0, 1.0);
+	return result; 
+	}	
+
 void main() {
 
 //	----    ----    ----    ----    ----    ----    ----    ----
@@ -464,10 +372,23 @@ void main() {
 //	----    ----    ----    ----    ----    ----    ----    ----
 //	Update Functions
 //	----    ----    ----    ----    ----    ----    ----    ----
+	uint[12] nb = uint[12] (
+		ub.v0,  ub.v1,  ub.v2,  ub.v3,
+		ub.v4,  ub.v5,  ub.v6,  ub.v7,
+		ub.v8,  ub.v9,  ub.v10, ub.v11 );
+	
+	uint[24] ur = uint[24] (
+		ub.v12, ub.v13, ub.v14, ub.v15, 
+		ub.v16, ub.v17, ub.v18, ub.v19,	
+		ub.v20, ub.v21, ub.v22, ub.v23,
+		ub.v24, ub.v25, ub.v26, ub.v27,	
+		ub.v28, ub.v29, ub.v30, ub.v31, 
+		ub.v32, ub.v33, ub.v34, ub.v35  );	
 // BLUR
 	// res_c = conv( 1.0 );
 
 // CGOL
+	
 	// res_c = gdv( ivec2(0, 0), txdata );
 	// vec4[2] cgol_val = nbhd1( vec2(1.0,0.0), txdata );
 	// vec4 sum = cgol_val[0];
@@ -501,84 +422,142 @@ void main() {
 	// if(res[3] <= (1.0 / 8.0)) { res_c[3] = 0.0; }
 	// if(res[3] >= (4.0 / 8.0)) { res_c[3] = 0.0; }
 	// if(res[3] >= (3.0 / 8.0)   && res[3] <= (3.0 / 8.0) ) { res_c[3] = 1.0; }
+
+// UNCOUPLED CML
+
+	// res_c = gdv( ivec2(0, 0), txdata );
+
+	// vec4[2] cgol_val = nbhd1( vec2(1.0,0.0), txdata );
+	
+	// vec4 sum = cgol_val[0];
+	// vec4 tot = cgol_val[1];
+	// vec4 res = sum / tot;
+
+	// uint[3] ch  = uint[3] ( ub.v38, ub.v39, ub.v40 );
+	
+	// uint num_bits = 2u;
+	
+	// for(uint i = 0u; i < 4u; i++) {
+		
+	// 	uint m_i = u32_upk( ch[i], num_bits, 0*num_bits );
+	// 	m_i = 2*m_i/(num_bits * num_bits -1);
+		
+	// 	uint a_i = u32_upk( ch[i], num_bits, 1*num_bits );
+	// 	a_i = a_i/(num_bits * num_bits -1);
+	// 	res_c[i] = tent_map(res[i], m_i, a_i);
+	// }
+
+// COUPLED CML
+
+
+			
+	// res_c = gdv( ivec2(0, 0), txdata );
+
+	// vec4[2] cgol_val = nbhd1( vec2(1.0,0.0), txdata );
+	
+	// vec4 sum = cgol_val[0];
+	// vec4 tot = cgol_val[1];
+	// vec4 res = sum / tot;
+
+	// uint[3] ch  = uint[3] ( ub.v38, ub.v39, ub.v40 );
+	
+	// uint num_bits = 4u;
+	
+	// for(uint i = 0u; i < 4u; i++) {
+		
+	// 	uint m_i = u32_upk( ch[i], num_bits, 0*num_bits );
+	// 	m_i = num_bits*m_i/(num_bits * num_bits -1);
+		
+	// 	uint a_i = u32_upk( ch[i], num_bits, 1*num_bits );
+	// 	a_i = a_i/(num_bits * num_bits -1);
+		
+	// 	// if (res[i] < a_i) {
+	// 	// 	res_c[i] = clamp(m_i*res_c[i]/a_i, 0.0, 1.0); }  
+	// 	// if (res[i] >= a_i) {
+	// 	// 	res_c[i] = clamp(m_i*(1.0-res_c[i])/(1.0-a_i), 0.0, 1.0); }
+	// 	res_c[i] = tent_map(res[i], m_i, a_i);
+	// }
+	// vec4 conv1 = conv(1.0);
+	// float e = u32_upk( ub.v0, 1u, 0*num_bits )/10.0;
+	// res_c = ((1-e)*res_v + e*(conv1*res_c));
 /**/
 
 
-	ConvData[MAX_RADIUS] nh_rings_m;
-	for(uint i = 0u; i < MAX_RADIUS; i++) { nh_rings_m[i] = ring(i+1.0); }
+// 	ConvData[MAX_RADIUS] nh_rings_m;
+// 	for(uint i = 0u; i < MAX_RADIUS; i++) { nh_rings_m[i] = ring(i+1.0); }
 
-	uint[12] nb = uint[12] (
-		ub.v0,  ub.v1,  ub.v2,  ub.v3,
-		ub.v4,  ub.v5,  ub.v6,  ub.v7,
-		ub.v8,  ub.v9,  ub.v10, ub.v11 );
+// 	uint[12] nb = uint[12] (
+// 		ub.v0,  ub.v1,  ub.v2,  ub.v3,
+// 		ub.v4,  ub.v5,  ub.v6,  ub.v7,
+// 		ub.v8,  ub.v9,  ub.v10, ub.v11 );
 
-	uint[24] ur = uint[24] (
-		ub.v12, ub.v13, ub.v14, ub.v15, 
-		ub.v16, ub.v17, ub.v18, ub.v19,	
-		ub.v20, ub.v21, ub.v22, ub.v23,
-		ub.v24, ub.v25, ub.v26, ub.v27,	
-		ub.v28, ub.v29, ub.v30, ub.v31, 
-		ub.v32, ub.v33, ub.v34, ub.v35  );
+// 	uint[24] ur = uint[24] (
+// 		ub.v12, ub.v13, ub.v14, ub.v15, 
+// 		ub.v16, ub.v17, ub.v18, ub.v19,	
+// 		ub.v20, ub.v21, ub.v22, ub.v23,
+// 		ub.v24, ub.v25, ub.v26, ub.v27,	
+// 		ub.v28, ub.v29, ub.v30, ub.v31, 
+// 		ub.v32, ub.v33, ub.v34, ub.v35  );
 
-	uint[ 3] ch2 = uint[ 3] ( 2286157824u, 295261525u, 1713547946u );
-	uint[ 3] ch  = uint[ 3] ( ub.v38, ub.v39, ub.v40 );
-	uint[ 3] ch3 = uint[ 3] ( ub.v41, ub.v42, ub.v43 );
+// 	uint[ 3] ch2 = uint[ 3] ( 2286157824u, 295261525u, 1713547946u );
+// 	uint[ 3] ch  = uint[ 3] ( ub.v38, ub.v39, ub.v40 );
+// 	uint[ 3] ch3 = uint[ 3] ( ub.v41, ub.v42, ub.v43 );
 
-//	Update Sign
-	uint[ 2] us = uint[ 2] ( ub.v36, ub.v37 );
+// //	Update Sign
+// 	uint[ 2] us = uint[ 2] ( ub.v36, ub.v37 );
 
-	vec4[12] smnca_res = vec4[12](
-		res_c,res_c,res_c,res_c,res_c,res_c,
-		res_c,res_c,res_c,res_c,res_c,res_c
-		);
+// 	vec4[12] smnca_res = vec4[12](
+// 		res_c,res_c,res_c,res_c,res_c,res_c,
+// 		res_c,res_c,res_c,res_c,res_c,res_c
+// 		);
 
-	vec4 conv1 = conv(1.0);
+// 	vec4 conv1 = conv(1.0);
 
-	for(uint i = 0u; i < 12u; i++) 
+// 	for(uint i = 0u; i < 12u; i++) 
 		
-		{
+// 		{
 
-		uint  	cho = u32_upk( ch[i/8u], 2u, (i*4u+0u) & 31u );
+// 		uint  	cho = u32_upk( ch[i/8u], 2u, (i*4u+0u) & 31u );
 
-				cho = (cho == 3u) ? 
-					u32_upk( ch2[i/8u], 2u, (i*4u+0u) & 31u ) : cho;
+// 				cho = (cho == 3u) ? 
+// 					u32_upk( ch2[i/8u], 2u, (i*4u+0u) & 31u ) : cho;
 
-		uint  	chi = u32_upk( ch[i/8u], 2u, (i*4u+2u) & 31u );
+// 		uint  	chi = u32_upk( ch[i/8u], 2u, (i*4u+2u) & 31u );
 
-				chi = (chi == 3u) ? 
-					u32_upk( ch2[i/8u], 2u, (i*4u+2u) & 31u ) : chi;
+// 				chi = (chi == 3u) ? 
+// 					u32_upk( ch2[i/8u], 2u, (i*4u+2u) & 31u ) : chi;
 					
-		uint  	chm = u32_upk( ch3[i/8u], 2u, (i*4u+2u) & 31u );
+// 		uint  	chm = u32_upk( ch3[i/8u], 2u, (i*4u+2u) & 31u );
 
-				chm = (chm == 3u) ? 
-					u32_upk( ch[i/8u], 2u, (i*4u+2u) & 31u ) : chm;
+// 				chm = (chm == 3u) ? 
+// 					u32_upk( ch[i/8u], 2u, (i*4u+2u) & 31u ) : chm;
 
-		//float nhv = bitring( nh_rings_c, nb[i/2u], (i & 1u) * 16u )[cho];
-		vec4 nhv = bitmake( nh_rings_m, nb[i/2u], (i & 1u) * 16u );
+// 		//float nhv = bitring( nh_rings_c, nb[i/2u], (i & 1u) * 16u )[cho];
+// 		vec4 nhv = bitmake( nh_rings_m, nb[i/2u], (i & 1u) * 16u );
 
-		if( nhv[cho] >= utp( ur[i], 8u, 0u) && nhv[cho] <= utp( ur[i], 8u, 1u)) {
-			smnca_res[i/4u][chi] += bsn(us[i/16u], ((i*2u+0u) & 31u)) * s * res_c[chm]; }
+// 		if( nhv[cho] >= utp( ur[i], 8u, 0u) && nhv[cho] <= utp( ur[i], 8u, 1u)) {
+// 			smnca_res[i/4u][chi] += bsn(us[i/16u], ((i*2u+0u) & 31u)) * s * res_c[chm]; }
 
-		if( nhv[cho] >= utp( ur[i], 8u, 2u) && nhv[cho] <= utp( ur[i], 8u, 3u)) {
-			smnca_res[i/4u][chi] += bsn(us[i/16u], ((i*2u+1u) & 31u)) * s * res_c[chm]; } 
+// 		if( nhv[cho] >= utp( ur[i], 8u, 2u) && nhv[cho] <= utp( ur[i], 8u, 3u)) {
+// 			smnca_res[i/4u][chi] += bsn(us[i/16u], ((i*2u+1u) & 31u)) * s * res_c[chm]; } 
 			
-		}
+// 		}
 
-	uvec4 dev_idx = uvec4(0u,0u,0u,0u);
-//	vec4 dev = vec4(2.0,2.0,2.0,2.0);
-	vec4 dev = vec4(0.0,0.0,0.0,0.0);
-	for(uint i = 0u; i < 6u; i++) {
-		vec4 smnca_res_temp = abs(res_c - smnca_res[i]);
-		if(smnca_res_temp[0] > dev[0]) { dev_idx[0] = i; dev[0] = smnca_res_temp[0]; }
-		if(smnca_res_temp[1] > dev[1]) { dev_idx[1] = i; dev[1] = smnca_res_temp[1]; }
-		if(smnca_res_temp[2] > dev[2]) { dev_idx[2] = i; dev[2] = smnca_res_temp[2]; }
-		if(smnca_res_temp[3] > dev[3]) { dev_idx[3] = i; dev[3] = smnca_res_temp[3]; } }
+// 	uvec4 dev_idx = uvec4(0u,0u,0u,0u);
+// //	vec4 dev = vec4(2.0,2.0,2.0,2.0);
+// 	vec4 dev = vec4(0.0,0.0,0.0,0.0);
+// 	for(uint i = 0u; i < 6u; i++) {
+// 		vec4 smnca_res_temp = abs(res_c - smnca_res[i]);
+// 		if(smnca_res_temp[0] > dev[0]) { dev_idx[0] = i; dev[0] = smnca_res_temp[0]; }
+// 		if(smnca_res_temp[1] > dev[1]) { dev_idx[1] = i; dev[1] = smnca_res_temp[1]; }
+// 		if(smnca_res_temp[2] > dev[2]) { dev_idx[2] = i; dev[2] = smnca_res_temp[2]; }
+// 		if(smnca_res_temp[3] > dev[3]) { dev_idx[3] = i; dev[3] = smnca_res_temp[3]; } }
 
-	res_v[0] = smnca_res[dev_idx[0]][0];
-	res_v[1] = smnca_res[dev_idx[1]][1];
-	res_v[2] = smnca_res[dev_idx[2]][2];
-	res_v[3] = smnca_res[dev_idx[3]][3];
-	res_c = ((res_v + (conv1 * (s*2.0))) / (1.0 + (s*2.13333)))- 0.015 * s;
+// 	res_v[0] = smnca_res[dev_idx[0]][0];
+// 	res_v[1] = smnca_res[dev_idx[1]][1];
+// 	res_v[2] = smnca_res[dev_idx[2]][2];
+// 	res_v[3] = smnca_res[dev_idx[3]][3];
+// 	res_c = ((res_v + (conv1 * (s*2.0))) / (1.0 + (s*2.13333)))- 0.015 * s;
 
 
 // Original Update
